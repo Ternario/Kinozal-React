@@ -1,0 +1,8 @@
+@import './../../Variables.scss';
+@import './../../Mixins-media.scss';
+
+.header {
+    margin-bottom: $gap * 4;
+    background-color: $color-dark;
+}
+

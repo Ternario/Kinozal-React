@@ -1,0 +1,32 @@
+@import './../../../Variables.scss';
+@import './../../../Mixins-media.scss';
+
+.header-navbar {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 50px;
+    
+    &__info {
+
+        .info-item {
+            display: flex;
+
+            .itemInfo {
+                margin: $gap;
+            }
+        }
+    }
+
+    // em / rem
+
+    &__menu {
+
+        .menu-item {
+            display: flex;
+
+            .itemMenu {
+                margin: $gap;
+            }
+        }
+    }
+}

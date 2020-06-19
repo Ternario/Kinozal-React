@@ -1,0 +1,33 @@
+@import './../../../Variables.scss';
+@import './../../../Mixins-media.scss';
+
+.header-logo {
+    text-align: center;
+    padding: 100px 0;
+    background-image: url(../../../img/header-bg.jpg);
+    background-position: 50% 50%;
+    background-size: cover;
+
+    .container {
+
+        .container-label {
+
+            // em / rem
+
+            font-size: $font-size * 4;
+            font-family: $font-header;
+            font-weight: bold;
+            letter-spacing: $font-size * 1.5;
+            color: $color-accent;
+        }
+        
+        .container-description {
+            font-size: $font-size * 1.5;
+            letter-spacing: $font-size * 0.3;
+            color: $color-light;
+        }
+    }
+    
+}
+
+
