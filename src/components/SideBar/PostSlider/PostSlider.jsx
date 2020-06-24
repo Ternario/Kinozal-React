@@ -16,7 +16,28 @@ export default class PostSlider extends Component {
         }
 
         this.slideHendle = this.slideHendle.bind(this);
+        // this.interval = this.interval.bind(this);
     }
+
+    // interval(){ 
+        
+    //     setInterval(() => {
+
+    //         let newIndex = this.state.currentImage;
+
+    //         if(newIndex < this.state.images.length - 1){
+    //             newIndex = this.state.currentImage + 1;
+    //         } else if(newIndex === this.state.images.length - 1) {
+    //             newIndex = 0
+    //         }
+
+    //         this.setState({currentImage: newIndex})
+    //     }, 2000);
+
+    // }
+    // onLoad={this.interval.bind(this)}
+
+    
 
     slideHendle(e) {
         let newIndex = this.state.currentImage;
@@ -45,7 +66,7 @@ export default class PostSlider extends Component {
     render() {
         return (
             <div className="sideBar-postSlider">
-                <Slides src={this.state.images[this.state.currentImage]} number={this.state.currentImage} />
+                <Slides  src={this.state.images[this.state.currentImage]} number={this.state.currentImage} />
                 <div data-direction="prev" onClick={this.slideHendle.bind(this)} className="sideBar-postSlider__buttonLeft">
                     <span className="left"></span>
                     <span className="right"></span>

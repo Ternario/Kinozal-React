@@ -8,8 +8,8 @@
     .sideBar-postSlider {
         display: flex;
         position: relative;
-        height: 327px;
-        border-radius: 5px;
+        border-radius: 10px;
+        margin-bottom: $gap * 2;
         overflow: hidden;
 
         &__buttonLeft {
@@ -25,20 +25,20 @@
                 position: absolute;
                 height: 7px;
                 width: 25px;
-                top: 143px;
+                top: calc(50% + 3px);
                 left: 5px;
                 background-color: $color-light;
-                transform: rotate(-45deg);
+                transform: rotate(45deg);
             }
 
             .right {
                 position: absolute;
                 height: 7px;
                 width: 25px;
-                top: 156px;
+                top: calc(50% - 10px);
                 left: 5px;
                 background-color: $color-light;
-                transform: rotate(45deg);
+                transform: rotate(-45deg);
             }
         }
 
@@ -60,23 +60,22 @@
                 position: absolute;
                 height: 7px;
                 width: 25px;
-                top: 143px;
+                top: calc(50% + 3px);
                 right: 5px;
                 background-color: $color-light;
-                transform: rotate(-135deg);
+                transform: rotate(135deg);
             }
 
             .right{
                 position: absolute;
                 height: 7px;
                 width: 25px;
-                top: 156px;
+                top: calc(50% - 10px);
                 right: 5px;
                 background-color: $color-light;
-                transform: rotate(135deg);
+                transform: rotate(-135deg);
             }
         }
-        
 
         &__buttonRight:hover {
             transform: scale(1.2);
@@ -89,6 +88,7 @@
                 display: none;
 
                 &__img {
+                    display: block;
                     height: auto;
                     width: 100%;
                 }
@@ -112,11 +112,118 @@
     }
 
     .sideBar-searchPanel {
+        margin-bottom: $gap * 2;
 
+        &__label {
+            padding: $gap / 2 $gap;
+            font-size: 1.3rem;
+            color: $color-light;
+            background-color: $color-accent;
+            border-top-left-radius: 5px;
+            border-top-right-radius: 5px;
+        }
+
+        &__wrapper {
+            display: flex;
+            align-items: center;
+            padding: $gap;
+            background-color: $color-gray;
+            border-bottom-left-radius: 5px;
+            border-bottom-right-radius: 5px;
+
+            .wrapper-form {
+                display: flex;
+                border: 1px solid $color-dark;
+                border-radius: 5px;
+                overflow: hidden;
+
+                .inputSearch {
+                    padding-left: $gap;
+                    height: 40px;
+                    width: 100%;
+                    border: none;
+                }
+    
+                .searchBtn {
+                    vertical-align: middle;
+                    width: 25%;
+                    border: none;
+                    border-left: 1px solid $color-dark;
+                    cursor: pointer;
+                    transition: 0.4s;
+                }
+
+                .searchBtn:hover {
+                    background-color: $color-accent;
+                }
+            }
+        }
     }
 
-    .sideBar-signUp {
+    .sideBar-authorization {
 
+        &__label {
+
+            display: flex;
+
+            .signIn {
+
+            }
+
+            .signUp {
+
+            }
+        }
+
+        &__forms {
+            
+
+            .forms-SignIn {
+                text-align: center;
+                padding: $gap / 2;
+
+                .login {
+                    width: 85%;
+                    height: 30px;
+                    padding-left: $gap;
+                    margin: $gap 0 0 0;
+                }
+
+                .password  {
+                    width: 85%;
+                    height: 30px;
+                    padding-left: $gap;
+                    margin: $gap 0 $gap 0;
+                }
+
+                .form-btn {
+
+                }
+            }
+
+            .forms-SignUp {
+                text-align: center;
+                padding: $gap / 2;
+
+                .login {
+                    width: 85%;
+                    height: 30px;
+                    padding-left: $gap;
+                    margin: $gap 0 0 0;
+                }
+
+                .password  {
+                    width: 85%;
+                    height: 30px;
+                    padding-left: $gap;
+                    margin: $gap 0 $gap 0;
+                }
+
+                .form-btn {
+
+                }
+            }
+        }
     }
 
     .sideBar-siteNews {
