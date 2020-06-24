@@ -1,0 +1,13 @@
+@import './Mixins-media.scss';
+@import './Variables.scss';
+
+html {
+    font-size: $font-size;
+}
+
+body {
+    margin: 0 auto;
+    max-width: 1280px;
+    font-family: $font-main;
+}
+  

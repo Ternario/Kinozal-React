@@ -1,0 +1,127 @@
+@import './../../Variables.scss';
+@import './../../Mixins-media.scss';
+
+.sideBar {
+    grid-area: s;
+    padding-left: $gap * 5;
+
+    .sideBar-postSlider {
+        display: flex;
+        position: relative;
+        height: 327px;
+        border-radius: 5px;
+        overflow: hidden;
+
+        &__buttonLeft {
+            cursor: pointer;
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            width: 15%;
+            transition: 0.5s;
+
+            .left {
+                position: absolute;
+                height: 7px;
+                width: 25px;
+                top: 143px;
+                left: 5px;
+                background-color: $color-light;
+                transform: rotate(-45deg);
+            }
+
+            .right {
+                position: absolute;
+                height: 7px;
+                width: 25px;
+                top: 156px;
+                left: 5px;
+                background-color: $color-light;
+                transform: rotate(45deg);
+            }
+        }
+
+        &__buttonLeft:hover {
+            transform: scale(1.2);
+        }
+
+        &__buttonRight {
+            cursor: pointer;
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            right: 0;
+            width: 15%;
+            transition: 0.5s;
+
+            .left {
+                position: absolute;
+                height: 7px;
+                width: 25px;
+                top: 143px;
+                right: 5px;
+                background-color: $color-light;
+                transform: rotate(-135deg);
+            }
+
+            .right {
+                position: absolute;
+                height: 7px;
+                width: 25px;
+                top: 156px;
+                right: 5px;
+                background-color: $color-light;
+                transform: rotate(135deg);
+            }
+        }
+
+        &__buttonRight:hover {
+            transform: scale(1.2);
+        }
+
+        &__slides {
+            width: 100%;
+
+            .slides-item{
+                display: none;
+
+                &__img {
+                    height: auto;
+                    width: 100%;
+                }
+            }
+
+            .slides-item::after {
+                content: "";
+                position: absolute;
+                top: 0;
+                right: 0;
+                bottom: 0;
+                left: 0;
+                background-color: $color-dark;
+                opacity: 0.4;
+            }
+
+            .active {
+                display: block;
+            }
+        }
+    }
+
+    .sideBar-searchPanel {
+
+    }
+
+    .sideBar-signUp {
+
+    }
+
+    .sideBar-siteNews {
+
+    }
+
+    .sideBar-movieRating {
+
+    }
+}

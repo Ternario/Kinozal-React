@@ -1,15 +1,17 @@
 import React from 'react';
-import './Header.scss';
-import Logo from './Logo/Logo';
-import Navbar from './Navbar/Navbar';
+import './Main.scss';
+import NewMovies from './NewMovies/NewMovies';
+import BestWeek from './BestWeek/BestWeek';
+import MovieNews from './MovieNews/MovieNews';
 
-const Header = () => {
+const Main = () => {
     return (
-        <div className="header">
-            <Logo />
-            <Navbar />
+        <div className="main">
+            <NewMovies />
+            <BestWeek />
+            <MovieNews />
         </div>
     );
 }
 
-export default Header;
+export default Main;

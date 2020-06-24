@@ -1,2 +1,8 @@
 @import './../../Variables.scss';
 @import './../../Mixins-media.scss';
+
+.main {
+    grid-area: m;
+    background-color: #000;
+    height: 500px;
+}

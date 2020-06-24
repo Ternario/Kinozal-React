@@ -4,29 +4,96 @@
 .header-navbar {
     display: flex;
     justify-content: space-between;
-    padding: 0 50px;
+    padding: 0 $gap * 4.5;
+    height: 66px;
+    background-color: $color-dark;
+    
+    @include sm-xs {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    &__btn {
+        display: none;
+        justify-content: center;
+        padding: $gap / 2.5;
+        width: 35px;
+        border: 1px solid $color-gray;
+        border-radius: 4px;
+        transition: 0.5s;
+        cursor: pointer;
+
+        @include sm-xs {
+            display: block;
+        }
+
+        .btn-item {
+            margin: $gap / 3;
+            height: 2px;
+            width: 25px;
+            background-color: $color-light;
+            transition: 0.5s;
+        }
+    }
+
+    &__btn:hover {
+        border: 1px solid $color-accent;
+
+        .btn-item {
+            background-color: $color-accent;
+        }
+    }
     
     &__info {
+
+        @include sm-xs {
+            display: none;
+        }
 
         .info-item {
             display: flex;
 
             .itemInfo {
-                margin: $gap;
+                margin: $gap / 2;
+                padding: $gap;
+                color: $color-light;
+                border-radius: 5px;
+                transition: 0.5s;
+                cursor: pointer;
+            }
+
+            .itemInfo:hover {
+                background-color: $color-primary;
             }
         }
     }
 
-    // em / rem
-
     &__menu {
+        
+        @include sm-xs {
+            display: none;
+        }
 
         .menu-item {
             display: flex;
 
             .itemMenu {
-                margin: $gap;
+                margin: $gap / 2;
+                padding: $gap;
+                color: $color-light;
+                border-radius: 5px;
+                transition: 0.5s;
+                cursor: pointer;
+            }
+
+            .itemMenu:hover {
+                background-color: $color-primary;
             }
         }
+    }
+
+    .activeBar {
+        background-color: $color-primary;
     }
 }
