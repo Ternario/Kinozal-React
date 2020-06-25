@@ -1,13 +1,21 @@
 import React from 'react';
 import News from './News/News';
 
-const SiteNews = () => {
+
+const SiteNews = ({dataNews}) => {
+
+    const elements = dataNews.map((item) =>{
+        return(
+            <News image={item.image} title={item.title} date={item.date} />
+        )
+    })
+
     return (
         <div className="sideBar-siteNews">
             <div className="sideBar-siteNews__label">
                 <h3 className="label">Site news</h3>
             </div>
-            <News />
+            {elements}
         </div>
     );
 }

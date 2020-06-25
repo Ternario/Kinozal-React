@@ -1,17 +1,20 @@
 import React from 'react';
 
-const News = () => {
+const News = ({image, title, date}) => {
     return (
-        <div className="sideBar-news">
-            <div className="sideBar-news__wrapper">
+        <div className="sideBar-siteNews__wrapper">
+            <div className="wrapperItem">
                 <div className="image-wrapper">
-                    <img src="" alt="" className="newsImage"/>
+                    <img src={image} alt="news" className="image-wrapper__newsImage"/>
                 </div>
                 <div className="text-wrapper">
-                    <div className="newsText"></div>
+                    <div className="text-wrapper__newsText">{title}</div>
+                    <div className="text-wrapper__wrapperDate">
+                        <div className="date">{date}</div>
+                    </div>
                 </div>
             </div>
-            <div className="date"></div>
+            
         </div>
     );
 }

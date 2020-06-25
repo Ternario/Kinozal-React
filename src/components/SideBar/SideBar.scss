@@ -3,7 +3,7 @@
 
 .sideBar {
     grid-area: s;
-    padding-left: $gap * 5;
+    padding-left: $gap * 3.5;
 
     .sideBar-postSlider {
         display: flex;
@@ -112,6 +112,7 @@
 
     .sideBar-searchPanel {
         margin-bottom: $gap * 2;
+        border: 1px solid $color-gray;
         border-radius: 5px;
         overflow: hidden;
 
@@ -124,7 +125,7 @@
             display: flex;
             align-items: center;
             padding: $gap;
-            background-color: $color-gray;
+            background-color: lighten($color:$color-gray, $amount: 8%);
 
             .wrapper-form {
                 display: flex;
@@ -144,12 +145,13 @@
                     width: 25%;
                     border: none;
                     border-left: 1px solid $color-gray;
+                    background-color: $color-light;
                     cursor: pointer;
                     transition: 0.4s;
                 }
 
                 .searchBtn:hover {
-                    background-color: $color-accent;
+                    background-color: $color-gray;
                 }
             }
         }
@@ -157,6 +159,7 @@
 
     .sideBar-authorization {
         margin-bottom: $gap * 2;
+        border: 1px solid $color-gray;
         border-radius: 5px;
         overflow: hidden;
 
@@ -168,7 +171,7 @@
         &__form {
             text-align: center;
             padding: $gap;
-            background-color: $color-gray;
+            background-color: lighten($color:$color-gray, $amount: 8%);
 
             .input-wrapper {
                 width: 100%;
@@ -192,7 +195,7 @@
 
                 .form-btn {
                     height: 40px;
-                    width: 100%;
+                    width: 99%;
                     font-size: 1rem;
                     letter-spacing: 0.1em;
                     background-color: $color-light;
@@ -203,17 +206,166 @@
                 }
 
                 .form-btn:hover {
-                    background-color: $color-accent;
+                    background-color: $color-gray;
                 }
             }  
         }
     }
 
     .sideBar-siteNews {
+        margin-bottom: $gap * 2;
+        border: 1px solid $color-gray;
+        border-radius: 5px;
+        overflow: hidden;
 
+        &__label {
+            padding: $gap / 2 $gap;
+            background-color: $color-accent;
+        }
+
+        &__wrapper {
+            position: relative;
+            padding: $gap / 1.5 $gap;
+            background-color: lighten($color:$color-gray, $amount: 8%);
+
+            .wrapperItem {
+                display: flex;
+
+                .image-wrapper {
+
+                    &__newsImage {
+                        width: 65px;
+                        border: 4px solid $color-light;
+                        border-radius: 5px;
+                        transition: 0.5s;
+                    }
+                }
+
+                .text-wrapper {
+                    margin: 0 0 0 $gap;
+
+                    &__newsText {
+                        font-size: .9rem;
+                        color: $color-primary;
+                        height: 60px;
+                        cursor: pointer;
+                        transition: 0.5s;
+                        overflow: hidden;
+                    }
+
+                    &__wrapperDate {
+                        display: flex;
+                        justify-content: flex-end;
+            
+                        .date {
+                            margin: 0 $gap 0 0;
+                            font-size: .8rem;
+                            color: $color-primary;
+                        }
+                    }
+                }
+            }
+
+            .wrapperItem:hover {
+
+                .image-wrapper {
+
+                    &__newsImage {
+                        border: 4px solid $color-accent;
+                    }
+                }
+
+                .text-wrapper {
+
+                    &__newsText {
+                        color: $color-accent
+                    }
+                }
+            }
+        }
+
+        &__wrapper::after {
+            content: "";
+            position: absolute;
+            bottom : 0;
+            right: 8%;
+            height: 1px;
+            width: 55%;
+            background-color: $color-gray;
+        }
+
+        &__wrapper:last-child {
+            padding-bottom: $gap / 2;
+
+            &::after {
+                display: none;
+            }
+        }
     }
 
     .sideBar-movieRating {
+        margin-bottom: $gap * 2;
+        border-radius: 5px;
+        border: 1px solid $color-gray;
+        overflow: hidden;
 
+        &__label {
+            padding: $gap / 2 $gap;
+            background-color: $color-accent;
+        }
+
+        &__wrapper {
+            padding: $gap / 1.5 0;
+            background-color: lighten($color:$color-gray, $amount: 8%);
+
+            .container {
+                display: flex;
+                justify-content: space-between;
+                padding: $gap / 1.2;
+                border-bottom: 1px solid $color-gray;
+                background-color: lighten($color:$color-gray, $amount: 8%);
+                cursor: pointer;
+
+                .wrapper-name {
+
+                    &__movieName {
+                        color: $color-primary;
+                    }
+                }
+
+                .wrapper-rating {
+
+                    &__rating {
+                        padding: 0 $gap / 2;
+                        font-size: .9rem;
+                        color: $color-light;
+                        border-radius: 20px;
+                        background-color: darken($color: $color-gray, $amount: 50%)
+                    }
+                }
+            }
+            
+            .container:hover {
+                background-color: $color-accent;
+
+                .wrapper-name {
+
+                    &__movieName {
+                        color: $color-light;
+                    }
+                }
+
+                .wrapper-rating {
+
+                    &__rating {
+                        background-color: $color-dark;
+                    }
+                }
+            }
+        }
+
+        .container:last-child {
+            border-bottom: none;
+        }
     }
 }
