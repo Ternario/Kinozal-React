@@ -1,13 +1,24 @@
 import React from 'react';
-import Label from './Label/Label';
-import Forms from './Forms/Forms';
-
 
 const Authorization = () => {
     return (
         <div className="sideBar-authorization">
-            <Label />
-            <Forms />
+            <div className="sideBar-authorization__label">
+                <h3 className="label">Sign In</h3>
+            </div>
+            <div className="sideBar-authorization__form">
+                <form action="login">
+                    <div className="input-wrapper">
+                        <input type="text" className="login" placeholder="login" />
+                    </div>
+                    <div className="input-wrapper">
+                        <input type="password" className="password" placeholder="Password" />
+                    </div>
+                    <div className="input-wrapper">
+                        <button className="form-btn">Sign In</button>
+                    </div>
+                </form>
+            </div>
         </div>
     );
 }
