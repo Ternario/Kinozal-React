@@ -3,7 +3,7 @@
 
 .sideBar {
     grid-area: s;
-    padding-left: $gap * 3.5;
+    margin-left: $gap * 3.5;
 
     .sideBar-postSlider {
         display: flex;

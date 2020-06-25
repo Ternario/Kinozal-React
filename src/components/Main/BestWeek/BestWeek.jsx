@@ -2,7 +2,7 @@ import React from 'react';
 
 const BestWeek = () => {
     return (
-        <div className="bestWeek">
+        <div className="main-bestWeek">
 
         </div>
     );

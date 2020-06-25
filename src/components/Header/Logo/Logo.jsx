@@ -1,5 +1,4 @@
 import React from 'react';
-import './Logo.scss';
 import ContainerLogo from './ContainerLogo/ContainerLogo';
 
 const Logo = () => {

@@ -6,7 +6,7 @@ const SiteNews = ({dataNews}) => {
 
     const elements = dataNews.map((item) =>{
         return(
-            <News image={item.image} title={item.title} date={item.date} />
+            <News key={item.id} image={item.image} title={item.title} date={item.date} />
         )
     })
 

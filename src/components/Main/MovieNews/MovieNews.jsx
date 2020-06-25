@@ -2,7 +2,7 @@ import React from 'react';
 
 const MovieNews = () => {
     return (
-        <div className="movieNews">
+        <div className="main-movieNews">
 
         </div>
     );

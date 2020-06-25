@@ -1,9 +1,132 @@
 @import './../../Variables.scss';
 @import './../../Mixins-media.scss';
+@import './../../common.scss';
 
 .header {
     margin-bottom: $gap * 4;
-
     grid-area: h;
+
+    .header-logo {
+        text-align: center;
+        padding: 100px 0;
+        background-image: url(../../img/header-bg.jpg);
+        background-position: 50% 50%;
+        background-size: cover;
+    
+        .container {
+    
+            .container-label {
+                font-size: 4rem;
+                font-family: $font-header;
+                font-weight: bold;
+                letter-spacing: 0.33em;
+                color: $color-accent;
+            }
+            
+            .container-description {
+                font-size: 1.5rem;
+                letter-spacing: 0.2em;
+                color: $color-light;
+            }
+        }
+        
+    }
+
+    .header-navbar {
+        display: flex;
+        justify-content: space-between;
+        padding: 0 $gap * 3;
+        height: 66px;
+        background-color: $color-dark;
+        
+        @include sm-xs {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    
+        &__btn {
+            display: none;
+            justify-content: center;
+            padding: $gap / 2.5;
+            width: 35px;
+            border: 1px solid $color-gray;
+            border-radius: 4px;
+            transition: 0.5s;
+            cursor: pointer;
+    
+            @include sm-xs {
+                display: block;
+            }
+    
+            .btn-item {
+                margin: $gap / 3;
+                height: 2px;
+                width: 25px;
+                background-color: $color-light;
+                transition: 0.5s;
+            }
+        }
+    
+        &__btn:hover {
+            border: 1px solid $color-accent;
+    
+            .btn-item {
+                background-color: $color-accent;
+            }
+        }
+        
+        &__info {
+    
+            @include sm-xs {
+                display: none;
+            }
+    
+            .info-item {
+                display: flex;
+    
+                .itemInfo {
+                    margin: $gap / 2;
+                    padding: $gap;
+                    color: $color-light;
+                    border-radius: 5px;
+                    transition: 0.5s;
+                    cursor: pointer;
+                }
+    
+                .itemInfo:hover {
+                    background-color: $color-primary;
+                }
+            }
+        }
+    
+        &__menu {
+            
+            @include sm-xs {
+                display: none;
+            }
+    
+            .menu-item {
+                display: flex;
+    
+                .itemMenu {
+                    margin: $gap / 2;
+                    padding: $gap;
+                    color: $color-light;
+                    border-radius: 5px;
+                    transition: 0.5s;
+                    cursor: pointer;
+                }
+    
+                .itemMenu:hover {
+                    background-color: $color-primary;
+                }
+            }
+        }
+    
+        .activeBar {
+            background-color: $color-primary;
+        }
+    }
 }
 

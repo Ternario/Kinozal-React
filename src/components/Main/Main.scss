@@ -3,5 +3,53 @@
 
 .main {
     grid-area: m;
+    margin-right: $gap * 3.5;
+    margin-left: $gap * 2;
+
+    .main-newMovies {
+
+        &__label {
+            width: 100%;
+
+            .label {
+                margin-top: -$gap;
+                font-size: 3rem;
+                font-weight: normal;
+            }
+        }
+
+        &__wrapper {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-gap: $gap;
+            
+            .section {
+                width: 100%;
+
+                .section-poster {
+
+                }
+
+                .section-name {
+                    
+                    .movie-name {
+
+                    }
+                }
+            }
+        }
+    }
+
+    .main-bestWeek {
+
+    }
+
+    .main-movieNews {
+        
+    }
+
+
+
+
 
 }

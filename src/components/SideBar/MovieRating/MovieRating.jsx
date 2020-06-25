@@ -5,7 +5,7 @@ const MovieRating = ({ratingMovie}) => {
 
     let elements = ratingMovie.map((item) => {
         return(
-            <Rating title={item.title} rating={item.rating}  />
+            <Rating key={item.id} title={item.title} rating={item.rating}  />
         )
     })
 
