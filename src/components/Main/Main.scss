@@ -24,14 +24,23 @@
             grid-gap: $gap;
             
             .section {
-                width: 100%;
+                height: 320px;
+                background-color: $color-accent;
+                border: 5px solid $color-accent;
+                border-radius: 5px;
+                overflow: hidden;
 
-                .section-poster {
-
+                .section-poster img{
+                    height: 270px;
+                    width: 100%;
                 }
 
                 .section-name {
-                    
+                    text-align: center;
+                    align-items: middle;
+                    padding: $gap / 1.5 0;
+                    width: 100%;
+
                     .movie-name {
 
                     }
