@@ -3,7 +3,7 @@ import Rating from './Rating/Rating';
 
 const MovieRating = ({ratingMovie}) => {
 
-    let elements = ratingMovie.map((item) => {
+    const elements = ratingMovie.map((item) => {
         return(
             <Rating key={item.id} title={item.title} rating={item.rating}  />
         )

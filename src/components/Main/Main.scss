@@ -7,7 +7,7 @@
     margin-left: $gap * 2;
 
     .main-newMovies {
-        margin-bottom: $gap *2;
+        margin-bottom: $gap * 3;
 
         &__label {
             position: relative;
@@ -79,7 +79,8 @@
     }
 
     .main-bestWeek {
-        margin-bottom: $gap * 2;
+        margin-bottom: $gap * 3;
+
         &__label {
             position: relative;
             width: 100%;
@@ -161,7 +162,135 @@
     }
 
     .main-movieNews {
-        
+        margin-bottom: $gap * 3;
+
+        &__label {
+            position: relative;
+            width: 100%;
+
+            .label {
+                margin-top: -$gap;
+                margin-bottom: $gap * 2;
+                margin-left: $gap * 3;
+                color: lighten($color: $color-dark, $amount: 10%);
+                font-size: 2.6rem;
+                font-weight: normal;
+            }
+
+            .label::before {
+                content: "";
+                position: absolute;
+                top: 12px;
+                left: 0;
+                height: 2px;
+                width: 4%;
+                background-color: $color-accent;
+            }
+
+            .label::after {
+                content: "";
+                position: absolute;
+                bottom: 12px;
+                right: 0;
+                height: 2px;
+                width: 69%;
+                background-color: $color-accent;
+            }
+        }
+
+        &__wrapper {
+            
+            .news {
+                margin-bottom: $gap * 3;
+
+                .news-title {
+                    cursor: pointer;
+
+                    .title {
+                        margin-bottom: $gap;
+                        font-weight: normal;
+                        color: $color-primary;
+                        transition: 0.4s;
+                    }
+                }
+
+                .news-wrapper {
+                    width: 100%;
+                    display: flex;
+
+                    &__poster {
+                        text-align: center;
+                        padding: $gap / 3 0 ;
+                        height: 150px;
+                        width: 250px;
+                        border: 1px solid $color-gray;
+                        border-radius: 5px;
+                        overflow: hidden;
+                        transition: 0.4s;
+
+                        .poster {
+                            height: 100%;
+                            width: 95%;
+                        }
+                    }
+
+                    &__content {
+                        width: 70%;
+
+                        .content {
+                            height: 85%;
+                            margin-left: $gap * 2;
+
+                            .content-text {
+                                font-size: 1rem;
+                            }
+                        }
+
+                        .content-btn {
+                            display: flex;
+                            justify-content: flex-end;
+                            width: 100%;
+    
+                            .btn {
+                                padding: $gap / 3 $gap;
+                                border: 1px solid $color-accent;
+                                border-radius: 5px;
+                                color: $color-accent;
+                                cursor: pointer;
+                                transition: 0.4s;
+                            }
+                        }
+                    }
+                }
+            }
+
+            .news:hover {
+                .news-title {
+
+                    .title {
+                        color: $color-accent;
+                    }
+                }
+
+                .news-wrapper {
+
+                    &__poster {
+                        background-color: $color-accent;
+                    }
+
+                    &__content {
+
+                        .content-btn {
+    
+                            .btn {
+                                color: $color-light;
+                                background-color: $color-accent;
+                            }
+                        }
+                    }
+                }
+            }
+        }
     }
 
 

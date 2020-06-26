@@ -11,7 +11,7 @@ export default class MoviesData {
     };
 
     async getAllMovies() {
-        const res = await this.getResource("https://raw.githubusercontent.com/Ternario/Kinozal-React/master/data.json");
+        const res = await this.getResource("https://raw.githubusercontent.com/Ternario/Kinozal-React/master/src/data.json");
         return res.map(this._transformMovies)
     }
 

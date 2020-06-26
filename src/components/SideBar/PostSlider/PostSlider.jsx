@@ -1,9 +1,9 @@
 import React, {Component} from 'react';
 import Slides from './Slides/Slides';
 
-import illusion from '../../../img/illusion.jpg'
-import martian from '../../../img/martian.jpg'
-import xmen from '../../../img/x-men.jpg'
+import knight from '../../../img/the-dark-knight.jpg'
+import doser from '../../../img/doser.jpg'
+import dream from '../../../img/dream-horse.jpg'
 
 
 export default class PostSlider extends Component {
@@ -11,7 +11,7 @@ export default class PostSlider extends Component {
         super(props);
 
         this.state = {
-            images: [illusion, martian, xmen],
+            images: [knight, doser, dream],
             currentImage: 0
         }
 
