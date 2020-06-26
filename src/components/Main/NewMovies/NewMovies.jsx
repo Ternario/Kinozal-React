@@ -8,7 +8,6 @@ export default class NewMovies extends Component {
         super(props)
         this.state = {
             movieList: []
-            
         }
     }
     
@@ -19,7 +18,6 @@ export default class NewMovies extends Component {
         .then((movieList) => {
             this.setState({
                 movieList
-                
             })
         })
     }
@@ -42,7 +40,7 @@ export default class NewMovies extends Component {
                     <h1 className="label">New movies</h1>
                 </div>
                 <div className="main-newMovies__wrapper">
-                {items}
+                    {items}
                 </div>
             </div>
         );

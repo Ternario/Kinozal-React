@@ -7,14 +7,28 @@
     margin-left: $gap * 2;
 
     .main-newMovies {
+        margin-bottom: $gap *2;
 
         &__label {
+            position: relative;
             width: 100%;
 
             .label {
                 margin-top: -$gap;
+                color: lighten($color: $color-dark, $amount: 10%);
                 font-size: 3rem;
                 font-weight: normal;
+                letter-spacing: .1em;
+            }
+
+            .label::after {
+                content: "";
+                position: absolute;
+                bottom: 12px;
+                right: 0;
+                height: 2px;
+                width: 65%;
+                background-color: $color-accent;
             }
         }
 
@@ -24,25 +38,40 @@
             grid-gap: $gap;
             
             .section {
-                height: 320px;
-                background-color: $color-accent;
-                border: 5px solid $color-accent;
+                text-align: center;
+                padding-top: 5px;
+                height: 310px;
+                border: 1px solid $color-gray;
                 border-radius: 5px;
                 overflow: hidden;
+                transition: 0.4s;
+                cursor: pointer;
 
                 .section-poster img{
                     height: 270px;
-                    width: 100%;
+                    width: 96%;
                 }
 
                 .section-name {
                     text-align: center;
                     align-items: middle;
-                    padding: $gap / 1.5 0;
+                    padding: $gap / 3 0;
                     width: 100%;
 
                     .movie-name {
+                        font-size: 1rem;
+                        font-weight: bold;
+                    }
+                }
+            }
 
+            .section:hover {
+                background-color: $color-accent;
+
+                .section-name {
+
+                    .movie-name {
+                        color: $color-light;
                     }
                 }
             }
@@ -50,7 +79,85 @@
     }
 
     .main-bestWeek {
+        margin-bottom: $gap * 2;
+        &__label {
+            position: relative;
+            width: 100%;
 
+            .label {
+                margin-top: -$gap;
+                margin-bottom: $gap * 2;
+                margin-left: $gap * 3;
+                color: lighten($color: $color-dark, $amount: 10%);
+                font-size: 2.6rem;
+                font-weight: normal;
+            }
+
+            .label::before {
+                content: "";
+                position: absolute;
+                top: 12px;
+                left: 0;
+                height: 2px;
+                width: 4%;
+                background-color: $color-accent;
+            }
+
+            .label::after {
+                content: "";
+                position: absolute;
+                bottom: 12px;
+                right: 0;
+                height: 2px;
+                width: 60%;
+                background-color: $color-accent;
+            }
+        }
+
+        &__wrapper {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-gap: $gap;
+            
+            .section {
+                text-align: center;
+                padding-top: 5px;
+                height: 310px;
+                border: 1px solid $color-gray;
+                border-radius: 5px;
+                overflow: hidden;
+                transition: 0.4s;
+                cursor: pointer;
+
+                .section-poster img{
+                    height: 270px;
+                    width: 96%;
+                }
+
+                .section-name {
+                    text-align: center;
+                    align-items: middle;
+                    padding: $gap / 3 0;
+                    width: 100%;
+
+                    .movie-name {
+                        font-size: 1rem;
+                        font-weight: bold;
+                    }
+                }
+            }
+
+            .section:hover {
+                background-color: $color-accent;
+
+                .section-name {
+
+                    .movie-name {
+                        color: $color-light;
+                    }
+                }
+            }
+        }
     }
 
     .main-movieNews {

@@ -129,5 +129,24 @@
       "comments_count":5,
       "link":"https://en.wikipedia.org/wiki/The_400_Blows",
       "content":"A young boy, left without attention, delves into a life of petty crime."
+   },
+   {  
+      "id":8,
+      "title":"The Rental",
+      "year":2020,
+      "director":"Dave Franco",
+      "writer":" Dave Franco",
+      "poster":"https://m.media-amazon.com/images/M/MV5BMjMwOGEyMTQtMDllMC00YTU3LTgyNzktYmEwY2Y4MjQzYmRkXkEyXkFqcGdeQXVyMjM4OTYzMTQ@._V1_SY1000_CR0,0,674,1000_AL_.jpg",
+      "genres":[  
+         "Horror",
+         "Thriller"
+      ],
+      "type":"Movie",
+      "trailer":" ff",
+      "rank":5,
+      "likes_count":5,
+      "comments_count":5,
+      "link":"https://en.wikipedia.org/wiki/The_400_Blows",
+      "content":"Two couples rent a vacation home for what should be a celebratory weekend get-away."
    }
 ]
