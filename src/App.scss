@@ -1,0 +1,23 @@
+@import './Variables.scss';
+@import './Mixins-media.scss';
+
+.app {
+    width: 100%;
+    .comtainer {
+        margin-left: auto;
+        margin-right: auto;
+        padding: 0 $gap;
+        width: 1170px;
+
+        @include lg {
+            width: 970px;
+        }
+        
+        display: grid;
+        grid-template-columns: 1fr 3fr;
+        grid-template-areas: "s m";
+    
+
+    }
+
+}

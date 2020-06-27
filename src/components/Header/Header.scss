@@ -4,7 +4,7 @@
 
 .header {
     margin-bottom: $gap * 4;
-    grid-area: h;
+    background-color: $color-dark;
 
     .header-logo {
         text-align: center;
@@ -35,9 +35,15 @@
     .header-navbar {
         display: flex;
         justify-content: space-between;
-        padding: 0 $gap * 3;
+        padding: 0 $gap;
+        margin: 0 auto;
         height: 66px;
-        background-color: $color-dark;
+        width: 1170px;
+        
+
+        @include lg {
+            width: 970px;
+        }
         
         @include sm-xs {
             display: flex;

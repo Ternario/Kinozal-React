@@ -3,7 +3,6 @@
 
 .sideBar {
     grid-area: s;
-    margin-left: $gap * 3.5;
 
     .sideBar-postSlider {
         display: flex;
@@ -11,6 +10,10 @@
         border-radius: 10px;
         margin-bottom: $gap * 2;
         overflow: hidden;
+
+        @include lg {
+            height: 360px;
+        }
 
         &__buttonLeft {
             cursor: pointer;
@@ -88,7 +91,6 @@
 
                 &__img {
                     display: block;
-                    height: auto;
                     width: 100%;
                 }
             }
@@ -129,14 +131,19 @@
 
             .wrapper-form {
                 display: flex;
+                width: 270px;
                 border: 1px solid $color-gray;
                 border-radius: 5px;
                 overflow: hidden;
 
+                @include lg {
+                    width: 208px;
+                }
+
                 .inputSearch {
                     padding-left: $gap;
                     height: 40px;
-                    width: 75%;
+                    width: 100%;
                     border: none;
                 }
     
@@ -174,28 +181,36 @@
             background-color: lighten($color:$color-gray, $amount: 8%);
 
             .input-wrapper {
-                width: 100%;
+                
 
                 .login {
                     padding-left: $gap;
                     height: 40px;
-                    width: 90%;
+                    width: 255px;
                     border: 1px solid $color-gray;
                     border-radius: 5px;
+
+                    @include lg {
+                        width: 190px;
+                    }
                 }
 
                 .password  {
                     margin: $gap 0;
                     padding-left: $gap;
                     height: 40px;
-                    width: 90%;
+                    width: 255px;
                     border: 1px solid $color-gray;
                     border-radius: 5px;
+
+                    @include lg {
+                        width: 190px;
+                    }
                 }
 
                 .form-btn {
                     height: 40px;
-                    width: 99%;
+                    width: 270px;
                     font-size: 1rem;
                     letter-spacing: 0.1em;
                     background-color: $color-light;
@@ -203,6 +218,10 @@
                     border-radius: 5px;
                     cursor: pointer;
                     transition: 0.4s;
+
+                    @include lg {
+                        width: 210px;
+                    }
                 }
 
                 .form-btn:hover {
@@ -258,7 +277,6 @@
                         justify-content: flex-end;
             
                         .date {
-                            margin: 0 $gap 0 0;
                             font-size: .8rem;
                             color: $color-primary;
                         }

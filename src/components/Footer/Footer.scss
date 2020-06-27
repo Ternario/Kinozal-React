@@ -2,7 +2,6 @@
 @import './../../Mixins-media.scss';
 
 .footer {
-    grid-area: f;
     display: flex;
     padding: $gap $gap * 5;
     justify-content: space-between;
