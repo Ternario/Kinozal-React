@@ -11,8 +11,12 @@
         margin-bottom: $gap * 2;
         overflow: hidden;
 
-        @include lg {
+        @include lg-md {
             height: 360px;
+        }
+
+        @include md {
+            display: none;
         }
 
         &__buttonLeft {
@@ -113,6 +117,7 @@
     }
 
     .sideBar-searchPanel {
+        grid-area: s;
         margin-bottom: $gap * 2;
         border: 1px solid $color-gray;
         border-radius: 5px;
@@ -127,17 +132,29 @@
             display: flex;
             align-items: center;
             padding: $gap;
-            background-color: lighten($color:$color-gray, $amount: 8%);
+            background-color: lighten($color:$color-gray, $amount: 3%);
 
             .wrapper-form {
                 display: flex;
                 width: 270px;
-                border: 1px solid $color-gray;
+                border: 1px solid darken($color: $color-gray, $amount: 20%);
                 border-radius: 5px;
                 overflow: hidden;
 
-                @include lg {
+                @include lg-md {
                     width: 208px;
+                }
+
+                @include md-sm {
+                    width: 716px;
+                }
+
+                @include sm-xs {
+                    width: 511px;
+                }
+
+                @include xs {
+                    width: 293px;
                 }
 
                 .inputSearch {
@@ -149,12 +166,16 @@
     
                 .searchBtn {
                     vertical-align: middle;
-                    width: 25%;
+                    width: 50px;
                     border: none;
-                    border-left: 1px solid $color-gray;
+                    border-left: 1px solid darken($color: $color-gray, $amount: 20%);
                     background-color: $color-light;
                     cursor: pointer;
                     transition: 0.4s;
+
+                    @include md-sm {
+                        width: 70px;
+                    }
                 }
 
                 .searchBtn:hover {
@@ -165,6 +186,7 @@
     }
 
     .sideBar-authorization {
+        grid-area: i;
         margin-bottom: $gap * 2;
         border: 1px solid $color-gray;
         border-radius: 5px;
@@ -178,20 +200,31 @@
         &__form {
             text-align: center;
             padding: $gap;
-            background-color: lighten($color:$color-gray, $amount: 8%);
+            background-color: lighten($color:$color-gray, $amount: 3%);
 
             .input-wrapper {
                 
-
                 .login {
                     padding-left: $gap;
                     height: 40px;
-                    width: 255px;
-                    border: 1px solid $color-gray;
+                    width: 253px;
+                    border: 1px solid darken($color: $color-gray, $amount: 20%);
                     border-radius: 5px;
 
-                    @include lg {
+                    @include lg-md {
                         width: 190px;
+                    }
+
+                    @include md-sm {
+                        width: 700px;
+                    }
+
+                    @include sm-xs {
+                        width: 495px;
+                    }
+
+                    @include xs {
+                        width: 276px;
                     }
                 }
 
@@ -199,28 +232,52 @@
                     margin: $gap 0;
                     padding-left: $gap;
                     height: 40px;
-                    width: 255px;
-                    border: 1px solid $color-gray;
+                    width: 253px;
+                    border: 1px solid darken($color: $color-gray, $amount: 20%);
                     border-radius: 5px;
 
-                    @include lg {
+                    @include lg-md {
                         width: 190px;
+                    }
+
+                    @include md-sm {
+                        width: 700px;
+                    }
+
+                    @include sm-xs {
+                        width: 495px;
+                    }
+
+                    @include xs {
+                        width: 276px;
                     }
                 }
 
                 .form-btn {
                     height: 40px;
-                    width: 270px;
+                    width: 272px;
                     font-size: 1rem;
                     letter-spacing: 0.1em;
                     background-color: $color-light;
-                    border: 1px solid $color-gray;
+                    border: 1px solid darken($color: $color-gray, $amount: 20%);
                     border-radius: 5px;
                     cursor: pointer;
                     transition: 0.4s;
 
-                    @include lg {
+                    @include lg-md {
                         width: 210px;
+                    }
+
+                    @include md-sm {
+                        width: 717px;
+                    }
+
+                    @include sm-xs {
+                        width: 512px;
+                    }
+
+                    @include xs {
+                        width: 294px;
                     }
                 }
 
@@ -237,6 +294,10 @@
         border-radius: 5px;
         overflow: hidden;
 
+        @include md {
+            display: none;
+        }
+
         &__label {
             padding: $gap / 2 $gap;
             background-color: $color-accent;
@@ -245,7 +306,7 @@
         &__wrapper {
             position: relative;
             padding: $gap / 1.5 $gap;
-            background-color: lighten($color:$color-gray, $amount: 8%);
+            background-color: lighten($color:$color-gray, $amount: 3%);
 
             .wrapperItem {
                 display: flex;
@@ -309,7 +370,7 @@
             right: 8%;
             height: 1px;
             width: 55%;
-            background-color: $color-gray;
+            background-color: darken($color: $color-gray, $amount: 20%);
         }
 
         &__wrapper:last-child {
@@ -327,6 +388,10 @@
         border: 1px solid $color-gray;
         overflow: hidden;
 
+        @include md {
+            display: none;
+        }
+
         &__label {
             padding: $gap / 2 $gap;
             background-color: $color-accent;
@@ -334,14 +399,14 @@
 
         &__wrapper {
             padding: $gap / 1.5 0;
-            background-color: lighten($color:$color-gray, $amount: 8%);
+            background-color: lighten($color:$color-gray, $amount: 3%);
 
-            .container {
+            .content {
                 display: flex;
                 justify-content: space-between;
                 padding: $gap / 1.2;
-                border-bottom: 1px solid $color-gray;
-                background-color: lighten($color:$color-gray, $amount: 8%);
+                border-bottom: 1px solid darken($color: $color-gray, $amount: 10%);
+                background-color: lighten($color:$color-gray, $amount: 3%);
                 cursor: pointer;
 
                 .wrapper-name {
@@ -363,7 +428,7 @@
                 }
             }
             
-            .container:hover {
+            .content:hover {
                 background-color: $color-accent;
 
                 .wrapper-name {
@@ -382,7 +447,7 @@
             }
         }
 
-        .container:last-child {
+        .content:last-child {
             border-bottom: none;
         }
     }

@@ -6,14 +6,22 @@
     margin-bottom: $gap * 4;
     background-color: $color-dark;
 
+    @include sm {
+        margin-bottom: $gap * 2;
+    }
+
     .header-logo {
         text-align: center;
         padding: 100px 0;
         background-image: url(../../img/header-bg.jpg);
         background-position: 50% 50%;
         background-size: cover;
+
+        @include sm {
+            padding: 50px 0;
+        }
     
-        .container {
+        .container-logo {
     
             .container-label {
                 font-size: 4rem;
@@ -21,6 +29,10 @@
                 font-weight: bold;
                 letter-spacing: 0.33em;
                 color: $color-accent;
+
+                @include sm {
+                    font-size: 3rem;
+                }
             }
             
             .container-description {
@@ -29,7 +41,6 @@
                 color: $color-light;
             }
         }
-        
     }
 
     .header-navbar {
@@ -40,15 +51,28 @@
         height: 66px;
         width: 1170px;
         
-
-        @include lg {
+        @include lg-md {
             width: 970px;
+        }
+
+        @include md-sm {
+            width: 750px;
         }
         
         @include sm-xs {
-            display: flex;
             justify-content: center;
             align-items: center;
+            padding: 0 $gap;
+            margin: 0 auto;
+            width: 546px;
+        }
+
+        @include xs {
+            justify-content: center;
+            align-items: center;
+            padding: 0 $gap;
+            margin: 0 auto;
+            width: 328px;
         }
     
         &__btn {
@@ -64,6 +88,11 @@
             @include sm-xs {
                 display: block;
             }
+
+            @include xs {
+                display: block;
+            }
+
     
             .btn-item {
                 margin: $gap / 3;
@@ -85,6 +114,10 @@
         &__info {
     
             @include sm-xs {
+                display: none;
+            }
+
+            @include xs {
                 display: none;
             }
     
@@ -111,6 +144,11 @@
             @include sm-xs {
                 display: none;
             }
+
+            @include xs {
+                display: none;
+            }
+    
     
             .menu-item {
                 display: flex;

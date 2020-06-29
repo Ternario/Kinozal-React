@@ -2,22 +2,37 @@
 @import './Mixins-media.scss';
 
 .app {
-    width: 100%;
-    .comtainer {
-        margin-left: auto;
-        margin-right: auto;
-        padding: 0 $gap;
-        width: 1170px;
 
-        @include lg {
-            width: 970px;
-        }
-        
+    .container {
         display: grid;
         grid-template-columns: 1fr 3fr;
         grid-template-areas: "s m";
-    
 
+        margin: 0 auto;
+        padding: 0 $gap;
+        width: 1170px;
+
+        @include lg-md {
+            width: 970px;
+        }
+
+        @include md-sm {
+            display: block;
+            width: 750px;
+        }
+
+        @include sm-xs {
+            display: block;
+            margin: 0 auto;
+            padding: 0 $gap;
+            width: 546px;
+        }
+
+        @include xs {
+            display: block;
+            margin: 0 auto;
+            padding: 0 $gap;
+            width: 328px;
+        }
     }
-
 }

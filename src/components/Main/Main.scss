@@ -5,12 +5,15 @@
     grid-area: m;
     margin-left: $gap * 2;
 
+    @include md {
+        margin: 0 auto;
+    }
+
     .main-newMovies {
         margin-bottom: $gap * 3;
 
         &__label {
             position: relative;
-            width: 100%;
 
             .label {
                 margin-top: -$gap;
@@ -18,6 +21,10 @@
                 font-size: 3rem;
                 font-weight: normal;
                 letter-spacing: .1em;
+
+                @include sm {
+                    font-size: 2rem;
+                }
             }
 
             .label::after {
@@ -29,8 +36,22 @@
                 width: 64%;
                 background-color: $color-accent;
 
-                @include lg {
+                @include lg-md {
                     width: 57%;
+                }
+
+                @include md-sm {
+                    width: 60%;
+                }
+
+                @include sm-xs {
+                    width: 62%;
+                    bottom: 10px;
+                }
+
+                @include xs {
+                    width: 38%;
+                    bottom: 9px;
                 }
             }
         }
@@ -40,8 +61,16 @@
             grid-template-columns: repeat(4, 1fr);
             grid-gap: $gap;
 
-            @include lg-md {
+            @include lg {
                 grid-template-columns: repeat(3, 1fr);
+            }
+
+            @include md {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            @include sm {
+                grid-template-columns: repeat(2, 1fr);
             }
             
             .section {
@@ -54,21 +83,40 @@
                 transition: 0.4s;
                 cursor: pointer;
 
+                @include sm-xs {
+                    height: 350px;
+                }
+
+                @include xs {
+                    height: 260px;
+                }
+
                 .section-poster img{
                     height: 270px;
                     width: 96%;
+
+                    @include sm-xs {
+                        height: 310px;
+                    }
+
+                    @include xs {
+                        height: 220px;
+                    }
                 }
 
                 .section-name {
                     text-align: center;
-                    align-items: middle;
                     padding: $gap / 3 0;
                     width: 100%;
 
                     .movie-name {
                         font-size: 1rem;
                         font-weight: bold;
-                    }
+
+                        @include xs {
+                            font-size: .8rem;
+                        }
+                    }  
                 }
             }
 
@@ -90,7 +138,6 @@
 
         &__label {
             position: relative;
-            width: 100%;
 
             .label {
                 margin-top: -$gap;
@@ -99,6 +146,12 @@
                 color: lighten($color: $color-dark, $amount: 10%);
                 font-size: 2.6rem;
                 font-weight: normal;
+
+                @include sm {
+                    font-size: 2rem;
+                    margin-left: $gap * 2;
+                    margin-bottom: $gap;
+                }
             }
 
             .label::before {
@@ -110,8 +163,22 @@
                 width: 4%;
                 background-color: $color-accent;
 
-                @include lg {
+                @include lg-md {
                     width: 5%;
+                }
+
+                @include md-sm {
+                    width: 5%;
+                }
+
+                @include sm-xs {
+                    top: 10px;
+                    width: 4%;
+                }
+
+                @include xs {
+                    top: 10px;
+                    width: 7%;
                 }
             }
 
@@ -121,11 +188,25 @@
                 bottom: 12px;
                 right: 0;
                 height: 2px;
-                width: 58%;
+                width: 59%;
                 background-color: $color-accent;
 
-                @include lg {
+                @include lg-md {
                     width: 50%;
+                }
+
+                @include md-sm {
+                    width: 54%;
+                }
+
+                @include sm-xs {
+                    bottom: 10px;
+                    width: 52%;
+                }
+
+                @include xs {
+                    bottom: 9px;
+                    width: 21%;
                 }
             }
         }
@@ -135,8 +216,16 @@
             grid-template-columns: repeat(4, 1fr);
             grid-gap: $gap;
 
-            @include lg-md {
+            @include lg {
                 grid-template-columns: repeat(3, 1fr);
+            }
+
+            @include md {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            @include sm {
+                grid-template-columns: repeat(2, 1fr);
             }
             
             .section {
@@ -149,9 +238,25 @@
                 transition: 0.4s;
                 cursor: pointer;
 
+                @include sm-xs {
+                    height: 350px;
+                }
+
+                @include xs {
+                    height: 260px;
+                }
+
                 .section-poster img{
                     height: 270px;
                     width: 96%;
+
+                    @include sm-xs {
+                        height: 310px;
+                    }
+
+                    @include xs {
+                        height: 220px;
+                    }
                 }
 
                 .section-name {
@@ -163,6 +268,10 @@
                     .movie-name {
                         font-size: 1rem;
                         font-weight: bold;
+
+                        @include xs {
+                            font-size: .8rem;
+                        }
                     }
                 }
             }
@@ -185,7 +294,6 @@
 
         &__label {
             position: relative;
-            width: 100%;
 
             .label {
                 margin-top: -$gap;
@@ -194,6 +302,12 @@
                 color: lighten($color: $color-dark, $amount: 10%);
                 font-size: 2.6rem;
                 font-weight: normal;
+
+                @include sm {
+                    font-size: 2rem;
+                    margin-left: $gap * 2;
+                    margin-bottom: $gap;
+                }
             }
 
             .label::before {
@@ -202,11 +316,21 @@
                 top: 12px;
                 left: 0;
                 height: 2px;
-                width: 4%;
+                width: 5%;
                 background-color: $color-accent;
 
-                @include lg {
+                @include sm-xs {
+                    width: 7%;
+                }
+
+                @include sm-xs {
+                    top: 10px;
                     width: 5%;
+                }
+
+                @include xs {
+                    top: 10px;
+                    width: 8%;
                 }
             }
 
@@ -219,8 +343,22 @@
                 width: 69%;
                 background-color: $color-accent;
 
-                @include lg {
+                @include lg-md {
                     width: 62%;
+                }
+
+                @include md-sm {
+                    width: 65%;
+                }
+
+                @include sm-xs {
+                    bottom: 10px;
+                    width: 64%;
+                }
+
+                @include xs {
+                    bottom: 10px;
+                    width: 40%;
                 }
             }
         }
@@ -229,6 +367,10 @@
             
             .news {
                 margin-bottom: $gap * 3;
+
+                @include sm {
+                    margin-bottom: $gap * 2;
+                }
 
                 .news-title {
                     cursor: pointer;
@@ -239,41 +381,75 @@
                         color: $color-primary;
                         transition: 0.4s;
                     }
+
+                    @include sm {
+                        font-size: .8rem;
+                    }
                 }
 
                 .news-wrapper {
-                    width: 100%;
                     display: flex;
+
+                    @include sm {
+                        display: block;
+                    }
 
                     &__poster {
                         text-align: center;
                         padding: $gap / 3 0 ;
                         height: 150px;
-                        width: 250px;
+                        width: 240px;
                         border: 1px solid $color-gray;
                         border-radius: 5px;
                         overflow: hidden;
                         transition: 0.4s;
 
+                        @include sm-xs {
+                            height: 300px;
+                            width: 100%;
+                            padding: $gap / 4 0 ;
+                            margin-bottom: $gap / 2;
+                        }
+
+                        @include xs {
+                            height: 220px;
+                            width: 100%;
+                            padding: $gap / 4 0 ;
+                            margin-bottom: $gap / 2;
+                        }
+
                         .poster {
                             height: 100%;
                             width: 95%;
+
+                            @include sm {
+                                width: 98%;
+                            }
                         }
                     }
 
                     &__content {
                         width: 70%;
 
-                        .content {
-                            height: 85%;
-                            margin-left: $gap * 2;
+                        @include sm {
+                            width: 100%;
+                        }
 
-                            @include lg {
-                                margin-left: $gap;
+                        .content {
+                            margin-left: $gap * 2;
+                            height: 75%;
+
+                            @include sm {
+                                margin-left: 0;
+                                margin-bottom: $gap / 2;
                             }
 
                             .content-text {
                                 font-size: 1rem;
+
+                                @include sm {
+                                    font-size: .9rem;
+                                }
                             }
                         }
 
@@ -324,8 +500,185 @@
         }
     }
 
+    .sideBar-siteNews {
+        display: none;
+        margin-bottom: $gap * 2;
+        border: 1px solid $color-gray;
+        border-radius: 5px;
+        overflow: hidden;
 
+        @include md {
+            display: block;
+        }
 
+        &__label {
+            padding: $gap / 2 $gap;
+            background-color: $color-accent;
+        }
 
+        &__wrapper {
+            position: relative;
+            padding: $gap / 1.5 $gap;
+            background-color: lighten($color:$color-gray, $amount: 3%);
 
+            .wrapperItem {
+                display: flex;
+
+                .image-wrapper {
+
+                    &__newsImage {
+                        width: 65px;
+                        border: 4px solid $color-light;
+                        border-radius: 5px;
+                        transition: 0.5s;
+                    }
+                }
+
+                .text-wrapper {
+                    margin: 0 0 0 $gap;
+                    width: 100%;
+
+                    &__newsText {
+                        font-size: .9rem;
+                        color: $color-primary;
+                        height: 60px;
+                        cursor: pointer;
+                        transition: 0.5s;
+                        overflow: hidden;
+                    }
+
+                    &__wrapperDate {
+                        display: flex;
+                        justify-content: flex-end;
+            
+                        .date {
+                            font-size: .8rem;
+                            color: $color-primary;
+                        }
+                    }
+                }
+            }
+
+            .wrapperItem:hover {
+
+                .image-wrapper {
+
+                    &__newsImage {
+                        border: 4px solid $color-accent;
+                    }
+                }
+
+                .text-wrapper {
+
+                    &__newsText {
+                        color: $color-accent
+                    }
+                }
+            }
+        }
+
+        &__wrapper::after {
+            content: "";
+            position: absolute;
+            bottom : 0;
+            right: 8%;
+            height: 1px;
+            width: 55%;
+            background-color: darken($color: $color-gray, $amount: 20%);
+
+            @include md-sm {
+                width: 84%;
+                right: $gap / 2;
+            }
+
+            @include sm-xs {
+                width: 78%;
+                right: $gap / 2;
+            }
+
+            @include xs {
+                width: 68%;
+                right: $gap / 2;
+            }
+        }
+
+        &__wrapper:last-child {
+            padding-bottom: $gap / 2;
+
+            &::after {
+                display: none;
+            }
+        }
+    }
+
+    .sideBar-movieRating {
+        display: none;
+        margin-bottom: $gap * 2;
+        border-radius: 5px;
+        border: 1px solid $color-gray;
+        overflow: hidden;
+
+        @include md {
+            display: block;
+        }
+
+        &__label {
+            padding: $gap / 2 $gap;
+            background-color: $color-accent;
+        }
+
+        &__wrapper {
+            padding: $gap / 1.5 0;
+            background-color: lighten($color:$color-gray, $amount: 3%);
+
+            .content {
+                display: flex;
+                justify-content: space-between;
+                padding: $gap / 1.2;
+                border-bottom: 1px solid darken($color: $color-gray, $amount: 10%);
+                background-color: lighten($color:$color-gray, $amount: 3%);
+                cursor: pointer;
+
+                .wrapper-name {
+
+                    &__movieName {
+                        color: $color-primary;
+                    }
+                }
+
+                .wrapper-rating {
+
+                    &__rating {
+                        padding: 0 $gap / 2;
+                        font-size: .9rem;
+                        color: $color-light;
+                        border-radius: 20px;
+                        background-color: darken($color: $color-gray, $amount: 50%)
+                    }
+                }
+            }
+            
+            .content:hover {
+                background-color: $color-accent;
+
+                .wrapper-name {
+
+                    &__movieName {
+                        color: $color-light;
+                    }
+                }
+
+                .wrapper-rating {
+
+                    &__rating {
+                        background-color: $color-dark;
+                    }
+                }
+            }
+        }
+
+        .contant:last-child {
+            border-bottom: none;
+        }
+    }
 }

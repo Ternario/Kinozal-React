@@ -4,7 +4,7 @@ import Description from './Description/Description';
 
 const ContainerLogo = () => {
     return (
-        <div className="container">
+        <div className="container-logo">
             <Label />
             <Description />
         </div>

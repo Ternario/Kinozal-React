@@ -2,7 +2,7 @@ import React from 'react';
 
 const Rating = ({ title, rating }) => {
     return (
-        <div className="container">
+        <div className="content">
             <div className="wrapper-name">
                 <div className="wrapper-name__movieName">{title}</div>
             </div>

@@ -5,10 +5,12 @@ import List from './List/List';
 const Footer = () => {
     return (
         <div className="footer">
-            <List />
-            <List />
-            <List />
-            <List />
+            <div className="container">
+                <List />
+                <List />
+                <List />
+                <List />
+            </div>  
         </div>
     );
 }
