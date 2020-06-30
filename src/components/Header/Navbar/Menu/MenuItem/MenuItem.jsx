@@ -1,11 +1,12 @@
 import React from 'react';
+import {Link} from 'react-router-dom';
 
 const MenuItem = () => {
     return (
         <div className="menu-item">
-            <div className="itemMenu activeBar">Main menu</div>
-            <div className="itemMenu">Movies</div>
-            <div className="itemMenu">Serials</div>
+            <Link to="/" className="itemMenu">Main menu</Link>
+            <Link to="/movies" className="itemMenu">Movies</Link>
+            <Link to="/serials" className="itemMenu">Serials</Link>
         </div>
     );
 }

@@ -4,10 +4,16 @@ import Header from './components/Header/Header';
 import Main from './components/Main/Main';
 import SideBar from './components/SideBar/SideBar';
 import Footer from './components/Footer/Footer';
+import Movies from './components/Movies/Movies';
+import Serials from './components/Serials/Serials';
+import MovieRating from './components/SideBar/MovieRating/MovieRating';
+import SiteNews from './components/SideBar/SiteNews/SiteNews';
 import image from './img/75x75.png';
 import news1 from './img/news-1.jpg';
 import news2 from './img/news-2.jpg';
 import news3 from './img/news-3.jpg';
+import {BrowserRouter as Router, Route} from "react-router-dom";
+
 
 const App = () => {
 
@@ -33,15 +39,24 @@ const App = () => {
         {id: 3, image: news3, title: "Chris Pratt and Jennifer Lawrence present Passengers in Paris", content: "Although almost a month remains before the premiere of “Passengers”, an advertising tour in support of the new film has already begun: Chris Pratt and Jennifer Lawrence, who starred in the film, presented “Passengers” as part of a photo call in Paris. In the cinema “Passengers” will appear at the end of 2016 - December 22 ..."}
     ]
 
-      return (
-        <div className="app">
-            <Header />
-            <div className="container">
-                <SideBar dataNews={dataNews} ratingMovie={ratingMovie}/>
-                <Main movieNews={movieNews} dataNews={dataNews} ratingMovie={ratingMovie}/>
+    return (
+        <Router>
+            <div className="app">
+                <Header />
+                <div className="container">
+                    <SideBar dataNews={dataNews} ratingMovie={ratingMovie}/>
+                    <Route path="/" exact render={() => 
+                        <Main movieNews={movieNews} />
+                    } />
+                    <Route path="/movies" component={Movies} />
+                    <Route path="/serials" component={Serials} />
+                    <SiteNews dataNews={dataNews} />
+                    <MovieRating ratingMovie={ratingMovie}/>
+                </div>
+                
+                <Footer />
             </div>
-            <Footer />
-        </div>
+        </Router>
     );
 }
 

@@ -1,22 +1,19 @@
 import React, {Component} from 'react';
 import Section from './Section/Section';
-import MoviesData from '../../../Service/Service'
+import MoviesData from '../../../Service/Service';
 
 export default class BestWeek extends Component {
-    constructor(props) {
-        super(props)
-        this.state = {
-            movieList: []
-        }
+    state = {
+        itemList: []
     }
     
     service = new MoviesData();
 
     componentDidMount() {
-        this.service.getAllMovies()
-        .then((movieList) => {
+        this.service.getAll()
+        .then((itemList) => {
             this.setState({
-                movieList
+                itemList
             })
         })
     }
@@ -29,9 +26,9 @@ export default class BestWeek extends Component {
 
     render() {
 
-        const {movieList} = this.state;
+        const {itemList} = this.state;
 
-        const items = this.renderItems(movieList)
+        const items = this.renderItems(itemList)
 
         return (
             <div className="main-bestWeek">

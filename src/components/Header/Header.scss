@@ -158,6 +158,7 @@
                     padding: $gap;
                     color: $color-light;
                     border-radius: 5px;
+                    text-decoration: none;
                     transition: 0.5s;
                     cursor: pointer;
                 }
@@ -166,10 +167,6 @@
                     background-color: $color-primary;
                 }
             }
-        }
-    
-        .activeBar {
-            background-color: $color-primary;
         }
     }
 }

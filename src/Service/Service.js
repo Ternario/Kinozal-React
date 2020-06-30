@@ -1,6 +1,7 @@
 export default class MoviesData {
 
-    async getResource(url) {
+    async getResource() {
+        const url = "https://raw.githubusercontent.com/Ternario/Kinozal-React/master/src/data.json";
         const res = await fetch(url);
 
         if(!res.ok) {
@@ -10,15 +11,33 @@ export default class MoviesData {
         return await res.json()
     };
 
-    async getAllMovies() {
-        const res = await this.getResource("https://raw.githubusercontent.com/Ternario/Kinozal-React/master/src/data.json");
+    async getAll() {
+        const res = await this.getResource();
         return res.map(this._transformMovies)
     }
 
-    _transformMovies(movie) {
+    async getMovies() {
+        const res = await this.getResource();
+        const serial = res.filter((item) => {
+            return item.type === "Movie"
+        })
+
+        return serial.map(this._transformMovies)
+    }
+
+    async getSerials() {
+        const res = await this.getResource();
+        const serial = res.filter((item) => {
+            return item.type === "Serial"
+        })
+
+        return serial.map(this._transformMovies)
+    }
+
+    _transformMovies(item) {
         return {
-            poster: movie.poster,
-            title: movie.title
+            poster: item.poster,
+            title: item.title
         }
     }
 }

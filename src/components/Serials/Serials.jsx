@@ -1,9 +1,9 @@
 import React, {Component} from 'react';
-import Section from './Section/Section';
-import MoviesData from '../../../Service/Service';
+import './Serials.scss';
+import SectionSerials from './SectionSerials/SextionSerials'
+import MoviesData from '../../Service/Service'
 
-
-export default class NewMovies extends Component {
+export default class Serials extends Component {
     state = {
         itemList: []
     }
@@ -11,7 +11,7 @@ export default class NewMovies extends Component {
     service = new MoviesData();
 
     componentDidMount() {
-        this.service.getAll()
+        this.service.getSerials()
         .then((itemList) => {
             this.setState({
                 itemList
@@ -21,7 +21,7 @@ export default class NewMovies extends Component {
 
     renderItems(arr) {
         return arr.map((item, i) => {
-            return <Section key={i} poster={item.poster} title={item.title} />
+            return <SectionSerials key={i} poster={item.poster} title={item.title} />
         })
     }
 
@@ -32,19 +32,14 @@ export default class NewMovies extends Component {
         const items = this.renderItems(itemList)
 
         return (
-            <div className="main-newMovies">
-                <div className="main-newMovies__label">
-                    <h1 className="label">New movies</h1>
+            <div className="serials">
+                <div className="serials-label">
+                    <h1 className="label">Serials</h1>
                 </div>
-                <div className="main-newMovies__wrapper">
+                <div className="serials-newSerials">
                     {items}
                 </div>
             </div>
         );
     }
 }
-
-
-
-
-

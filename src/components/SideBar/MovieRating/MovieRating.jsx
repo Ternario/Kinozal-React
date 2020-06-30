@@ -3,9 +3,9 @@ import Rating from './Rating/Rating';
 
 const MovieRating = ({ratingMovie}) => {
 
-    const elements = ratingMovie.map((item) => {
+    const elements = ratingMovie.map(({id, title, rating}) => {
         return(
-            <Rating key={item.id} title={item.title} rating={item.rating}  />
+            <Rating key={id} title={title} rating={rating}  />
         )
     })
 
