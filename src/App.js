@@ -8,12 +8,14 @@ import Movies from './components/Movies/Movies';
 import Serials from './components/Serials/Serials';
 import MovieRating from './components/SideBar/MovieRating/MovieRating';
 import SiteNews from './components/SideBar/SiteNews/SiteNews';
+import MoviesItem from './components/MoviesItem/MoviesItem';
+
+import {BrowserRouter as Router, Route} from "react-router-dom";
+
 import image from './img/75x75.png';
 import news1 from './img/news-1.jpg';
 import news2 from './img/news-2.jpg';
 import news3 from './img/news-3.jpg';
-import {BrowserRouter as Router, Route} from "react-router-dom";
-
 
 const App = () => {
 
@@ -50,10 +52,10 @@ const App = () => {
                     } />
                     <Route path="/movies" component={Movies} />
                     <Route path="/serials" component={Serials} />
+                    {/* <MoviesItem /> */}
                     <SiteNews dataNews={dataNews} />
                     <MovieRating ratingMovie={ratingMovie}/>
                 </div>
-                
                 <Footer />
             </div>
         </Router>
