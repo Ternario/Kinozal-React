@@ -51,16 +51,16 @@ export default class MoviesData {
         };
     };
 
-    _transformMovieId(id) {
+    _transformMovieId(item) {
         return {
-            id: id,
-            poster: id.poster,
-            title: id.title,
-            year: id.year,
-            rank: id.rank,
-            director: id.director,
-            writer: id.writer,
-            genres: id.genres
+            id: item.id,
+            poster: item.poster,
+            title: item.title,
+            year: item.year,
+            rank: item.rank,
+            director: item.director,
+            writer: item.writer,
+            genres: item.genres
         };
     };
 };

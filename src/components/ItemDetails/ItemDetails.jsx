@@ -4,13 +4,13 @@ import ItemHeader from './ItemHeader/ItemHeader';
 // import ItemContent from './ItemContent/ItemContent';
 // import ItemFooter from './ItemFooter/ItemFooter';
 
-export default class MoviesItem extends Component {
+export default class ItemDetails extends Component {
 
     service = new MoviesData();
 
     render() {
         return (
-            <div className="moviesItem">
+            <div className="itemDetails">
                 <ItemHeader  itemId={this.props.itemId} getData={this.service.getMovieById} />
                 {/* <ItemContent />
                 <ItemFooter /> */}

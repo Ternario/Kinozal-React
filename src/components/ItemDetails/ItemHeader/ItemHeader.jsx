@@ -1,33 +1,16 @@
 import React, { Component } from 'react';
-// import MoviesData from '../../../Service/Service';
 
-export default class itemHeader extends Component {
-
-    // service = new MoviesData()
+export default class ItemHeader extends Component {
 
     state = {
         itemList: null
     };
 
     componentDidMount() {
-        this.updateee();
-    }
 
-    componentDidUpdateee(prevProps) {
-        if(this.props.itemId !== prevProps.itemId) {
-            this.updateee()
-        }
-    }
+        const { itemId, getData } = this.props;
 
-    updateee() {
-        const {itemId, getData} = this.props;
-        if (!itemId) {
-            return;
-        }
-
-        console.log(itemId)
-
-        getData(5)
+        getData(Number(itemId))
             .then((itemList) => {
                 this.setState({
                     itemList
@@ -36,9 +19,6 @@ export default class itemHeader extends Component {
     }
 
     renderItem = (arr) => {
-        console.log(this.state.itemList);
-        console.log(this.props.itemId);
-
 
         return arr.map(({ id, poster, title, year, rank, director, writer, genres }) => {
             return <div key={id}>

@@ -1,24 +1,13 @@
 import React, { Component } from 'react';
 import './Items.scss';
 import Section from './Section/Section';
+import MoviesData from '../../Service/Service';
 
 import {withRouter} from 'react-router-dom';
-
-import MoviesData from '../../Service/Service';
 
 class Items extends Component {
 
     service = new MoviesData();
-
-    state = {
-        selectedItem: null
-    };
-
-    onItemSelected = (id) => {
-        this.setState({
-            electedItem: id
-        })
-    }
 
     render() {
         return (
@@ -29,7 +18,7 @@ class Items extends Component {
                 <div className="movies-newMovies">
                 <Section 
                     onItemSelected={(itemId)=> {
-                        this.props.history.push(itemId)
+                        this.props.history.push(`/movies/${itemId}`)
                     }}
                     getData={this.service.getMovies} />
                 </div>
