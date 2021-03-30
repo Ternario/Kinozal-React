@@ -5,39 +5,62 @@ export default class MoviesData {
         const res = await fetch(url);
 
         if(!res.ok) {
-            throw new Error (`Could not Fetch ${url}, status ${res.status}`)
+            throw new Error (`Could not Fetch ${url}, status ${res.status}`);
         }
 
-        return await res.json()
+        return await res.json();
     };
 
-    async getAll() {
+    getAll = async () => {
         const res = await this.getResource();
-        return res.map(this._transformMovies)
-    }
+        return res.map(this._transformMovies);
+    };
 
-    async getMovies() {
-        const res = await this.getResource();
-        const serial = res.filter((item) => {
-            return item.type === "Movie"
-        })
-
-        return serial.map(this._transformMovies)
-    }
-
-    async getSerials() {
+    getMovies = async () => {
         const res = await this.getResource();
         const serial = res.filter((item) => {
-            return item.type === "Serial"
-        })
+            return item.type === "Movie";
+        });
 
-        return serial.map(this._transformMovies)
-    }
+        return serial.map(this._transformMovies);
+    };
+
+    getSerials = async () => {
+        const res = await this.getResource();
+        const serial = res.filter((item) => {
+            return item.type === "Serial";
+        });
+
+        return serial.map(this._transformMovies);
+    };
+
+    getMovieById = async (id) => {
+        const res = await this.getResource();
+        const movieId = res.filter((item) => {
+            return item.id === id;
+        });
+
+        return movieId.map(this._transformMovieId);
+    };
 
     _transformMovies(item) {
         return {
             poster: item.poster,
-            title: item.title
-        }
-    }
-}
+            title: item.title,
+            id: item.id
+        };
+    };
+
+    _transformMovieId(id) {
+        return {
+            id: id,
+            poster: id.poster,
+            title: id.title,
+            year: id.year,
+            rank: id.rank,
+            director: id.director,
+            writer: id.writer,
+            genres: id.genres
+        };
+    };
+};

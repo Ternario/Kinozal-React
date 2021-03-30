@@ -37,8 +37,6 @@ export default class PostSlider extends Component {
     // }
     // onLoad={this.interval.bind(this)}
 
-    
-
     slideHendle(e) {
         let newIndex = this.state.currentImage;
 

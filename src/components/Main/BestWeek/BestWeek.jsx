@@ -4,7 +4,7 @@ import MoviesData from '../../../Service/Service';
 
 export default class BestWeek extends Component {
     state = {
-        itemList: []
+        itemList: null
     }
     
     service = new MoviesData();
@@ -27,6 +27,10 @@ export default class BestWeek extends Component {
     render() {
 
         const {itemList} = this.state;
+
+        if(!itemList) {
+            return <div>loading...</div>
+        }
 
         const items = this.renderItems(itemList)
 

@@ -2,10 +2,10 @@ import React, {Component} from 'react';
 import Section from './Section/Section';
 import MoviesData from '../../../Service/Service';
 
-
 export default class NewMovies extends Component {
+    
     state = {
-        itemList: []
+        itemList: null
     }
     
     service = new MoviesData();
@@ -29,7 +29,11 @@ export default class NewMovies extends Component {
 
         const {itemList} = this.state;
 
-        const items = this.renderItems(itemList)
+        if(!itemList) {
+            return <div>loading...</div>
+        }
+        
+        const items = this.renderItems(itemList);
 
         return (
             <div className="main-newMovies">
@@ -43,8 +47,3 @@ export default class NewMovies extends Component {
         );
     }
 }
-
-
-
-
-

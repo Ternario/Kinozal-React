@@ -4,7 +4,6 @@ import NewMovies from './NewMovies/NewMovies';
 import BestWeek from './BestWeek/BestWeek';
 import MovieNews from './MovieNews/MovieNews';
 
-
 const Main = ({movieNews}) => {
     return (
         <div className="main">

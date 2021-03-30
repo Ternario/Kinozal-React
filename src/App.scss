@@ -55,7 +55,7 @@
         &__wrapper {
             position: relative;
             padding: $gap / 1.5 $gap;
-            background-color: lighten($color:$color-gray, $amount: 3%);
+            background-color: lighten($color: $color-gray, $amount: 3%);
 
             .wrapperItem {
                 display: flex;
@@ -165,14 +165,14 @@
 
         &__wrapper {
             padding: $gap / 1.5 0;
-            background-color: lighten($color:$color-gray, $amount: 3%);
+            background-color: lighten($color: $color-gray, $amount: 3%);
 
             .content {
                 display: flex;
                 justify-content: space-between;
                 padding: $gap / 1.2;
                 border-bottom: 1px solid darken($color: $color-gray, $amount: 10%);
-                background-color: lighten($color:$color-gray, $amount: 3%);
+                background-color: lighten($color: $color-gray, $amount: 3%);
                 cursor: pointer;
 
                 .wrapper-name {
