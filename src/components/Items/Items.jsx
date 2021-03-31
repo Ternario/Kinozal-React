@@ -20,7 +20,10 @@ class Items extends Component {
                         onItemSelected={(itemId) => {
                             console.log(itemId)
                             console.log(typeof(itemId))
-                            this.props.history.push(itemId)
+                            const ttt = String(itemId)
+                            console.log(ttt)
+                            console.log(typeof(ttt))
+                            this.props.history.push(ttt)
                         }}
                         getData={getData} />
                 </div>
