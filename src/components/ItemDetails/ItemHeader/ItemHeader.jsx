@@ -9,6 +9,7 @@ export default class ItemHeader extends Component {
     componentDidMount() {
 
         const { itemId, getData } = this.props;
+        console.log(itemId)
 
         getData(Number(itemId))
             .then((itemList) => {
@@ -45,7 +46,7 @@ export default class ItemHeader extends Component {
             return <div>loading...</div>
         }
 
-        const item = this.renderItem(itemList)
+        const item = this.renderItem(itemList);
 
         return (
             <>

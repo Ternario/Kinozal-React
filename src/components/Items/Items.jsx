@@ -1,26 +1,28 @@
 import React, { Component } from 'react';
 import './Items.scss';
 import Section from './Section/Section';
-import MoviesData from '../../Service/Service';
 
-import {withRouter} from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 
 class Items extends Component {
 
-    service = new MoviesData();
-
     render() {
+
+        const { title, route, getData } = this.props;
+
         return (
             <div className="movies">
                 <div className="movies-label">
-                    <h1 className="label">Movies</h1>
+                    <h1 className="label">{title}</h1>
                 </div>
                 <div className="movies-newMovies">
-                <Section 
-                    onItemSelected={(itemId)=> {
-                        this.props.history.push(`/movies/${itemId}`)
-                    }}
-                    getData={this.service.getMovies} />
+                    <Section
+                        onItemSelected={(itemId) => {
+                            console.log(itemId)
+                            console.log(typeof(itemId))
+                            this.props.history.push(itemId)
+                        }}
+                        getData={getData} />
                 </div>
             </div>
         );

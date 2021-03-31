@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import MoviesData from '../../Service/Service'
 import ItemHeader from './ItemHeader/ItemHeader';
 // import ItemContent from './ItemContent/ItemContent';
@@ -9,9 +9,10 @@ export default class ItemDetails extends Component {
     service = new MoviesData();
 
     render() {
+        console.log(this.props.itemId)
         return (
             <div className="itemDetails">
-                <ItemHeader  itemId={this.props.itemId} getData={this.service.getMovieById} />
+                <ItemHeader itemId={this.props.itemId} getData={this.service.getMovieById} />
                 {/* <ItemContent />
                 <ItemFooter /> */}
             </div>

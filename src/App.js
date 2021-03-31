@@ -9,6 +9,8 @@ import MovieRating from './components/SideBar/MovieRating/MovieRating';
 import SiteNews from './components/SideBar/SiteNews/SiteNews';
 import ItemDetails from './components/ItemDetails/ItemDetails';
 
+import MoviesData from './Service/Service';
+
 import { BrowserRouter as Router, Route } from "react-router-dom";
 
 import image from './img/75x75.png';
@@ -16,7 +18,10 @@ import news1 from './img/news-1.jpg';
 import news2 from './img/news-2.jpg';
 import news3 from './img/news-3.jpg';
 
+
 export default class App extends Component {
+
+    service = new MoviesData();
 
     state = {
         dataNews: [
@@ -50,18 +55,29 @@ export default class App extends Component {
                     <Header />
                     <div className="container">
                         <SideBar dataNews={dataNews} ratingMovie={ratingMovie} />
-                        <Route path="/" exact component={() =>
-                            <Main movieNews={movieNews} />
-                        } />
-                        {/* <Route path="/serials" exact component={Items}/> */}
-                        <Route path="/movies" exact component={Items} />
+                        {/* <Route path="/" exact component={() => <Main movieNews={movieNews} />} /> */}
+                        <Route path="/movies" exact component={() => <Items title={"Movies"} route={"/movies/"} getData={this.service.getMovies} />} />
+                        {/* <Route path="/serials" exact component={() => <Items title={"Serials"} route={"/serials/"} getData={this.service.getSerials} />} /> */}
+
                         <Route path="/movies/:id" render={
+                            ({ match }) => {
+                                const { id } = match.params;
+
+                                const ttt = Number(id)
+                                console.log(id)
+                                console.log(ttt)
+                                return <ItemDetails itemId={ttt} />
+                            }
+                        } />
+{/* 
+                        <Route path="/serials/:id" render={
                             ({ match }) => {
                                 const { id } = match.params;
 
                                 return <ItemDetails itemId={id} />
                             }
-                        } />
+                        } /> */}
+
                         <SiteNews dataNews={dataNews} />
                         <MovieRating ratingMovie={ratingMovie} />
                     </div>

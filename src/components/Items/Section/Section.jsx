@@ -8,7 +8,7 @@ export default class Section extends Component {
 
     componentDidMount() {
 
-        const {getData} = this.props;
+        const { getData } = this.props;
 
         getData()
             .then((itemList) => {
@@ -19,13 +19,16 @@ export default class Section extends Component {
     };
 
     renderItems = (arr) => {
-        return arr.map(({id, poster, title}) => {
+        return arr.map(({ id, poster, title }) => {
+            // const itemId = toString(id)
+            // console.log(typeof(itemId));
+            console.log(typeof(id));
             return (
                 <div key={id} className="movies-newMovies__wrapper" onClick={() => {
                     this.props.onItemSelected(id)
                 }} >
                     <div className="sectionMovies-poster">
-                        <img src={poster} alt="section"/>
+                        <img src={poster} alt="section" />
                     </div>
                     <div className="sectionMovies-name">
                         <div className="movie-name">{title}</div>

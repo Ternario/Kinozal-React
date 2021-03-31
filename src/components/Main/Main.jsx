@@ -1,17 +1,24 @@
-import React from 'react';
+import React, {Component} from 'react';
 import './Main.scss';
-import NewMovies from './NewMovies/NewMovies';
-import BestWeek from './BestWeek/BestWeek';
+import Items from '../Items/Items'
+// import NewMovies from './NewMovies/NewMovies';
+// import BestWeek from './BestWeek/BestWeek';
 import MovieNews from './MovieNews/MovieNews';
+import MoviesData from '../../Service/Service';
 
-const Main = ({movieNews}) => {
-    return (
-        <div className="main">
-            <NewMovies  />
-            <BestWeek />
-            <MovieNews movieNews={movieNews} />
-        </div>
-    );
+export default class Main extends Component{
+
+    service = new MoviesData()
+
+    render() {
+        return (
+            <div className="main">
+                <Items title={"New movies"}  getData={this.service.getAll} />
+                <Items title={"TOP of the week"}  getData={this.service.getAll} />
+                {/* <NewMovies  />
+                <BestWeek /> */}
+                <MovieNews movieNews={this.props.movieNews} />
+            </div>
+        );
+    }
 }
-
-export default Main;
