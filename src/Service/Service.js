@@ -47,7 +47,8 @@ export default class MoviesData {
         return {
             poster: item.poster,
             title: item.title,
-            id: item.id
+            id: item.id,
+            type: item.type
         };
     };
 

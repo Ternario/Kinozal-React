@@ -8,7 +8,7 @@ class Items extends Component {
 
     render() {
 
-        const { title, route, getData } = this.props;
+        const { title, getData } = this.props;
 
         return (
             <div className="movies">
@@ -18,12 +18,7 @@ class Items extends Component {
                 <div className="movies-newMovies">
                     <Section
                         onItemSelected={(itemId) => {
-                            console.log(itemId)
-                            console.log(typeof(itemId))
-                            const ttt = String(itemId)
-                            console.log(ttt)
-                            console.log(typeof(ttt))
-                            this.props.history.push(ttt)
+                            this.props.history.push(String(itemId))
                         }}
                         getData={getData} />
                 </div>

@@ -8,8 +8,10 @@ export default class ItemHeader extends Component {
 
     componentDidMount() {
 
-        const { itemId, getData } = this.props;
-        console.log(itemId)
+        const { itemId, getData,} = this.props;
+
+        // const ttt = match.params.id
+        // console.log(ttt)
 
         getData(Number(itemId))
             .then((itemList) => {

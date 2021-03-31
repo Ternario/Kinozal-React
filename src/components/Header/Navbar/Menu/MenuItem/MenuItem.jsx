@@ -5,8 +5,8 @@ const MenuItem = () => {
     return (
         <div className="menu-item">
             <Link to="/" className="itemMenu">Main menu</Link>
-            <Link to="/movies/" className="itemMenu">Movies</Link>
-            <Link to="/serials/" className="itemMenu">Serials</Link>
+            <Link to="/Movies/" className="itemMenu">Movies</Link>
+            <Link to="/Serials/" className="itemMenu">Serials</Link>
         </div>
     );
 }

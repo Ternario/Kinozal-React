@@ -55,28 +55,22 @@ export default class App extends Component {
                     <Header />
                     <div className="container">
                         <SideBar dataNews={dataNews} ratingMovie={ratingMovie} />
-                        {/* <Route path="/" exact component={() => <Main movieNews={movieNews} />} /> */}
-                        <Route path="/movies" exact component={() => <Items title={"Movies"} route={"/movies/"} getData={this.service.getMovies} />} />
-                        {/* <Route path="/serials" exact component={() => <Items title={"Serials"} route={"/serials/"} getData={this.service.getSerials} />} /> */}
+                        <Route path="/" exact component={() => <Main getData={this.service.getAll} movieNews={movieNews} />} />
+                        <Route path="/Movies" exact component={() => <Items title={"Movies"} getData={this.service.getMovies} />} />
+                        <Route path="/Serials" exact component={() => <Items title={"Serials"} getData={this.service.getSerials} />} />
 
-                        <Route path="/movies/:id" render={
-                            ({ match }) => {
-                                const { id } = match.params;
+                        {/* <Route path="/New/Movie/:id" component={ItemDetails} />
+                        <Route path="/New/Serial/:id" component={ItemDetails} />
+                        <Route path="Movie/:id" component={ItemDetails} />
+                        <Route path="Serial/:id" component={ItemDetails} /> */}
 
-                                const ttt = Number(id)
-                                console.log(id)
-                                console.log(ttt)
-                                return <ItemDetails itemId={ttt} />
-                            }
-                        } />
-{/* 
-                        <Route path="/serials/:id" render={
+                        <Route path={["/Movies/:id", "/Serials/:id"]} render={
                             ({ match }) => {
                                 const { id } = match.params;
 
                                 return <ItemDetails itemId={id} />
                             }
-                        } /> */}
+                        } />
 
                         <SiteNews dataNews={dataNews} />
                         <MovieRating ratingMovie={ratingMovie} />
