@@ -11,22 +11,23 @@ export default class Main extends Component {
         return (
             <div className="main">
 
-                <div className="main-newMovies">
-                    <div className="main-newMovies__label">
-                        <h1 className="label">New Movies</h1>
+                <div className="sectionWrapper">
+                    <div className="sectionWrapper-label">
+                        <h2 className="label-new">New Movies</h2>
                     </div>
-                    <div className="main-newMovies__wrapper">
+                    <div className="sectionWrapper-items">
                         <Items getData={getData} />
 
                     </div>
                 </div>
 
-                <div className="main-bestWeek">
-                    <div className="main-bestWeek__label">
-                        <h2 className="label">TOP of the week</h2>
+                <div className="sectionWrapper">
+                    <div className="sectionWrapper-label">
+                        <h2 className="label-top">TOP of the week</h2>
                     </div>
-                    <div className="main-bestWeek__wrapper">
+                    <div className="sectionWrapper-items">
                         <Items getData={getData} />
+
                     </div>
                 </div>
 

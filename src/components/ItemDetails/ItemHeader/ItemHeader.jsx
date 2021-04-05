@@ -22,17 +22,34 @@ export default class ItemHeader extends Component {
 
         return arr.map(({ id, poster, title, year, rank, director, writer, genres }) => {
             return (
-                <div key={id}>
-                    <div className="moviesItem-itemHeader__poster">
-                        <img src={poster} alt="poster" className="item-poster" />
-                    </div>
-                    <div className="moviesItem-itemHeader__wrapper">
-                        <h1 className="item-title">{title}</h1>
-                        <div className="item-year">Year: {year}</div>
-                        <div className="item-rank">Rank: {rank}</div>
-                        <div className="item-director">Director: {director}</div>
-                        <div className="item-writer">Writer: {writer}</div>
-                        <div className="item-genres">Genres: {`${genres},`} </div>
+                <div className="itemDetails-header" key={id}>
+                    <h2 className="title">{title}</h2>
+                    <div className="itemDetails-header__wrapper">
+                        <div className="item-poster">
+                            <img src={poster} alt="poster" className="poster" />
+                        </div>
+                        <div className="items-info">
+                            <div className="items">
+                                <div className="item-title">Year:</div>
+                                <div className="item">{year}</div>
+                            </div>
+                            <div className="items">
+                                <div className="item-title">Rank:</div>
+                                <div className="item">{rank}</div>
+                            </div>
+                            <div className="items">
+                                <div className="item-title">Director:</div>
+                                <div className="item">{director}</div>
+                            </div>
+                            <div className="items">
+                                <div className="item-title">Writer:</div>
+                                <div className="item">{writer}</div>
+                            </div>
+                            <div className="items">
+                                <div className="item-title">Genres:</div>
+                                <div className="item">{`${genres},`}</div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             )

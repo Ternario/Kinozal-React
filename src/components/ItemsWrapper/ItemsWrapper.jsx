@@ -11,7 +11,7 @@ export default class ItemsWrapper extends Component {
         return (
             <div className="sectionWrapper">
                 <div className="sectionWrapper-label">
-                    <h1 className="label">{title}</h1>
+                    <h2 className="label">{title}</h2>
                 </div>
                 <div className="sectionWrapper-items">
                     <Items getData={getData} />

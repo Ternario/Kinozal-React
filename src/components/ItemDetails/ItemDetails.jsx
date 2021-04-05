@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import MoviesData from '../../Service/Service'
+import "./ItemData.scss"
 import ItemHeader from './ItemHeader/ItemHeader';
 // import ItemContent from './ItemContent/ItemContent';
 // import ItemFooter from './ItemFooter/ItemFooter';

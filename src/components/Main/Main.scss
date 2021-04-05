@@ -4,19 +4,17 @@
 
 .main {
     grid-area: m;
-    margin-left: $gap * 2;
 
     @include md {
         margin: 0 auto;
     }
 
-    .main-newMovies {
-        margin-bottom: $gap * 3;
+    .sectionWrapper {
 
-        &__label {
+        .sectionWrapper-label {
             position: relative;
 
-            .label {
+            .label-new {
                 margin-top: -$gap;
                 color: lighten($color: $color-dark, $amount: 10%);
                 font-size: 3rem;
@@ -28,7 +26,7 @@
                 }
             }
 
-            .label::after {
+            .label-new::after {
                 content: "";
                 position: absolute;
                 bottom: 12px;
@@ -57,124 +55,82 @@
             }
         }
 
-        &__wrapper {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            grid-gap: $gap;
-
-            @include lg {
-                grid-template-columns: repeat(3, 1fr);
-            }
-
-            @include md {
-                grid-template-columns: repeat(3, 1fr);
-            }
+        .label-top {
+            margin-top: -$gap;
+            margin-bottom: $gap;
+            margin-left: $gap * 3;
+            color: lighten($color: $color-dark, $amount: 10%);
+            font-size: 2.6rem;
+            font-weight: normal;
 
             @include sm {
-                grid-template-columns: repeat(2, 1fr);
+                font-size: 2rem;
+                margin-left: $gap * 2;
+                margin-bottom: $gap;
             }
         }
-    }
 
-    .main-bestWeek {
-        margin-bottom: $gap * 3;
+        .label-top::before {
+            content: "";
+            position: absolute;
+            top: 12px;
+            left: 0;
+            height: 2px;
+            width: 4%;
+            background-color: $color-accent;
 
-        &__label {
-            position: relative;
-
-            .label {
-                margin-top: -$gap;
-                margin-bottom: $gap * 2;
-                margin-left: $gap * 3;
-                color: lighten($color: $color-dark, $amount: 10%);
-                font-size: 2.6rem;
-                font-weight: normal;
-
-                @include sm {
-                    font-size: 2rem;
-                    margin-left: $gap * 2;
-                    margin-bottom: $gap;
-                }
+            @include lg-md {
+                width: 5%;
             }
 
-            .label::before {
-                content: "";
-                position: absolute;
-                top: 12px;
-                left: 0;
-                height: 2px;
+            @include md-sm {
+                width: 5%;
+            }
+
+            @include sm-xs {
+                top: 10px;
                 width: 4%;
-                background-color: $color-accent;
-
-                @include lg-md {
-                    width: 5%;
-                }
-
-                @include md-sm {
-                    width: 5%;
-                }
-
-                @include sm-xs {
-                    top: 10px;
-                    width: 4%;
-                }
-
-                @include xs {
-                    top: 10px;
-                    width: 7%;
-                }
             }
 
-            .label::after {
-                content: "";
-                position: absolute;
-                bottom: 12px;
-                right: 0;
-                height: 2px;
-                width: 59%;
-                background-color: $color-accent;
-
-                @include lg-md {
-                    width: 50%;
-                }
-
-                @include md-sm {
-                    width: 54%;
-                }
-
-                @include sm-xs {
-                    bottom: 10px;
-                    width: 52%;
-                }
-
-                @include xs {
-                    bottom: 9px;
-                    width: 21%;
-                }
+            @include xs {
+                top: 10px;
+                width: 7%;
             }
         }
 
-        &__wrapper {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            grid-gap: $gap;
+        .label-top::after {
+            content: "";
+            position: absolute;
+            bottom: 12px;
+            right: 0;
+            height: 2px;
+            width: 59%;
+            background-color: $color-accent;
 
-            @include lg {
-                grid-template-columns: repeat(3, 1fr);
+            @include lg-md {
+                width: 50%;
             }
 
-            @include md {
-                grid-template-columns: repeat(3, 1fr);
+            @include md-sm {
+                width: 54%;
             }
 
-            @include sm {
-                grid-template-columns: repeat(2, 1fr);
+            @include sm-xs {
+                bottom: 10px;
+                width: 52%;
             }
+
+            @include xs {
+                bottom: 9px;
+                width: 21%;
+            }
+        
         }
     }
 
     .main-movieNews {
         margin-bottom: $gap * 3;
+        margin-left: $gap * 2;
 
         &__label {
             position: relative;
