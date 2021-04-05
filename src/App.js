@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 import './App.scss';
 import Header from './components/Header/Header';
 import Main from './components/Main/Main';
+import ItemsWrapper from './components/ItemsWrapper/ItemsWrapper';
 import SideBar from './components/SideBar/SideBar';
 import Footer from './components/Footer/Footer';
-import Items from './components/Items/Items';
 import MovieRating from './components/SideBar/MovieRating/MovieRating';
 import SiteNews from './components/SideBar/SiteNews/SiteNews';
 import ItemDetails from './components/ItemDetails/ItemDetails';
@@ -56,15 +56,14 @@ export default class App extends Component {
                     <div className="container">
                         <SideBar dataNews={dataNews} ratingMovie={ratingMovie} />
                         <Route path="/" exact component={() => <Main getData={this.service.getAll} movieNews={movieNews} />} />
-                        <Route path="/Movies" exact component={() => <Items getData={this.service.getMovies}/>} />
-                        <Route path="/Serials" exact component={() => <Items getData={this.service.getSerials}/>} />
+                        <Route path="/Movies" exact component={() => <ItemsWrapper title={"Movies"} getData={this.service.getMovies} />} />
+                        <Route path="/Serials" exact component={() => <ItemsWrapper title={"Serials"} getData={this.service.getSerials} />} />
 
                         <Route path={"/:type/:id"} render={
                             ({ match }) => {
-                                const { type, id } = match.params;
-                                console.log(type)
+                                const { id } = match.params;
 
-                                return <ItemDetails itemType={type} itemId={id} />
+                                return <ItemDetails itemId={id} />
                             }
                         } />
 

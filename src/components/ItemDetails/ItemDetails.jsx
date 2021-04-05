@@ -10,7 +10,6 @@ export default class ItemDetails extends Component {
 
     render() {
         const { itemType, itemId } = this.props
-        console.log(itemType)
 
         return (
             <div className="itemDetails">

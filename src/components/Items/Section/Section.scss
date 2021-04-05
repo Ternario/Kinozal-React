@@ -1,0 +1,61 @@
+@import './../../../Variables.scss';
+@import './../../../Mixins-media.scss';
+@import './../../../common.scss';
+
+.section {
+    display: block;
+    text-align: center;
+    padding-top: 5px;
+    height: 310px;
+    border: 1px solid $color-gray;
+    border-radius: 5px;
+    overflow: hidden;
+    transition: 0.4s;
+    cursor: pointer;
+
+    @include sm-xs {
+        height: 350px;
+    }
+
+    @include xs {
+        height: 260px;
+    }
+
+    .section-poster img{
+        height: 270px;
+        width: 96%;
+        @include sm-xs {
+            height: 310px;
+        }
+        @include xs {
+            height: 220px;
+        }
+    }
+
+    .section-name {
+        text-align: center;
+        padding: $gap / 3 0;
+        width: 100%;
+
+        .section-name {
+            font-size: 1rem;
+            font-weight: bold;
+            color: $color-dark;
+
+            @include xs {
+                font-size: .8rem;
+            }
+        }  
+    }
+}
+
+.section:hover {
+    background-color: $color-accent;
+
+    .section-name {
+
+        .section-name {
+            color: $color-light;
+        }
+    }
+}

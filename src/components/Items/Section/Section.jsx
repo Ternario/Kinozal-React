@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import './Section.scss'
 
 export default class Section extends Component {
 
@@ -8,38 +8,30 @@ export default class Section extends Component {
     };
 
     componentDidMount() {
-        this.updateData()
-    };
-
-    componentDidUpdate(prevProps) {
-        if (this.props.getData !== prevProps.getData) {
-            this.updateData()
-        }
-    }
-
-    updateData() {
         const { getData } = this.props;
+
         getData()
             .then((itemList) => {
                 this.setState({
                     itemList
                 });
             });
-    }
+    };
 
     renderItems = (arr) => {
         return arr.map(({ id, poster, title, type }) => {
             return (
-                <Link key={id} to={`/${type}/${id}`}>
-                    <div className="movies-newMovies__wrapper">
-                        <div className="sectionMovies-poster">
-                            <img src={poster} alt="section" />
-                        </div>
-                        <div className="sectionMovies-name">
-                            <div className="movie-name">{title}</div>
-                        </div>
+                <div key={id} className="section"
+                    onClick={() => {
+                        this.props.onItemSelected(type, id)
+                    }} >
+                    <div className="section-poster">
+                        <img src={poster} alt="section" />
                     </div>
-                </Link>
+                    <div className="section-name">
+                        <div className="section-name">{title}</div>
+                    </div>
+                </div>
             )
         });
     };
