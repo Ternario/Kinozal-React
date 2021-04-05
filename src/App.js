@@ -56,19 +56,15 @@ export default class App extends Component {
                     <div className="container">
                         <SideBar dataNews={dataNews} ratingMovie={ratingMovie} />
                         <Route path="/" exact component={() => <Main getData={this.service.getAll} movieNews={movieNews} />} />
-                        <Route path="/Movies" exact component={() => <Items title={"Movies"} getData={this.service.getMovies} />} />
-                        <Route path="/Serials" exact component={() => <Items title={"Serials"} getData={this.service.getSerials} />} />
+                        <Route path="/Movies" exact component={() => <Items getData={this.service.getMovies}/>} />
+                        <Route path="/Serials" exact component={() => <Items getData={this.service.getSerials}/>} />
 
-                        {/* <Route path="/New/Movie/:id" component={ItemDetails} />
-                        <Route path="/New/Serial/:id" component={ItemDetails} />
-                        <Route path="Movie/:id" component={ItemDetails} />
-                        <Route path="Serial/:id" component={ItemDetails} /> */}
-
-                        <Route path={["/Movies/:id", "/Serials/:id"]} render={
+                        <Route path={"/:type/:id"} render={
                             ({ match }) => {
-                                const { id } = match.params;
+                                const { type, id } = match.params;
+                                console.log(type)
 
-                                return <ItemDetails itemId={id} />
+                                return <ItemDetails itemType={type} itemId={id} />
                             }
                         } />
 

@@ -9,10 +9,12 @@ export default class ItemDetails extends Component {
     service = new MoviesData();
 
     render() {
-        console.log(this.props.itemId)
+        const { itemType, itemId } = this.props
+        console.log(itemType)
+
         return (
             <div className="itemDetails">
-                <ItemHeader itemId={this.props.itemId} getData={this.service.getMovieById} />
+                <ItemHeader itemType={itemType} itemId={itemId} getData={this.service.getMovieById} />
                 {/* <ItemContent />
                 <ItemFooter /> */}
             </div>

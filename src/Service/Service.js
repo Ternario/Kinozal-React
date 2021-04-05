@@ -54,6 +54,7 @@ export default class MoviesData {
 
     _transformMovieId(item) {
         return {
+            type: item.type,
             id: item.id,
             poster: item.poster,
             title: item.title,

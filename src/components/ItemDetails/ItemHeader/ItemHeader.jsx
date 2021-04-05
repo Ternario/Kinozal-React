@@ -8,10 +8,7 @@ export default class ItemHeader extends Component {
 
     componentDidMount() {
 
-        const { itemId, getData,} = this.props;
-
-        // const ttt = match.params.id
-        // console.log(ttt)
+        const { itemId, getData } = this.props;
 
         getData(Number(itemId))
             .then((itemList) => {
@@ -24,19 +21,21 @@ export default class ItemHeader extends Component {
     renderItem = (arr) => {
 
         return arr.map(({ id, poster, title, year, rank, director, writer, genres }) => {
-            return <div key={id}>
-                <div className="moviesItem-itemHeader__poster">
-                    <img src={poster} alt="poster" className="item-poster" />
+            return (
+                <div key={id}>
+                    <div className="moviesItem-itemHeader__poster">
+                        <img src={poster} alt="poster" className="item-poster" />
+                    </div>
+                    <div className="moviesItem-itemHeader__wrapper">
+                        <h1 className="item-title">{title}</h1>
+                        <div className="item-year">Year: {year}</div>
+                        <div className="item-rank">Rank: {rank}</div>
+                        <div className="item-director">Director: {director}</div>
+                        <div className="item-writer">Writer: {writer}</div>
+                        <div className="item-genres">Genres: {`${genres},`} </div>
+                    </div>
                 </div>
-                <div className="moviesItem-itemHeader__wrapper">
-                    <h1 className="item-title">{title}</h1>
-                    <div className="item-year">Year: {year}</div>
-                    <div className="item-rank">Rank: {rank}</div>
-                    <div className="item-director">Director: {director}</div>
-                    <div className="item-writer">Writer: {writer}</div>
-                    <div className="item-genres">Genres: {genres} </div>
-                </div>
-            </div>
+            )
         })
     }
 
