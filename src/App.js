@@ -63,7 +63,7 @@ export default class App extends Component {
                             ({ match }) => {
                                 const { id } = match.params;
 
-                                return <ItemDetails itemId={id} />
+                                return <ItemDetails itemId={id}  getData={this.service.getMovieById}/>
                             }
                         } />
 

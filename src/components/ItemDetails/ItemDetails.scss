@@ -11,6 +11,7 @@
     }
 
     .itemDetails-header {
+        margin-bottom: $gap;
 
         .title {
             margin-top: -15px;
@@ -32,6 +33,7 @@
                 width: 200px;
                 height: 280px;
                 border: 1px solid $color-dark;
+                border-radius: $gap / 2.5;
 
                 .poster {
                     width: 95%;
@@ -61,6 +63,39 @@
         }
     }
 
+    .itemDetails-content {
 
+
+        &__description {
+            
+            title {
+
+            }
+
+            .description {
+                margin-bottom: $gap;
+            }
+        }
+
+        &__trailer {
+            width: 100%;
+
+            .trailer {
+                height: 450px;
+                width: 100%;
+                border: none;
+                border-top-left-radius: $gap / 2;
+                border-top-right-radius: $gap / 2;
+            }
+
+            .itemBar {
+                display: flex;
+                justify-content: space-between;
+                .item {
+                    
+                }
+            }
+        }
+    }
 
 }

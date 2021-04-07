@@ -81,7 +81,7 @@
             padding-top: 5px;
             height: 310px;
             border: 1px solid $color-gray;
-            border-radius: 5px;
+            border-radius: $gap / 2.5;
             overflow: hidden;
             transition: 0.4s;
             cursor: pointer;

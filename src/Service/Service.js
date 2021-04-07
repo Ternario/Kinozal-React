@@ -54,15 +54,20 @@ export default class MoviesData {
 
     _transformMovieId(item) {
         return {
-            type: item.type,
             id: item.id,
-            poster: item.poster,
             title: item.title,
             year: item.year,
-            rank: item.rank,
             director: item.director,
             writer: item.writer,
-            genres: item.genres
+            poster: item.poster,
+            genres: item.genres,
+            type: item.type,
+            trailer: item.trailer,
+            rank: item.rank,
+            likesCount: item.likes_count,
+            commentsCount: item.comments_count,
+            link: item.link,
+            content: item.content
         };
     };
 };

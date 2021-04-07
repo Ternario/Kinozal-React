@@ -1,14 +1,26 @@
 import React from 'react';
 
-const ItemContent = () => {
+const ItemContent = ({ title, type, content, src, rank, likesCount, commentsCount }) => {
+
+    let changeCase = (item) => {
+        return item.toLowerCase()
+    }
+
+    const item = changeCase(type)
+
     return (
-        <div className="moviesItem-itemContent">
-            <div className="moviesItem-itemContent__description">
-                <div className="item-title"></div>
-                <div className="item-description">Description:</div>
+        <div className="itemDetails-content">
+            <div className="itemDetails-content__description">
+                <h2 className="title">{`About ${item} ${title}:`}</h2>
+                <div className="description">{content} </div>
             </div>
-            <div className="moviesItem-itemContent__trailer">
-                <div className="trailer"></div>
+            <div className="itemDetails-content__trailer">
+                <iframe className="trailer" src="https://www.youtube.com/embed/Law7wfdg_ls"  title='video'></iframe>
+                <div className="itemBar">
+                    <div className="item">Rank: {rank}</div>
+                    <div className="item">Like: {likesCount}</div>
+                    <div className="item">Comments: {commentsCount}</div>
+                </div>
             </div>
         </div>
     );
