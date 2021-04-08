@@ -15,7 +15,7 @@ const ItemContent = ({ title, type, content, src, rank, likesCount, commentsCoun
                 <div className="description">{content} </div>
             </div>
             <div className="itemDetails-content__trailer">
-                <iframe className="trailer" src="https://www.youtube.com/embed/Law7wfdg_ls"  title='video'></iframe>
+                <iframe className="trailer" src={src}  title='video'></iframe>
                 <div className="itemBar">
                     <div className="item">Rank: {rank}</div>
                     <div className="item">Like: {likesCount}</div>
