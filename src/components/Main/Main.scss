@@ -4,24 +4,32 @@
 
 .main {
     grid-area: m;
+    overflow: hidden;
 
     @include md {
         margin: 0 auto;
     }
 
     .sectionWrapper {
+        position: relative;
 
         .sectionWrapper-label {
-            position: relative;
+
 
             .label-new {
                 margin-top: -$gap;
-                color: lighten($color: $color-dark, $amount: 10%);
                 font-size: 3rem;
                 font-weight: normal;
+                color: lighten($color: $color-dark, $amount: 10%);
                 letter-spacing: .1em;
 
-                @include sm {
+                @include sm-xs {
+                    margin-top: -$gap / 2;
+                    font-size: 2rem;
+                }
+
+                @include xs {
+                    margin-top: -$gap / 2;
                     font-size: 2rem;
                 }
             }
@@ -29,176 +37,147 @@
             .label-new::after {
                 content: "";
                 position: absolute;
-                bottom: 12px;
-                right: 0;
-                height: 2px;
-                width: 64%;
-                background-color: $color-accent;
-
-                @include lg-md {
-                    width: 57%;
-                }
-
-                @include md-sm {
-                    width: 60%;
-                }
+                margin-top: $gap * 3.2;
+                margin-left: $gap / 1.5;
+                width: 100%;
+                border-bottom: 3px solid $color-accent;
 
                 @include sm-xs {
-                    width: 62%;
-                    bottom: 10px;
+                    margin-top: $gap * 2;
+                    margin-left: $gap / 2;
                 }
 
                 @include xs {
-                    width: 38%;
-                    bottom: 9px;
+                    margin-top: $gap * 2;
+                    margin-left: $gap / 2;
+                }
+            }
+
+            .label-top {
+                margin: -$gap 0 $gap ($gap * 2.8);
+                font-size: 3rem;
+                font-weight: normal;
+                color: lighten($color: $color-dark, $amount: 10%);
+                letter-spacing: .1em;
+    
+                @include sm-xs {
+                    margin-top: -$gap / 2;
+                    font-size: 2rem;
+                }
+    
+                @include xs {
+                    margin-top: -$gap / 2;
+                    margin-left: $gap * 2.5;
+                    font-size: 2rem;
+                    letter-spacing: 0;
+                }
+            }
+    
+            .label-top::before {
+                content: "";
+                position: absolute;
+                left: 0;
+                width: 30px;
+                margin-top: $gap;
+                border-bottom: 3px solid $color-accent;
+    
+                @include sm-xs {
+                    margin-top: $gap / 2;
+                }
+    
+                @include xs {
+                    margin-top: $gap / 1.8;
+                }
+            }
+    
+            .label-top::after {
+                content: "";
+                position: absolute;
+                margin-top: $gap * 3;
+                margin-left: $gap / 1.5;
+                width: 100%;
+                border-bottom: 3px solid $color-accent;
+    
+                @include sm-xs {
+                    margin-top: $gap * 2;
+                }
+    
+                @include xs {
+                    margin-top: $gap * 2;
+                    margin-left: $gap / 2;
                 }
             }
         }
 
-        .label-top {
-            margin-top: -$gap;
-            margin-bottom: $gap;
-            margin-left: $gap * 3;
-            color: lighten($color: $color-dark, $amount: 10%);
-            font-size: 2.6rem;
-            font-weight: normal;
-
-            @include sm {
-                font-size: 2rem;
-                margin-left: $gap * 2;
-                margin-bottom: $gap;
-            }
-        }
-
-        .label-top::before {
-            content: "";
-            position: absolute;
-            top: 12px;
-            left: 0;
-            height: 2px;
-            width: 4%;
-            background-color: $color-accent;
-
-            @include lg-md {
-                width: 5%;
-            }
-
-            @include md-sm {
-                width: 5%;
-            }
-
-            @include sm-xs {
-                top: 10px;
-                width: 4%;
-            }
-
-            @include xs {
-                top: 10px;
-                width: 7%;
-            }
-        }
-
-        .label-top::after {
-            content: "";
-            position: absolute;
-            bottom: 12px;
-            right: 0;
-            height: 2px;
-            width: 59%;
-            background-color: $color-accent;
-
-            @include lg-md {
-                width: 50%;
-            }
-
-            @include md-sm {
-                width: 54%;
-            }
-
-            @include sm-xs {
-                bottom: 10px;
-                width: 52%;
-            }
-
-            @include xs {
-                bottom: 9px;
-                width: 21%;
-            }
         
-        }
     }
 
     .main-movieNews {
-        margin-bottom: $gap * 3;
         margin-left: $gap * 2;
+        position: relative;
+
+        @include sm-xs {
+            margin-left: 0;
+        }
+
+        @include xs {
+            margin-left: 0;
+        }
+
 
         &__label {
-            position: relative;
 
             .label {
-                margin-top: -$gap;
-                margin-bottom: $gap * 2;
-                margin-left: $gap * 3;
-                color: lighten($color: $color-dark, $amount: 10%);
-                font-size: 2.6rem;
+                margin: -$gap 0 $gap ($gap * 2.5);
+                font-size: 3rem;
                 font-weight: normal;
-
-                @include sm {
+                color: lighten($color: $color-dark, $amount: 10%);
+                letter-spacing: .1em;
+    
+                @include sm-xs {
+                    margin-top: -$gap / 2;
                     font-size: 2rem;
-                    margin-left: $gap * 2;
-                    margin-bottom: $gap;
+                }
+    
+                @include xs {
+                    margin-top: -$gap / 2;
+                    margin-left: $gap * 2.5;
+                    font-size: 2rem;
                 }
             }
 
             .label::before {
                 content: "";
                 position: absolute;
-                top: 12px;
                 left: 0;
-                height: 2px;
-                width: 5%;
-                background-color: $color-accent;
-
+                width: 30px;
+                margin-top: $gap;
+                border-bottom: 3px solid $color-accent;
+    
                 @include sm-xs {
-                    width: 7%;
+                    margin-top: $gap / 2;
                 }
-
-                @include sm-xs {
-                    top: 10px;
-                    width: 5%;
-                }
-
+    
                 @include xs {
-                    top: 10px;
-                    width: 8%;
+                    margin-top: $gap / 1.8;
                 }
             }
 
             .label::after {
                 content: "";
                 position: absolute;
-                bottom: 12px;
-                right: 0;
-                height: 2px;
-                width: 69%;
-                background-color: $color-accent;
-
-                @include lg-md {
-                    width: 62%;
-                }
-
-                @include md-sm {
-                    width: 65%;
-                }
-
+                margin-top: $gap * 3;
+                margin-left: $gap / 1.5;
+                width: 100%;
+                border-bottom: 3px solid $color-accent;
+    
                 @include sm-xs {
-                    bottom: 10px;
-                    width: 64%;
+                    margin-top: $gap * 2;
                 }
-
+    
                 @include xs {
-                    bottom: 10px;
-                    width: 40%;
+                    margin-top: $gap * 2;
+                    margin-left: $gap / 2;
                 }
             }
         }

@@ -8,7 +8,13 @@ export default class ItemDetails extends Component {
 
 
     state = {
-        itemList: null
+        itemList: null,
+        comments: [
+            { id: 1, name: "Georgiy Serg_Frost Harlan", comment: ""},
+            { id: 2, name: "Georgiy Serg_Frost Harlan", comment: ""},
+            { id: 3, name: "Georgiy Serg_Frost Harlan", comment: ""},
+            { id: 4, name: "Georgiy Serg_Frost Harlan", comment: ""},
+        ]
     };
 
     componentDidMount() {
@@ -28,21 +34,12 @@ export default class ItemDetails extends Component {
         return arr.map((item, id) => {
             return (
                 <div key={id}>
-                <ItemHeader {...item} />
-                <ItemContent  {...item} />
+                    <ItemHeader {...item} />
+                    <ItemContent  {...item} />
                 </div>
             )
         })
     }
-
-    // renderItemContent = (arr) => {
-
-    //     return arr.map(({ title, type, content, id }) => {
-    //         return (
-                
-    //         )
-    //     })
-    // }
 
     render() {
 
@@ -53,13 +50,11 @@ export default class ItemDetails extends Component {
         }
 
         const itemHeader = this.renderItemHeader(itemList);
-        // const itemContent = this.renderItemContent(itemList);
-        // const itemFooter = this.renderItem(itemList);
+
 
         return (
             <div className="itemDetails">
                 {itemHeader}
-                {/* {itemContent} */}
                 <ItemFooter />
             </div>
         );

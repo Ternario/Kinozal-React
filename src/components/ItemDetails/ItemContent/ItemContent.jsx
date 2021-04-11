@@ -1,6 +1,6 @@
 import React from 'react';
 
-const ItemContent = ({ title, type, content, src, rank, likesCount, commentsCount }) => {
+const ItemContent = ({ title, type, content, trailer, rank, likesCount, commentsCount }) => {
 
     let changeCase = (item) => {
         return item.toLowerCase()
@@ -11,11 +11,11 @@ const ItemContent = ({ title, type, content, src, rank, likesCount, commentsCoun
     return (
         <div className="itemDetails-content">
             <div className="itemDetails-content__description">
-                <h2 className="title">{`About ${item} ${title}:`}</h2>
-                <div className="description">{content} </div>
+                <h2 className="title">{`About ${item} ${title}`}</h2>
+                <div className="description">{content}</div>
             </div>
             <div className="itemDetails-content__trailer">
-                <iframe className="trailer" src={src}  title='video'></iframe>
+                <iframe className="trailer" src={trailer}  title='video'></iframe>
                 <div className="itemBar">
                     <div className="item">Rank: {rank}</div>
                     <div className="item">Like: {likesCount}</div>

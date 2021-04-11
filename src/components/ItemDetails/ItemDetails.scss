@@ -3,8 +3,11 @@
 @import './../../common.scss';
 
 .itemDetails {
+    position: relative;
     grid-area: m;
     margin-left: $gap * 2;
+    overflow: hidden;
+
 
     @include md {
         margin: 0 auto;
@@ -13,13 +16,21 @@
     .itemDetails-header {
         margin-bottom: $gap;
 
+
         .title {
-            margin-top: -15px;
-            margin-bottom: 10px;
-            color: lighten($color: $color-dark, $amount: 10%);
+            margin-top: -$gap;
             font-size: 3rem;
             font-weight: normal;
-            letter-spacing: .1em;
+            color: lighten($color: $color-dark, $amount: 10%);
+        }
+
+        .title::after {
+            content: "";
+            position: absolute;
+            width: 100%;
+            margin-top: $gap * 3;
+            margin-left: $gap;
+            border-bottom: 3px solid $color-accent;
         }
         
         &__wrapper {
@@ -33,7 +44,7 @@
                 width: 200px;
                 height: 280px;
                 border: 1px solid $color-dark;
-                border-radius: $gap / 2.5;
+                border-radius: 7px;
 
                 .poster {
                     width: 95%;
@@ -43,12 +54,12 @@
             }
     
             .items-info {
-                margin-left: 30px;
+                margin-left: $gap * 2;
 
                 .items {
                     display: flex;
                     width: 350px;
-                    margin-bottom: 5px;
+                    margin-bottom: $gap / 2;
                     font-size: 1.3rem;
 
                     .item-title {
@@ -67,11 +78,33 @@
 
 
         &__description {
-            
-            title {
+
+            .title {
+                margin: ($gap * 2) ($gap * 2.5);
+                font-size: 2rem;
+                font-weight: normal;
+                color: lighten($color: $color-dark, $amount: 10%);
+            }
+
+            .title::before {
+                content: "";
+                position: absolute;
+                left: 0;
+                width: 30px;
+                margin: ($gap / 1.5) 0;
+                border-bottom: 3px solid $color-accent;
 
             }
 
+            .title::after {
+                content: "";
+                position: absolute;
+                width: 100%;
+                margin-top: $gap * 2;
+                margin-left: $gap;
+                border-bottom: 3px solid $color-accent;
+            }
+            
             .description {
                 margin-bottom: $gap;
             }
@@ -80,23 +113,173 @@
         &__trailer {
             width: 100%;
 
+
             .trailer {
                 height: 450px;
                 width: 100%;
                 border: none;
-                border-top-left-radius: $gap / 2;
-                border-top-right-radius: $gap / 2;
+                border-radius: 7px 7px 0 0;
             }
 
             .itemBar {
                 display: flex;
                 justify-content: space-between;
+                padding: 15px 80px;
+                margin-top: -$gap / 3.4;
+                margin-bottom: $gap * 2;
+                background-color: lighten($color: $color-dark, $amount: 20%);
+                border-radius: 0 0 7px 7px;
                 
                 .item {
-                    
+                    padding:5px 15px;
+                    font-size: 1rem;
+                    color: $color-light;
+                    background-color: $color-accent;
+                    border-radius: 18px;
+                    cursor: pointer;
                 }
             }
         }
+    }
+
+    .itemDetails-footer {
+
+        &__comments {
+
+            .title {
+                margin: ($gap * 2) ($gap * 2.5);
+                font-size: 2rem;
+                font-weight: normal;
+                color: lighten($color: $color-dark, $amount: 10%);
+            }
+
+            .title::before {
+                content: "";
+                position: absolute;
+                left: 0;
+                width: 30px;
+                margin: ($gap / 1.5) 0;
+                border-bottom: 3px solid $color-accent;
+
+            }
+
+            .title::after {
+                content: "";
+                position: absolute;
+                width: 100%;
+                margin-top: $gap * 2;
+                margin-left: $gap;
+                border-bottom: 3px solid $color-accent;
+            }
+
+            .comments-wrapper {
+                margin-bottom: $gap * 2;
+
+                &__name {
+                    display: flex;
+                    padding: 10px 15px;
+                    background-color: $color-accent;
+                    border-top-left-radius: 5px;
+                    border-top-right-radius: 5px;
+
+                    .image {
+                        height: 20px;
+                        width: 20px;
+                    }
+
+                    .name {
+                        margin-left: $gap / 1.5;
+                        color: $color-light;
+                    }
+                }
+
+                &__comment {
+                    padding: 10px 15px;
+                    background-color: $color-gray;
+                    border: 1px solid $color-gray;
+                    border-bottom-left-radius: 5px;
+                    border-bottom-right-radius: 5px;
+                }
+
+            }
+        }
+
+        &__addComment {
+            margin-bottom: $gap * 2;
+
+            .title {
+                margin: ($gap * 2) ($gap * 2.5);
+                font-size: 2rem;
+                font-weight: normal;
+                color: lighten($color: $color-dark, $amount: 10%);
+            }
+
+            .title::before {
+                content: "";
+                position: absolute;
+                left: 0;
+                width: 30px;
+                margin: ($gap / 1.5) 0;
+                border-bottom: 3px solid $color-accent;
+
+            }
+
+            .title::after {
+                content: "";
+                position: absolute;
+                width: 100%;
+                margin-top: $gap * 2;
+                margin-left: $gap;
+                border-bottom: 3px solid $color-accent;
+            }
+
+            .addComment-form {
+                text-align: center;
+
+                .form-group {
+                    margin-bottom: $gap;
+
+                    .input-name {
+                        box-sizing: border-box;
+                        padding: 10px 15px;
+                        height: 46px;
+                        width: 100%;
+                        border: 1px solid lighten($color: $color-dark, $amount: 40%);
+                        border-radius: 6px;
+                    }
+    
+                    .text {
+                        box-sizing: border-box;
+                        resize: vertical;
+                        min-height: 46px;
+                        line-height: 46px;
+                        width: 100%;
+                        padding: 0 15px;
+                        border: 1px solid lighten($color: $color-dark, $amount: 40%);
+                        border-radius: 6px;     
+                    }
+                }
+
+                .btn {
+                    box-sizing: border-box;
+                    padding: 12px 40px;
+                    font-size: 1rem;
+                    color: $color-light;
+                    background-color: lighten($color: $color-accent, $amount: 5%);
+                    border: 1px solid transparent;
+                    border-radius: 6px;
+                    transition: 0.4s;
+                    cursor: pointer;
+                }
+
+                .btn:hover {
+                    color: $color-dark;
+                    background-color: $color-accent;
+                    border: 1px solid $color-dark;
+                }
+            }
+        }
+
     }
 
 }
