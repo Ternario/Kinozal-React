@@ -43,11 +43,30 @@ export default class App extends Component {
             { id: 2, image: news2, title: "Critics of New York chose the best film of 2016'", content: "They became the musical La La Land, directed by Damien Chazell. Casey Affleck, who starred in Manchester by the Sea, was voted Best Actor of the Year, and Isabelle Happert in the lead role in She, was awarded a victory in a similar female category. Michelle Williams, who played in the drama “Some Women” was named the best supporting actress, and Mahershalalhashbaz Ali for the role in the movie “Moonlight” was named the best supporting actor ..." },
             { id: 3, image: news3, title: "Chris Pratt and Jennifer Lawrence present Passengers in Paris", content: "Although almost a month remains before the premiere of “Passengers”, an advertising tour in support of the new film has already begun: Chris Pratt and Jennifer Lawrence, who starred in the film, presented “Passengers” as part of a photo call in Paris. In the cinema “Passengers” will appear at the end of 2016 - December 22 ..." }
         ],
+        comments: [
+            { id: 1, profile: "https://media.istockphoto.com/photos/businessman-silhouette-as-avatar-or-default-profile-picture-picture-id476085198?k=6&m=476085198&s=170667a&w=0&h=7XdJ-qzwSni92-B7nN6TlRF_u8d50RcA8adlGKLIDYc=", name: "Georgiy", comment: "A very unusual film, it seemed to me. But attention riveted inside and out. Sometimes funny, sometimes sad, sometimes disgusting. But on the whole, a picture is created of something not standard, something in the creation of which they put their heart and soul into it. And so after all, you cannot immediately understand what the story is about. About love ? About a weird girl? Or how sometimes, while helping everyone and everyone, you forget about an equally important person - yourself. And this actress, damn it, she looks great, plays great from her, you just can't take your eyes off)" },
+            { id: 2, profile: "https://media.istockphoto.com/photos/businessman-silhouette-as-avatar-or-default-profile-picture-picture-id476085198?k=6&m=476085198&s=170667a&w=0&h=7XdJ-qzwSni92-B7nN6TlRF_u8d50RcA8adlGKLIDYc=", name: "Serg_Frost", comment: "I love this show. Its chic tube atmosphere and really legendary humor. And I'm even glad that I got on him at a time when I was still waiting for several seasons, from this he is even more dear and beloved. Forever I fell in love with these characters and their actors)). And never give up, even if you're late" },
+            { id: 3, profile: "https://media.istockphoto.com/photos/businessman-silhouette-as-avatar-or-default-profile-picture-picture-id476085198?k=6&m=476085198&s=170667a&w=0&h=7XdJ-qzwSni92-B7nN6TlRF_u8d50RcA8adlGKLIDYc=", name: "Harlan", comment: "Love for life!) I can look for days and I know by heart) In the most difficult times thisfilm were there! And during partings, and crisis, illness, quarantine, and when real friends betrayed! Turn on - and warmth in your soul! I have been watching the series since my school days, the best voice acting for me is Ukrainian! I advise everyone" }
+        ]
+    }
+
+    deliteComment = (id) => {
+        this.setState(({ comments }) => {
+            const index = comments.findIndex((item) => {
+                return item.id === id;
+            });
+
+            const newComments = [...comments.slice(0, index), ...comments.slice(index + 1)];
+
+            return {
+                comments: newComments
+            }
+        })
     }
 
     render() {
 
-        const { dataNews, ratingMovie, movieNews } = this.state;
+        const { dataNews, ratingMovie, movieNews, comments } = this.state;
 
         return (
             <Router>
@@ -63,7 +82,7 @@ export default class App extends Component {
                             ({ match }) => {
                                 const { id } = match.params;
 
-                                return <ItemDetails itemId={id}  getData={this.service.getMovieById}/>
+                                return <ItemDetails itemId={id} getData={this.service.getMovieById} comments={comments} onDelite={this.deliteComment} />
                             }
                         } />
 

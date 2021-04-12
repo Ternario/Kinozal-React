@@ -2,19 +2,14 @@ import React, { Component } from 'react';
 import "./ItemDetails.scss"
 import ItemHeader from './ItemHeader/ItemHeader';
 import ItemContent from './ItemContent/ItemContent';
-import ItemFooter from './ItemFooter/ItemFooter';
+import ItemComments from './ItemComments/ItemComments'
+import ItemAddComment from './ItemFooter/ItemAddComment';
 
 export default class ItemDetails extends Component {
 
 
     state = {
-        itemList: null,
-        comments: [
-            { id: 1, name: "Georgiy Serg_Frost Harlan", comment: ""},
-            { id: 2, name: "Georgiy Serg_Frost Harlan", comment: ""},
-            { id: 3, name: "Georgiy Serg_Frost Harlan", comment: ""},
-            { id: 4, name: "Georgiy Serg_Frost Harlan", comment: ""},
-        ]
+        itemList: null
     };
 
     componentDidMount() {
@@ -44,6 +39,7 @@ export default class ItemDetails extends Component {
     render() {
 
         const { itemList } = this.state;
+        const { comments, onDelite } = this.props;
 
         if (!itemList) {
             return <div>loading...</div>
@@ -51,11 +47,13 @@ export default class ItemDetails extends Component {
 
         const itemHeader = this.renderItemHeader(itemList);
 
-
         return (
             <div className="itemDetails">
                 {itemHeader}
-                <ItemFooter />
+                <div className="itemDetails-footer">
+                    <ItemComments comments={comments} onDelite={onDelite} />
+                    <ItemAddComment />
+                </div>
             </div>
         );
     }
