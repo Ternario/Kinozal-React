@@ -3,7 +3,7 @@ import "./ItemDetails.scss"
 import ItemHeader from './ItemHeader/ItemHeader';
 import ItemContent from './ItemContent/ItemContent';
 import ItemComments from './ItemComments/ItemComments'
-import ItemAddComment from './ItemFooter/ItemAddComment';
+import ItemAddComment from './ItemAddComment/ItemAddComment';
 
 export default class ItemDetails extends Component {
 
@@ -20,8 +20,8 @@ export default class ItemDetails extends Component {
             .then((itemList) => {
                 this.setState({
                     itemList
-                })
-            })
+                });
+            });
     }
 
     renderItemHeader = (arr) => {
@@ -32,14 +32,14 @@ export default class ItemDetails extends Component {
                     <ItemHeader {...item} />
                     <ItemContent  {...item} />
                 </div>
-            )
-        })
+            );
+        });
     }
 
     render() {
 
         const { itemList } = this.state;
-        const { comments, onDelite } = this.props;
+        const { comments, onDeliteComment, onAddComment } = this.props;
 
         if (!itemList) {
             return <div>loading...</div>
@@ -51,8 +51,8 @@ export default class ItemDetails extends Component {
             <div className="itemDetails">
                 {itemHeader}
                 <div className="itemDetails-footer">
-                    <ItemComments comments={comments} onDelite={onDelite} />
-                    <ItemAddComment />
+                    <ItemComments comments={comments} onDeliteComment={onDeliteComment} />
+                    <ItemAddComment onAddComment={onAddComment} />
                 </div>
             </div>
         );

@@ -15,18 +15,18 @@ export default class ItemFooter extends Component {
                     <div className="comments-wrapper__comment">{comment}</div>
                 </div>
 
-            )
-        })
+            );
+        });
     }
 
     render() {
-        const { comments, onDelite } = this.props;
+        const { comments, onDeliteComment } = this.props;
 
         if (!comments) {
             return <div>loading...</div>
         }
 
-        const item = this.getComments(comments, onDelite)
+        const item = this.getComments(comments, onDeliteComment);
 
         return (
 

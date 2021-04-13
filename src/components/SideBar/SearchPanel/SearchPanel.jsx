@@ -8,7 +8,7 @@ const SearchPanel = () => {
                 <h3 className="label">Search</h3>
             </div>
             <div className="sideBar-searchPanel__form">
-                <form action="search">
+                <form >
                     <div className="wrapper-form">
                         <input type="search" className="inputSearch" placeholder="Site search" />
                         <button className="searchBtn"> 

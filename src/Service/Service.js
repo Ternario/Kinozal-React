@@ -13,7 +13,7 @@ export default class MoviesData {
 
     getAll = async () => {
         const res = await this.getResource();
-        return res.map(this._transformMovies);
+        return res.map(this._transformItem);
     };
 
     getMovies = async () => {
@@ -22,7 +22,7 @@ export default class MoviesData {
             return item.type === "Movie";
         });
 
-        return serial.map(this._transformMovies);
+        return serial.map(this._transformItem);
     };
 
     getSerials = async () => {
@@ -31,19 +31,28 @@ export default class MoviesData {
             return item.type === "Serial";
         });
 
-        return serial.map(this._transformMovies);
+        return serial.map(this._transformItem);
     };
 
-    getMovieById = async (id) => {
+    getItemByName = async (name) => {
         const res = await this.getResource();
-        const movieId = res.filter((item) => {
+        const item = res.filter((item)=> {
+            return item.title === name;
+        });
+
+        return item.map(this._transformItem)
+    }
+
+    getItemById = async (id) => {
+        const res = await this.getResource();
+        const itemId = res.filter((item) => {
             return item.id === id;
         });
 
-        return movieId.map(this._transformMovieId);
+        return itemId.map(this._transformItemId);
     };
 
-    _transformMovies(item) {
+    _transformItem(item) {
         return {
             poster: item.poster,
             title: item.title,
@@ -52,7 +61,7 @@ export default class MoviesData {
         };
     };
 
-    _transformMovieId(item) {
+    _transformItemId(item) {
         return {
             id: item.id,
             title: item.title,

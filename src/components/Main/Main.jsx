@@ -6,7 +6,7 @@ import Items from '../Items/Items';
 export default class Main extends Component {
 
     render() {
-        const { getData } = this.props
+        const { getData, searchitem } = this.props
 
         return (
             <div className="main">
