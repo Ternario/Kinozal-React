@@ -4,8 +4,8 @@ export default class MoviesData {
         const url = "https://raw.githubusercontent.com/Ternario/Kinozal-React/master/src/data.json";
         const res = await fetch(url);
 
-        if(!res.ok) {
-            throw new Error (`Could not Fetch ${url}, status ${res.status}`);
+        if (!res.ok) {
+            throw new Error(`Could not Fetch ${url}, status ${res.status}`);
         }
 
         return await res.json();
@@ -36,8 +36,8 @@ export default class MoviesData {
 
     getItemByName = async (name) => {
         const res = await this.getResource();
-        const item = res.filter((item)=> {
-            return item.title === name;
+        const item = res.filter((item) => {
+            return item.title.toLowerCase().indexOf(name.toLowerCase()) > -1;
         });
 
         return item.map(this._transformItem)

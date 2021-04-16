@@ -50,6 +50,7 @@ export default class App extends Component {
         ],
         searchitem: ""
     }
+
     commentId = 4;
 
     deliteComment = (id) => {
@@ -66,12 +67,9 @@ export default class App extends Component {
         });
 
         this.commentId--
-
-        console.log( this.commentId)
     }
 
     addComment = (name, comment) => {
-        console.log( this.commentId)
         const newItem = {
             id: this.commentId++,
             profile: "https://media.istockphoto.com/photos/businessman-silhouette-as-avatar-or-default-profile-picture-picture-id476085198?k=6&m=476085198&s=170667a&w=0&h=7XdJ-qzwSni92-B7nN6TlRF_u8d50RcA8adlGKLIDYc=",
@@ -90,7 +88,7 @@ export default class App extends Component {
 
     render() {
 
-        const { dataNews, ratingMovie, movieNews, comments, searchitem } = this.state;
+        const { dataNews, ratingMovie, movieNews, comments } = this.state;
 
         return (
             <Router>
@@ -98,7 +96,7 @@ export default class App extends Component {
                     <Header />
                     <div className="container">
                         <SideBar dataNews={dataNews} ratingMovie={ratingMovie} />
-                        <Route path="/" exact component={() => <Main getData={this.service.getAll} movieNews={movieNews} searchitem={searchitem} />} />
+                        <Route path="/" exact component={() => <Main getData={this.service.getAll} movieNews={movieNews} />} />
                         <Route path="/Movies" exact component={() => <ItemsWrapper title={"Movies"} getData={this.service.getMovies} />} />
                         <Route path="/Serials" exact component={() => <ItemsWrapper title={"Serials"} getData={this.service.getSerials} />} />
 
@@ -107,6 +105,14 @@ export default class App extends Component {
                                 const { id } = match.params;
 
                                 return <ItemDetails itemId={id} getData={this.service.getItemById} comments={comments} onDeliteComment={this.deliteComment} onAddComment={this.addComment} />
+                            }
+                        } />
+
+                        <Route path={"/search=:name"} render={
+                            ({match}) => {
+                                const { name } = match.params;
+
+                                return <ItemsWrapper title={name} getData={this.service.getItemByName} />
                             }
                         } />
 

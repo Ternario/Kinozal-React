@@ -8,11 +8,7 @@ class Items extends Component {
 
     render() {
 
-        const { getData } = this.props;
-
-        if (!getData) {
-            return <div>loading...</div>
-        }
+        const { getData, title } = this.props;
 
         return (
 
@@ -20,7 +16,7 @@ class Items extends Component {
                 onItemSelected={(type, id) => {
                     this.props.history.push(`/${type}s/${id}`)
                 }}
-                getData={getData} />
+                getData={getData} title={title} />
 
         );
     };

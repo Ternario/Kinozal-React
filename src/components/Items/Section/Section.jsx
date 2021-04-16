@@ -7,15 +7,25 @@ export default class Section extends Component {
     };
 
     componentDidMount() {
-        const { getData } = this.props;
+        this.getMovies();
+    };
 
-        getData()
+    componentDidUpdate(prevProps) {
+        if(this.props.name !== prevProps.name) {
+            this.getMovies();
+        }
+    }
+
+    getMovies() {
+        const { getData, title} = this.props;
+
+        getData(title)
             .then((itemList) => {
                 this.setState({
                     itemList
                 });
             });
-    };
+    }
 
     renderItems = (arr) => {
         return arr.map(({ id, poster, title, type }) => {

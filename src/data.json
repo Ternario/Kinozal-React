@@ -1,7 +1,7 @@
 [
    {
       "id": 1,
-      "title": "Amélie",
+      "title": "Amelie",
       "year": 2001,
       "director": "Jean-Pierre Jeunet",
       "writer": "Jean-Pierre Jeunet",
@@ -57,7 +57,7 @@
    },
    {
       "id": 4,
-      "title": "Otto e mezzo",
+      "title": "Eight and a half",
       "year": 1963,
       "director": "Federico Fellini",
       "writer": "Federico Fellini",
@@ -74,7 +74,7 @@
    },
    {
       "id": 5,
-      "title": "Pierrot le fou",
+      "title": "Mad Pierrot",
       "year": 1965,
       "director": "Jean-Luc Godard",
       "writer": "Jean-Luc Godard",
@@ -94,7 +94,7 @@
    },
    {
       "id": 6,
-      "title": "La règle du jeu",
+      "title": "Rules of the game",
       "year": 1939,
       "director": "Jean Renoir",
       "writer": "Jean Renoir",
@@ -113,7 +113,7 @@
    },
    {
       "id": 7,
-      "title": "Les quatre cents coups",
+      "title": "Four hundred strokes",
       "year": 1959,
       "director": "François Truffaut",
       "writer": "François Truffaut",
