@@ -54,7 +54,6 @@ class SearchPanel extends Component {
                             <img src={search} alt="search" className="searchBtn-image" />
                         </button>
                     </form>
-
                 </div>
             </div>
         );

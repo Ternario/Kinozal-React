@@ -177,28 +177,69 @@
 
                 &__name {
                     display: flex;
+                    justify-content: space-between;
                     padding: 10px 15px;
                     background-color: $color-accent;
                     border-top-left-radius: 5px;
                     border-top-right-radius: 5px;
 
-                    .image {
-                        height: 20px;
-                        width: 20px;
+                    .wrapper {
+                        display: flex;
+
+                        .image {
+                            height: 20px;
+                            width: 20px;
+                        }
+    
+                        .name {
+                            margin-left: $gap / 1.5;
+                            margin-right: $gap / 1.5;
+                            color: $color-light;
+                        }
                     }
 
-                    .name {
-                        margin-left: $gap / 1.5;
+                    .date {
                         color: $color-light;
                     }
                 }
 
                 &__comment {
+                    
                     padding: 10px 15px;
                     background-color: $color-gray;
                     border: 1px solid $color-gray;
                     border-bottom-left-radius: 5px;
                     border-bottom-right-radius: 5px;
+
+                    .comment {
+                        margin-bottom: 10px;
+                    }
+
+                    .delite-comment {
+                        display: flex;
+                        justify-content: flex-end;
+                        
+                        .delite {
+                            text-align: center;
+                            padding: 5px 0;
+                            width: 150px;
+                            font-size: 1rem;
+                            color: $color-light;
+                            background-color: lighten($color: $color-accent, $amount: 5%);
+                            border: 1px solid transparent;
+                            border-radius: 6px;
+                            transition: 0.4s;
+                            cursor: pointer; 
+                        } 
+
+                        .delite:hover {
+                            color: $color-dark;
+                            background-color: $color-accent;
+                            border: 1px solid $color-dark;
+                        }
+                    }
+
+                    
                 }
 
             }

@@ -2,19 +2,27 @@ import React, { Component } from 'react';
 
 export default class ItemFooter extends Component {
 
-    getComments(item, func) {
-        return item.map(({ id, profile, name, comment }) => {
+    getComments(item, deliteComment) {
+        return item.map(({ id, profile, name, date, comment }) => {
             return (
-                <div key={id}
-                    onClick={() => { func(id) }}
-                    className="comments-wrapper">
+                <div key={id} className="comments-wrapper">
                     <div className="comments-wrapper__name">
-                        <img src={profile} alt="ava" className="image" />
-                        <div className="name">{name}</div>
+                        <div className="wrapper">
+                            <img src={profile} alt="ava" className="image" />
+                            <div className="name">{name}</div>
+                        </div>
+                        <div className="date">{date}</div>
                     </div>
-                    <div className="comments-wrapper__comment">{comment}</div>
+                    <div className="comments-wrapper__comment">
+                        <div className="comment">{comment}</div>
+                        <div className="delite-comment">
+                            <div className="delite"
+                                onClick={() => { deliteComment(id) }}>
+                                Delite comment
+                            </div>
+                        </div>
+                    </div>
                 </div>
-
             );
         });
     }

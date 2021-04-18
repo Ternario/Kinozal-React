@@ -11,7 +11,7 @@ export default class Section extends Component {
     };
 
     componentDidUpdate(prevProps) {
-        if(this.props.name !== prevProps.name) {
+        if(this.props.title !== prevProps.title) {
             this.getMovies();
         }
     }

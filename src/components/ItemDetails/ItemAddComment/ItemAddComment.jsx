@@ -22,9 +22,11 @@ export default class ItemAddComment extends Component {
     onSubmit = (e) => {
         e.preventDefault();
 
+        const date = new Date().toLocaleString() + '';
+        
         const { name, comment } = this.state;
 
-        this.props.onAddComment(name, comment);
+        this.props.onAddComment(name, date, comment,);
 
         this.setState({
             name: "",
