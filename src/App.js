@@ -36,7 +36,7 @@ export default class App extends Component {
             { id: 2, title: "How I Met Your Mother", rating: 9.6 },
             { id: 3, title: "Friends", rating: 9.3 },
             { id: 4, title: "Otto e mezzo", rating: 8.8 },
-            { id: 5, title: "Pierrot le fou", rating: 8.4 },
+            { id: 5, title: "Pierrot le fou", rating: 8.4 }
         ],
         movieNews: [
             { id: 1, image: news1, title: "Kate Beckinsale introduced the film “Another World: Bloody Wars”", content: "Kate Beckinsale introduced in Mexico her new film, “Another World”: The Bloody Wars. On the red carpet, the actress posed for photographers in a luxurious red dress. The film will be dedicated to Selena - the vampire warrior Selena will enter her last and decisive battle between the werewolves and the vampire clan that betrayed her. In Ukrainian cinemas, the picture can be seen from December 1 ..." },
@@ -48,7 +48,10 @@ export default class App extends Component {
             { id: 2, profile: "https://media.istockphoto.com/photos/businessman-silhouette-as-avatar-or-default-profile-picture-picture-id476085198?k=6&m=476085198&s=170667a&w=0&h=7XdJ-qzwSni92-B7nN6TlRF_u8d50RcA8adlGKLIDYc=", name: "Serg_Frost", date: "22.03.2021, 18:18:12", comment: "I love this show. Its chic tube atmosphere and really legendary humor. And I'm even glad that I got on him at a time when I was still waiting for several seasons, from this he is even more dear and beloved. Forever I fell in love with these characters and their actors)). And never give up, even if you're late" },
             { id: 3, profile: "https://media.istockphoto.com/photos/businessman-silhouette-as-avatar-or-default-profile-picture-picture-id476085198?k=6&m=476085198&s=170667a&w=0&h=7XdJ-qzwSni92-B7nN6TlRF_u8d50RcA8adlGKLIDYc=", name: "Harlan", date: "21.03.2021, 15:45:33", comment: "Love for life!) I can look for days and I know by heart) In the most difficult times thisfilm were there! And during partings, and crisis, illness, quarantine, and when real friends betrayed! Turn on - and warmth in your soul! I have been watching the series since my school days, the best voice acting for me is Ukrainian! I advise everyone" }
         ],
-        searchitem: ""
+        searchitem: "",
+        authorization: [
+            { id: "admin", login: "admin", password: "admin" }
+        ]
     }
 
     commentId = 4;
@@ -87,6 +90,18 @@ export default class App extends Component {
         });
     }
 
+    autorization = (login, password) => {
+        const { authorization } = this.state;
+
+        return authorization.forEach((item) => {
+            if(login === item.login && password === item.password) {
+                alert("error");
+            }
+            alert("ok")
+        })
+    }
+
+
     render() {
 
         const { dataNews, ratingMovie, movieNews, comments } = this.state;
@@ -96,7 +111,7 @@ export default class App extends Component {
                 <div className="app">
                     <Header />
                     <div className="container">
-                        <SideBar dataNews={dataNews} ratingMovie={ratingMovie} />
+                        <SideBar dataNews={dataNews} ratingMovie={ratingMovie} autorization={this.autorization} />
                         <Route path="/" exact component={() => <Main getData={this.service.getAll} movieNews={movieNews} />} />
                         <Route path="/Movies" exact component={() => <ItemsWrapper title={"Movies"} getData={this.service.getMovies} />} />
                         <Route path="/Serials" exact component={() => <ItemsWrapper title={"Serials"} getData={this.service.getSerials} />} />

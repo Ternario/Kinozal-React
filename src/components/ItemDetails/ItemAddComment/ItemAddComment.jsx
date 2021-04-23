@@ -23,10 +23,10 @@ export default class ItemAddComment extends Component {
         e.preventDefault();
 
         const date = new Date().toLocaleString() + '';
-        
+
         const { name, comment } = this.state;
 
-        this.props.onAddComment(name, date, comment,);
+        this.props.onAddComment(name, date, comment);
 
         this.setState({
             name: "",
@@ -49,14 +49,16 @@ export default class ItemAddComment extends Component {
                                 type="text"
                                 placeholder="Your name"
                                 onChange={this.onChangeName}
-                                value={name} />
+                                value={name}
+                            />
                         </div>
                         <div className="form-group">
                             <textarea
                                 className="text"
                                 placeholder="Write your comment here"
                                 onChange={this.onChangeComment}
-                                value={comment} />
+                                value={comment}
+                            />
                         </div>
                         <button type="submit" className="btn">Post</button>
                     </form>

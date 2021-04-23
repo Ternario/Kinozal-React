@@ -11,13 +11,13 @@ export default class Section extends Component {
     };
 
     componentDidUpdate(prevProps) {
-        if(this.props.title !== prevProps.title) {
+        if (this.props.title !== prevProps.title) {
             this.getMovies();
         }
     }
 
     getMovies() {
-        const { getData, title} = this.props;
+        const { getData, title } = this.props;
 
         getData(title)
             .then((itemList) => {
@@ -27,7 +27,12 @@ export default class Section extends Component {
             });
     }
 
-    renderItems = (arr) => {
+    renderItems = (arr, title) => {
+
+        if (arr.length === 0) {
+            return <div>We don't have "{title}" :((</div>
+        }
+
         return arr.map(({ id, poster, title, type }) => {
             return (
                 <div key={id} className="section"
@@ -49,11 +54,13 @@ export default class Section extends Component {
 
         const { itemList } = this.state;
 
+        const { title } = this.props;
+
         if (!itemList) {
             return <div>loading...</div>
         }
 
-        const items = this.renderItems(itemList);
+        const items = this.renderItems(itemList, title);
 
         return (
             <>
