@@ -1,60 +1,64 @@
 export default class MoviesData {
 
-    async getResource() {
-        const url = "https://raw.githubusercontent.com/Ternario/Kinozal-React/master/src/data.json";
-        const res = await fetch(url);
+    async getResource(path) {
+        const url = "https://api.themoviedb.org/3/discover";
+        const apiKey = "?api_key=f78065abe3763cb2694006821dbaca97"
+
+        const res = await fetch(`${url}${path}${apiKey}`);
 
         if (!res.ok) {
             throw new Error(`Could not Fetch ${url}, status ${res.status}`);
         }
-
+        
         return await res.json();
     };
 
-    getAll = async () => {
-        const res = await this.getResource();
-        return res.map(this._transformItem);
+    
+
+    getData = async (url) => {
+        const res = await this.getResource(url);
+        return res.results.map(this._transformItem);
     };
 
-    getMovies = async () => {
-        const res = await this.getResource();
-        const serial = res.filter((item) => {
-            return item.type === "Movie";
-        });
+    // getMovies = async () => {
+    //     const res = await this.getResource();
+    //     const serial = res.filter((item) => {
+    //         return item.type === "Movie";
+    //     });
 
-        return serial.map(this._transformItem);
-    };
+    //     return serial.map(this._transformItem);
+    // };
 
-    getSerials = async () => {
-        const res = await this.getResource();
-        const serial = res.filter((item) => {
-            return item.type === "Serial";
-        });
+    // getSerials = async () => {
+    //     const res = await this.getResource();
+    //     const serial = res.filter((item) => {
+    //         return item.type === "Serial";
+    //     });
 
-        return serial.map(this._transformItem);
-    };
+    //     return serial.map(this._transformItem);
+    // };
 
-    getItemByName = async (name) => {
-        const res = await this.getResource();
-        const item = res.filter((item) => {
-            return item.title.toLowerCase().indexOf(name.toLowerCase()) > -1;
-        });
+    // getItemByName = async (name) => {
+    //     const res = await this.getResource();
+    //     const item = res.filter((item) => {
+    //         return item.title.toLowerCase().indexOf(name.toLowerCase()) > -1;
+    //     });
 
-        return item.map(this._transformItem)
-    }
+    //     return item.map(this._transformItem)
+    // }
 
-    getItemById = async (id) => {
-        const res = await this.getResource();
-        const itemId = res.filter((item) => {
-            return item.id === id;
-        });
+    // getItemById = async (id) => {
+    //     const res = await this.getResource();
+    //     const itemId = res.filter((item) => {
+    //         return item.id === id;
+    //     });
 
-        return itemId.map(this._transformItemId);
-    };
+    //     return itemId.map(this._transformItemId);
+    // };
 
     _transformItem(item) {
         return {
-            poster: item.poster,
+            poster: item.poster_path,
             title: item.title,
             id: item.id,
             type: item.type

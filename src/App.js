@@ -94,7 +94,7 @@ export default class App extends Component {
         const { authorization } = this.state;
 
         return authorization.forEach((item) => {
-            if(login === item.login && password === item.password) {
+            if (login === item.login && password === item.password) {
                 alert("error");
             }
             alert("ok")
@@ -112,15 +112,15 @@ export default class App extends Component {
                     <Header />
                     <div className="container">
                         <SideBar dataNews={dataNews} ratingMovie={ratingMovie} autorization={this.autorization} />
-                        <Route path="/" exact component={() => <Main getData={this.service.getAll} movieNews={movieNews} />} />
-                        <Route path="/Movies" exact component={() => <ItemsWrapper title={"Movies"} getData={this.service.getMovies} />} />
-                        <Route path="/Serials" exact component={() => <ItemsWrapper title={"Serials"} getData={this.service.getSerials} />} />
+                        <Route path="/" exact component={() => <Main getData={this.service.getData} movieNews={movieNews} />} />
+                        {/* <Route path="/Movies" exact component={() => <ItemsWrapper title={"Movies"} getData={this.service.getMovies} />} />
+                        <Route path="/Serials" exact component={() => <ItemsWrapper title={"Serials"} getData={this.service.getSerials} />} /> */}
 
                         <Route path={"/:type/:id"} render={
                             ({ match }) => {
                                 const { id } = match.params;
 
-                                return <ItemDetails itemId={id} getData={this.service.getItemById} comments={comments} onDeliteComment={this.deliteComment} onAddComment={this.addComment} />
+                                return <ItemDetails itemId={id} comments={comments} getData={this.service.getItemById} onDeliteComment={this.deliteComment} onAddComment={this.addComment} />
                             }
                         } />
 

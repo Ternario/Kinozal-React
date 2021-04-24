@@ -62,53 +62,36 @@
         margin-bottom: $gap * 3;
 
         @include lg {
-            grid-template-columns: repeat(3, 1fr);
+            grid-template-columns: repeat(4, 1fr);
         }
 
         @include md {
-            grid-template-columns: repeat(3, 1fr);
+            grid-template-columns: repeat(4, 1fr);
         }
 
         @include sm {
-            grid-template-columns: repeat(2, 1fr);
+            grid-template-columns: repeat(3, 1fr);
         }
 
         .section {
-            display: block;
             text-align: center;
             padding-top: 5px;
-            height: 310px;
             border: 1px solid $color-gray;
-            border-radius: $gap / 2.5;
+            border-radius: 5px;
             overflow: hidden;
             transition: 0.4s;
             cursor: pointer;
-        
-            @include sm-xs {
-                height: 350px;
-            }
-        
-            @include xs {
-                height: 260px;
-            }
+    
         
             .section-poster img{
-                height: 270px;
                 width: 96%;
-                @include sm-xs {
-                    height: 310px;
-                }
-                @include xs {
-                    height: 220px;
-                }
             }
         
             .section-name {
-                text-align: center;
-                padding: $gap / 3 0;
-                width: 100%;
+                padding: 0 2px;
+                height: 85px;
         
-                .section-name {
+                .name {
                     font-size: 1rem;
                     font-weight: bold;
                     color: $color-dark;
@@ -125,7 +108,7 @@
         
             .section-name {
         
-                .section-name {
+                .name {
                     color: $color-light;
                 }
             }

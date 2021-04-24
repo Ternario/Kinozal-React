@@ -19,16 +19,17 @@ export default class Section extends Component {
     getMovies() {
         const { getData, title } = this.props;
 
-        getData(title)
+        getData("/movie")
             .then((itemList) => {
                 this.setState({
                     itemList
                 });
             });
+
+            
     }
 
     renderItems = (arr, title) => {
-
         if (arr.length === 0) {
             return <div>We don't have "{title}" :((</div>
         }
@@ -40,10 +41,10 @@ export default class Section extends Component {
                         this.props.onItemSelected(type, id)
                     }} >
                     <div className="section-poster">
-                        <img src={poster} alt="section" />
+                        <img src={`https://image.tmdb.org/t/p/w500${poster}`} alt="section" />
                     </div>
                     <div className="section-name">
-                        <div className="section-name">{title}</div>
+                        <div className="name">{title}</div>
                     </div>
                 </div>
             )
