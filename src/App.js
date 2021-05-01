@@ -112,15 +112,40 @@ export default class App extends Component {
                     <Header />
                     <div className="container">
                         <SideBar dataNews={dataNews} ratingMovie={ratingMovie} autorization={this.autorization} />
-                        <Route path="/" exact component={() => <Main getData={this.service.getData} movieNews={movieNews} />} />
-                        {/* <Route path="/Movies" exact component={() => <ItemsWrapper title={"Movies"} getData={this.service.getMovies} />} />
-                        <Route path="/Serials" exact component={() => <ItemsWrapper title={"Serials"} getData={this.service.getSerials} />} /> */}
+
+                        <Route path="/" exact component={() =>
+                            <Main
+                                getNewMovies={this.service.getNewMovies}
+                                getTopMovies={this.service.getTopMovies}
+                                movieNews={movieNews}
+                            />
+                        } />
+
+                        <Route path="/movies" exact component={() =>
+                            <ItemsWrapper
+                                title={"Movies"}
+                                getData={this.service.getMovies}
+                            />
+                        } />
+
+                        <Route path="/tv" exact component={() =>
+                            <ItemsWrapper
+                                title={"Tv Shows"}
+                                getData={this.service.getSerials}
+                            />
+                        } />
 
                         <Route path={"/:type/:id"} render={
                             ({ match }) => {
                                 const { id } = match.params;
 
-                                return <ItemDetails itemId={id} comments={comments} getData={this.service.getItemById} onDeliteComment={this.deliteComment} onAddComment={this.addComment} />
+                                return <ItemDetails
+                                    itemId={id}
+                                    comments={comments}
+                                    getData={this.service.getItemById}
+                                    onDeliteComment={this.deliteComment}
+                                    onAddComment={this.addComment}
+                                />
                             }
                         } />
 

@@ -1,76 +1,79 @@
 export default class MoviesData {
+    constructor() {
+        this._apiBase = "https://api.themoviedb.org/3";
+        this._apiKey = "?api_key=f78065abe3763cb2694006821dbaca97";
+    }
 
-    async getResource(path) {
-        const url = "https://api.themoviedb.org/3/discover";
-        const apiKey = "?api_key=f78065abe3763cb2694006821dbaca97"
+    async getResource(url, sortBy) {
 
-        const res = await fetch(`${url}${path}${apiKey}`);
+        const res = await fetch(`${this._apiBase}${url}${this._apiKey}${sortBy}`);
 
         if (!res.ok) {
-            throw new Error(`Could not Fetch ${url}, status ${res.status}`);
-        }
-        
+            throw new Error(`Could not Fetch ${this._apiBase}${url}${this._apiKey}${sortBy}, status ${res.status}`);
+        };
+
         return await res.json();
+    }
+
+
+
+    getNewMovies = async () => {
+        const res = await this.getResource("/movie/upcoming", "&page=1");
+
+        const dataArray = res.results.map((item) => {
+
+            const newDate = item.release_date.split("", 4).join("");
+
+            const year = Number(newDate);
+
+            return year >= 2021 ? this._transformItem(item) : null;
+        });
+
+        return dataArray.filter((item) => {
+            return item !== null;
+        });
     };
 
-    
+    getTopMovies = async () => {
+        const res = await this.getResource("/discover/movie", "&vote_average.gte=10&page=1");
 
-    getData = async (url) => {
-        const res = await this.getResource(url);
         return res.results.map(this._transformItem);
     };
 
-    // getMovies = async () => {
-    //     const res = await this.getResource();
-    //     const serial = res.filter((item) => {
-    //         return item.type === "Movie";
-    //     });
+    getMovies = async () => {
+        const res = await this.getResource("/discover/movie", "&page=1");
 
-    //     return serial.map(this._transformItem);
-    // };
+        return res.results.map(this._transformItem);
+    };
 
-    // getSerials = async () => {
-    //     const res = await this.getResource();
-    //     const serial = res.filter((item) => {
-    //         return item.type === "Serial";
-    //     });
+    getSerials = async () => {
+        const res = await this.getResource("/discover/tv", "&page=1");
 
-    //     return serial.map(this._transformItem);
-    // };
+        return res.results.map(this._transformItem);
+    };
 
-    // getItemByName = async (name) => {
-    //     const res = await this.getResource();
-    //     const item = res.filter((item) => {
-    //         return item.title.toLowerCase().indexOf(name.toLowerCase()) > -1;
-    //     });
+    getItemById = async (id) => {
+        const res = await this.getResource(`/tv/${id}`, "");
+        console.log(res)
 
-    //     return item.map(this._transformItem)
-    // }
-
-    // getItemById = async (id) => {
-    //     const res = await this.getResource();
-    //     const itemId = res.filter((item) => {
-    //         return item.id === id;
-    //     });
-
-    //     return itemId.map(this._transformItemId);
-    // };
+        return this._transformItemId(res)
+    };
 
     _transformItem(item) {
         return {
             poster: item.poster_path,
-            title: item.title,
+            title: item.title || item.name,
             id: item.id,
-            type: item.type
+            type: item.type,
+            date: item.release_date || item.first_air_date
         };
     };
 
     _transformItemId(item) {
         return {
             id: item.id,
-            title: item.title,
-            year: item.year,
-            director: item.director,
+            title: item.name,
+            year: item.last_air_date,
             writer: item.writer,
             poster: item.poster,
             genres: item.genres,

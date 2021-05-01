@@ -16,7 +16,7 @@ export default class ItemDetails extends Component {
 
         const { itemId, getData } = this.props;
 
-        getData(Number(itemId))
+        getData(itemId)
             .then((itemList) => {
                 this.setState({
                     itemList
@@ -24,17 +24,16 @@ export default class ItemDetails extends Component {
             });
     }
 
-    renderItemHeader = (arr) => {
+    // renderItemHeader = (arr) => {
 
-        return arr.map((item, id) => {
-            return (
-                <div key={id}>
-                    <ItemHeader {...item} />
-                    <ItemContent  {...item} />
-                </div>
-            );
-        });
-    }
+    //     return arr.map((item, id) => {
+    //         return (
+    //             <div key={id}>
+                    
+    //             </div>
+    //         );
+    //     });
+    // }
 
     render() {
 
@@ -45,12 +44,16 @@ export default class ItemDetails extends Component {
             return <div>loading...</div>
         }
 
-        const itemHeader = this.renderItemHeader(itemList);
+        console.log(itemList)
+
+        // const itemHeader = this.renderItemHeader(itemList);
 
         return (
             <div className="itemDetails">
-                {itemHeader}
+                {/* {itemHeader} */}
                 <div className="itemDetails-footer">
+                    <ItemHeader {...itemList} />
+                    <ItemContent  {...itemList} />
                     <ItemComments comments={comments} onDeliteComment={onDeliteComment} />
                     <ItemAddComment onAddComment={onAddComment} />
                 </div>

@@ -6,7 +6,7 @@ import Items from '../Items/Items';
 export default class Main extends Component {
 
     render() {
-        const { getData } = this.props
+        const { getNewMovies, getTopMovies } = this.props;
 
         return (
             <div className="main">
@@ -16,18 +16,17 @@ export default class Main extends Component {
                         <h2 className="label-new">New Movies</h2>
                     </div>
                     <div className="sectionWrapper-items">
-                        <Items getData={getData} />
+                        <Items getData={getNewMovies} />
 
                     </div>
                 </div>
 
                 <div className="sectionWrapper">
                     <div className="sectionWrapper-label">
-                        <h2 className="label-top">TOP of the week</h2>
+                        <h2 className="label-top">TOP Movies</h2>
                     </div>
                     <div className="sectionWrapper-items">
-                        <Items getData={getData} />
-
+                        <Items getData={getTopMovies} />
                     </div>
                 </div>
 

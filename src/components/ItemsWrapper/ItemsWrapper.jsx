@@ -6,7 +6,7 @@ export default class ItemsWrapper extends Component {
 
     render() {
 
-        const {title, getData} = this.props
+        const {title, getData} = this.props;
 
         return (
             <div className="sectionWrapper">

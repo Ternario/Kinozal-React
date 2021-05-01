@@ -17,34 +17,32 @@ export default class Section extends Component {
     }
 
     getMovies() {
-        const { getData, title } = this.props;
+        const { getData} = this.props;
 
-        getData("/movie")
+        getData()
             .then((itemList) => {
                 this.setState({
                     itemList
                 });
             });
 
-            
+
     }
 
-    renderItems = (arr, title) => {
-        if (arr.length === 0) {
-            return <div>We don't have "{title}" :((</div>
-        }
+    renderItems = (arr) => {
 
-        return arr.map(({ id, poster, title, type }) => {
+        return arr.map(({ id, poster, title, date }) => {
             return (
                 <div key={id} className="section"
                     onClick={() => {
-                        this.props.onItemSelected(type, id)
+                        this.props.onItemSelected("tv", id)
                     }} >
                     <div className="section-poster">
                         <img src={`https://image.tmdb.org/t/p/w500${poster}`} alt="section" />
                     </div>
                     <div className="section-name">
                         <div className="name">{title}</div>
+                        <div>{date}</div>
                     </div>
                 </div>
             )
@@ -55,13 +53,11 @@ export default class Section extends Component {
 
         const { itemList } = this.state;
 
-        const { title } = this.props;
-
         if (!itemList) {
             return <div>loading...</div>
         }
 
-        const items = this.renderItems(itemList, title);
+        const items = this.renderItems(itemList);
 
         return (
             <>
