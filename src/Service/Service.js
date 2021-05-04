@@ -35,7 +35,7 @@ export default class MoviesData {
     };
 
     getTopMovies = async () => {
-        const res = await this.getResource("/discover/movie", "&vote_average.gte=10&page=1");
+        const res = await this.getResource("/movie/top_rated", "&page=1");
 
         return res.results.map(this._transformItem);
     };
@@ -53,37 +53,40 @@ export default class MoviesData {
     };
 
     getItemById = async (id) => {
-        const res = await this.getResource(`/tv/${id}`, "");
+        const res = await this.getResource(`/movie/${id}`, "");
         console.log(res)
 
         return this._transformItemId(res)
     };
+    
+    // getItemById = async (id) => {
+    //     const res = await this.getResource(`/movie/${id}`, "");
+    //     console.log(res)
+
+    //     return this._transformItemId(res)
+    // };
 
     _transformItem(item) {
         return {
-            poster: item.poster_path,
+            poster: item.poster_path || item.backdrop_path,
             title: item.title || item.name,
             id: item.id,
-            type: item.type,
+            rating: item.vote_average,
             date: item.release_date || item.first_air_date
         };
     };
 
     _transformItemId(item) {
         return {
-            id: item.id,
-            title: item.name,
-            year: item.last_air_date,
-            writer: item.writer,
-            poster: item.poster,
+            title: item.title || item.name,
+            date: item.release_date || item.last_air_date,
+            poster: item.poster_path || item.backdrop_path,
+            tagline: item.tagline,
             genres: item.genres,
-            type: item.type,
-            trailer: item.trailer,
-            rank: item.rank,
-            likesCount: item.likes_count,
-            commentsCount: item.comments_count,
-            link: item.link,
-            content: item.content
+            rating: item.vote_average,
+            overview: item.overview,
+            status: item.status,
+            runtime: item.runtime
         };
     };
 };

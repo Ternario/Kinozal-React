@@ -1,17 +1,11 @@
 import React from 'react';
 
-const ItemContent = ({ title, type, content, trailer, rank, likesCount, commentsCount }) => {
-
-    let changeCase = (item) => {
-        return item.toLowerCase()
-    }
-
-    const item = changeCase(type)
+const ItemContent = ({ title, content, trailer, rank, likesCount, commentsCount }) => {
 
     return (
         <div className="itemDetails-content">
             <div className="itemDetails-content__description">
-                <h2 className="title">{`About ${item} ${title}`}</h2>
+                <h2 className="title">{`About ${title}`}</h2>
                 <div className="description">{content}</div>
             </div>
             <div className="itemDetails-content__trailer">

@@ -13,8 +13,8 @@ class Items extends Component {
         return (
 
             <Section
-                onItemSelected={(type, id) => {
-                    this.props.history.push(`/${type}/${id}`)
+                onItemSelected={(type, id, title) => {
+                    this.props.history.push(`/${type}/${id}-${title}`)
                 }}
                 getData={getData} />
 
