@@ -44,20 +44,15 @@ export default class App extends Component {
             { id: 3, image: news3, title: "Chris Pratt and Jennifer Lawrence present Passengers in Paris", content: "Although almost a month remains before the premiere of “Passengers”, an advertising tour in support of the new film has already begun: Chris Pratt and Jennifer Lawrence, who starred in the film, presented “Passengers” as part of a photo call in Paris. In the cinema “Passengers” will appear at the end of 2016 - December 22 ..." }
         ],
         comments: [
-            { id: 1, profile: "https://media.istockphoto.com/photos/businessman-silhouette-as-avatar-or-default-profile-picture-picture-id476085198?k=6&m=476085198&s=170667a&w=0&h=7XdJ-qzwSni92-B7nN6TlRF_u8d50RcA8adlGKLIDYc=", name: "Georgiy", date: "25.03.2021, 09:21:45", comment: "A very unusual film, it seemed to me. But attention riveted inside and out. Sometimes funny, sometimes sad, sometimes disgusting. But on the whole, a picture is created of something not standard, something in the creation of which they put their heart and soul into it. And so after all, you cannot immediately understand what the story is about. About love ? About a weird girl? Or how sometimes, while helping everyone and everyone, you forget about an equally important person - yourself. And this actress, damn it, she looks great, plays great from her, you just can't take your eyes off)" },
-            { id: 2, profile: "https://media.istockphoto.com/photos/businessman-silhouette-as-avatar-or-default-profile-picture-picture-id476085198?k=6&m=476085198&s=170667a&w=0&h=7XdJ-qzwSni92-B7nN6TlRF_u8d50RcA8adlGKLIDYc=", name: "Serg_Frost", date: "22.03.2021, 18:18:12", comment: "I love this show. Its chic tube atmosphere and really legendary humor. And I'm even glad that I got on him at a time when I was still waiting for several seasons, from this he is even more dear and beloved. Forever I fell in love with these characters and their actors)). And never give up, even if you're late" },
-            { id: 3, profile: "https://media.istockphoto.com/photos/businessman-silhouette-as-avatar-or-default-profile-picture-picture-id476085198?k=6&m=476085198&s=170667a&w=0&h=7XdJ-qzwSni92-B7nN6TlRF_u8d50RcA8adlGKLIDYc=", name: "Harlan", date: "21.03.2021, 15:45:33", comment: "Love for life!) I can look for days and I know by heart) In the most difficult times thisfilm were there! And during partings, and crisis, illness, quarantine, and when real friends betrayed! Turn on - and warmth in your soul! I have been watching the series since my school days, the best voice acting for me is Ukrainian! I advise everyone" }
-        ],
-        searchitem: "",
-        authorization: [
-            { id: "admin", login: "admin", password: "admin" }
+            { id: 158321, profile: "https://media.istockphoto.com/photos/businessman-silhouette-as-avatar-or-default-profile-picture-picture-id476085198?k=6&m=476085198&s=170667a&w=0&h=7XdJ-qzwSni92-B7nN6TlRF_u8d50RcA8adlGKLIDYc=", name: "Georgiy", date: "25.03.2021, 09:21:45", comment: "A very unusual film, it seemed to me. But attention riveted inside and out. Sometimes funny, sometimes sad, sometimes disgusting. But on the whole, a picture is created of something not standard, something in the creation of which they put their heart and soul into it. And so after all, you cannot immediately understand what the story is about. About love ? About a weird girl? Or how sometimes, while helping everyone and everyone, you forget about an equally important person - yourself. And this actress, damn it, she looks great, plays great from her, you just can't take your eyes off)" },
+            { id: 274856, profile: "https://media.istockphoto.com/photos/businessman-silhouette-as-avatar-or-default-profile-picture-picture-id476085198?k=6&m=476085198&s=170667a&w=0&h=7XdJ-qzwSni92-B7nN6TlRF_u8d50RcA8adlGKLIDYc=", name: "Serg_Frost", date: "22.03.2021, 18:18:12", comment: "I love this show. Its chic tube atmosphere and really legendary humor. And I'm even glad that I got on him at a time when I was still waiting for several seasons, from this he is even more dear and beloved. Forever I fell in love with these characters and their actors)). And never give up, even if you're late" },
+            { id: 317853, profile: "https://media.istockphoto.com/photos/businessman-silhouette-as-avatar-or-default-profile-picture-picture-id476085198?k=6&m=476085198&s=170667a&w=0&h=7XdJ-qzwSni92-B7nN6TlRF_u8d50RcA8adlGKLIDYc=", name: "Harlan", date: "21.03.2021, 15:45:33", comment: "Love for life!) I can look for days and I know by heart) In the most difficult times thisfilm were there! And during partings, and crisis, illness, quarantine, and when real friends betrayed! Turn on - and warmth in your soul! I have been watching the series since my school days, the best voice acting for me is Ukrainian! I advise everyone" }
         ]
     }
 
-    commentId = 4;
-
     deliteComment = (id) => {
         this.setState(({ comments }) => {
+
             const index = comments.findIndex((item) => {
                 return item.id === id;
             });
@@ -68,13 +63,32 @@ export default class App extends Component {
                 comments: newComments
             }
         });
+    }
 
-        this.commentId--
+    getNumber() {
+        const min = Math.ceil(10000);
+        const max = Math.floor(999999);
+
+        return Math.floor(Math.random() * (max - min)) + min;
+    }
+
+    getUnicId(getNumber) {
+        const { comments } = this.state;
+
+        const randomNumber = getNumber();
+
+        const flag = comments.some((item) => {
+            return item.id === randomNumber;
+        })
+
+        return flag ? this.getUnicId(this.getNumber) : randomNumber;
     }
 
     addComment = (name, date, comment) => {
+        const id = this.getUnicId(this.getNumber);
+
         const newItem = {
-            id: this.commentId++,
+            id: id,
             profile: "https://media.istockphoto.com/photos/businessman-silhouette-as-avatar-or-default-profile-picture-picture-id476085198?k=6&m=476085198&s=170667a&w=0&h=7XdJ-qzwSni92-B7nN6TlRF_u8d50RcA8adlGKLIDYc=",
             name: name,
             date: date,
@@ -89,18 +103,6 @@ export default class App extends Component {
             }
         });
     }
-
-    autorization = (login, password) => {
-        const { authorization } = this.state;
-
-        return authorization.forEach((item) => {
-            if (login === item.login && password === item.password) {
-                alert("error");
-            }
-            alert("ok")
-        })
-    }
-
 
     render() {
 
@@ -143,17 +145,10 @@ export default class App extends Component {
                                     itemId={id}
                                     comments={comments}
                                     getData={this.service.getItemById}
+                                    getVideoData={this.service.getItemMovieById}
                                     onDeliteComment={this.deliteComment}
                                     onAddComment={this.addComment}
                                 />
-                            }
-                        } />
-
-                        <Route path={"/search=:name"} render={
-                            ({ match }) => {
-                                const { name } = match.params;
-
-                                return <ItemsWrapper title={name} getData={this.service.getItemByName} />
                             }
                         } />
 

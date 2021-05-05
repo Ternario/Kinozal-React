@@ -16,8 +16,6 @@ const ItemHeader = ({ title, poster, date, rating, tagline, genres, runtime, sta
     </div>
         : null;
 
-
-
     return (
 
         <div className="itemDetails-header">

@@ -26,6 +26,10 @@ export default class ItemAddComment extends Component {
 
         const { name, comment } = this.state;
 
+        if (name === "" && comment === "") {
+            return
+        }
+
         this.props.onAddComment(name, date, comment);
 
         this.setState({

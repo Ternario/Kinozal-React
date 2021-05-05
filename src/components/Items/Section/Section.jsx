@@ -30,7 +30,6 @@ export default class Section extends Component {
     }
 
     renderItems = (arr) => {
-
         return arr.map(({ id, poster, title, date, rating }) => {
             return (
                 <div key={id} className="section"

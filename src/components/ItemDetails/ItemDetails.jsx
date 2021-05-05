@@ -7,13 +7,11 @@ import ItemAddComment from './ItemAddComment/ItemAddComment';
 
 export default class ItemDetails extends Component {
 
-
     state = {
-        itemList: null
+        itemList: null,
     };
 
     componentDidMount() {
-
         const { itemId, getData } = this.props;
 
         getData(itemId)
@@ -27,7 +25,10 @@ export default class ItemDetails extends Component {
     render() {
 
         const { itemList } = this.state;
-        const { comments, onDeliteComment, onAddComment } = this.props;
+        
+        const { comments,getVideoData, itemId, onDeliteComment, onAddComment } = this.props;
+
+        const numberOfComments = comments.length;
 
         if (!itemList) {
             return <div>loading...</div>
@@ -36,7 +37,7 @@ export default class ItemDetails extends Component {
         return (
             <div className="itemDetails">
                 <ItemHeader {...itemList} />
-                <ItemContent  {...itemList} />
+                <ItemContent {...itemList} itemId={itemId} getVideoData={getVideoData} numberOfComments={numberOfComments} />
                 <div className="itemDetails-footer">
                     <ItemComments comments={comments} onDeliteComment={onDeliteComment} />
                     <ItemAddComment onAddComment={onAddComment} />

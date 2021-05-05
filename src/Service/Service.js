@@ -13,9 +13,7 @@ export default class MoviesData {
         };
 
         return await res.json();
-    }
-
-
+    };
 
     getNewMovies = async () => {
         const res = await this.getResource("/movie/upcoming", "&page=1");
@@ -24,9 +22,7 @@ export default class MoviesData {
 
             const newDate = item.release_date.split("", 4).join("");
 
-            const year = Number(newDate);
-
-            return year >= 2021 ? this._transformItem(item) : null;
+            return newDate >= 2021 ? this._transformItem(item) : null;
         });
 
         return dataArray.filter((item) => {
@@ -54,17 +50,15 @@ export default class MoviesData {
 
     getItemById = async (id) => {
         const res = await this.getResource(`/movie/${id}`, "");
-        console.log(res)
 
-        return this._transformItemId(res)
+        return this._transformItemId(res);
     };
-    
-    // getItemById = async (id) => {
-    //     const res = await this.getResource(`/movie/${id}`, "");
-    //     console.log(res)
 
-    //     return this._transformItemId(res)
-    // };
+    getItemMovieById = async (id) => {
+        const res = await this.getResource(`/movie/${id}/videos`, "")
+
+        return res.results.map(this._transformVideoItemId);
+    };
 
     _transformItem(item) {
         return {
@@ -84,9 +78,18 @@ export default class MoviesData {
             tagline: item.tagline,
             genres: item.genres,
             rating: item.vote_average,
+            likesCount: item.vote_count,
             overview: item.overview,
             status: item.status,
             runtime: item.runtime
+        };
+    };
+
+    _transformVideoItemId(item) {
+        return {
+            id: item.id,
+            trailer: item.key,
+            name: item.name
         };
     };
 };

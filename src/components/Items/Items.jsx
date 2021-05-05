@@ -4,10 +4,11 @@ import Section from './Section/Section';
 
 import { withRouter } from 'react-router-dom';
 
+// make function
+
 class Items extends Component {
 
     render() {
-
         const { getData} = this.props;
 
         return (
