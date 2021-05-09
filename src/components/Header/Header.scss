@@ -1,6 +1,6 @@
-@import './../../Variables.scss';
-@import './../../Mixins-media.scss';
-@import './../../common.scss';
+@import "./../../Variables.scss";
+@import "./../../Mixins-media.scss";
+@import "./../../common.scss";
 
 .header {
     margin-bottom: $gap * 4;
@@ -20,9 +20,8 @@
         @include sm {
             padding: 50px 0;
         }
-    
+
         .container-logo {
-    
             .container-label {
                 font-size: 4rem;
                 font-family: $font-header;
@@ -34,7 +33,7 @@
                     font-size: 3rem;
                 }
             }
-            
+
             .container-description {
                 font-size: 1.5rem;
                 letter-spacing: 0.2em;
@@ -50,7 +49,7 @@
         margin: 0 auto;
         height: 66px;
         width: 1170px;
-        
+
         @include lg-md {
             width: 970px;
         }
@@ -58,7 +57,7 @@
         @include md-sm {
             width: 750px;
         }
-        
+
         @include sm-xs {
             justify-content: center;
             align-items: center;
@@ -74,7 +73,7 @@
             margin: 0 auto;
             width: 328px;
         }
-    
+
         &__btn {
             display: none;
             justify-content: center;
@@ -84,7 +83,7 @@
             border-radius: 4px;
             transition: 0.5s;
             cursor: pointer;
-    
+
             @include sm-xs {
                 display: block;
             }
@@ -93,7 +92,6 @@
                 display: block;
             }
 
-    
             .btn-item {
                 margin: $gap / 3;
                 height: 2px;
@@ -102,17 +100,16 @@
                 transition: 0.5s;
             }
         }
-    
+
         &__btn:hover {
             border: 1px solid $color-accent;
-    
+
             .btn-item {
                 background-color: $color-accent;
             }
         }
-        
+
         &__info {
-    
             @include sm-xs {
                 display: none;
             }
@@ -120,10 +117,10 @@
             @include xs {
                 display: none;
             }
-    
+
             .info-item {
                 display: flex;
-    
+
                 .itemInfo {
                     margin: $gap / 2;
                     padding: $gap;
@@ -132,15 +129,14 @@
                     transition: 0.5s;
                     cursor: pointer;
                 }
-    
+
                 .itemInfo:hover {
                     background-color: $color-primary;
                 }
             }
         }
-    
+
         &__menu {
-            
             @include sm-xs {
                 display: none;
             }
@@ -148,11 +144,10 @@
             @include xs {
                 display: none;
             }
-    
-    
+
             .menu-item {
                 display: flex;
-    
+
                 .itemMenu {
                     margin: $gap / 2;
                     padding: $gap;
@@ -162,7 +157,7 @@
                     transition: 0.5s;
                     cursor: pointer;
                 }
-    
+
                 .itemMenu:hover {
                     background-color: $color-primary;
                 }
@@ -170,4 +165,3 @@
         }
     }
 }
-

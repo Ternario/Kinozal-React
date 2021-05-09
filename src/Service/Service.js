@@ -6,7 +6,9 @@ export default class MoviesData {
 
     async getResource(url, sortBy) {
 
-        const res = await fetch(`${this._apiBase}${url}${this._apiKey}${sortBy}`);
+        const path = sortBy ? `${this._apiBase}${url}${this._apiKey}${sortBy}` : `${this._apiBase}${url}${this._apiKey}`
+
+        const res = await fetch(path);
 
         if (!res.ok) {
             throw new Error(`Could not Fetch ${this._apiBase}${url}${this._apiKey}${sortBy}, status ${res.status}`);
@@ -15,8 +17,8 @@ export default class MoviesData {
         return await res.json();
     };
 
-    getNewMovies = async () => {
-        const res = await this.getResource("/movie/upcoming", "&page=1");
+    getNewMovies = async (type) => {
+        const res = await this.getResource(`/${type}/upcoming`, "&page=1");
 
         const dataArray = res.results.map((item) => {
 
@@ -30,42 +32,37 @@ export default class MoviesData {
         });
     };
 
-    getTopMovies = async () => {
-        const res = await this.getResource("/movie/top_rated", "&page=1");
+    getTopMovies = async (type) => {
+        const res = await this.getResource(`/${type}/top_rated`, "&page=1");
 
         return res.results.map(this._transformItem);
     };
 
-    getMovies = async () => {
-        const res = await this.getResource("/discover/movie", "&page=1");
+    getItems = async (type) => {
+        const res = await this.getResource(`/discover/${type}`, "&page=1");
 
         return res.results.map(this._transformItem);
     };
 
-    getSerials = async () => {
-        const res = await this.getResource("/discover/tv", "&page=1");
-
-        return res.results.map(this._transformItem);
-    };
-
-    getItemById = async (id) => {
-        const res = await this.getResource(`/movie/${id}`, "");
+    getItemById = async (type, id) => {
+        const res = await this.getResource(`/${type}/${id}`);
 
         return this._transformItemId(res);
     };
 
-    getItemMovieById = async (id) => {
-        const res = await this.getResource(`/movie/${id}/videos`, "")
+    getItemMovieById = async (type, id) => {
+        const res = await this.getResource(`/${type}/${id}/videos`);
+        // if type === tv ?
 
         return res.results.map(this._transformVideoItemId);
     };
-
+    
     _transformItem(item) {
         return {
             poster: item.poster_path || item.backdrop_path,
             title: item.title || item.name,
             id: item.id,
-            rating: item.vote_average,
+            rating: item.vote_average || "await",
             date: item.release_date || item.first_air_date
         };
     };

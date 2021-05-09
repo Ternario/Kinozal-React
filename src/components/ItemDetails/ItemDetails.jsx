@@ -12,9 +12,9 @@ export default class ItemDetails extends Component {
     };
 
     componentDidMount() {
-        const { itemId, getData } = this.props;
+        const { type, itemId, getData } = this.props;
 
-        getData(itemId)
+        getData(type, itemId)
             .then((itemList) => {
                 this.setState({
                     itemList
@@ -25,8 +25,8 @@ export default class ItemDetails extends Component {
     render() {
 
         const { itemList } = this.state;
-        
-        const { comments,getVideoData, itemId, onDeliteComment, onAddComment } = this.props;
+
+        const { comments, getVideoData, type, itemId, onDeliteComment, onAddComment } = this.props;
 
         const numberOfComments = comments.length;
 
@@ -37,7 +37,7 @@ export default class ItemDetails extends Component {
         return (
             <div className="itemDetails">
                 <ItemHeader {...itemList} />
-                <ItemContent {...itemList} itemId={itemId} getVideoData={getVideoData} numberOfComments={numberOfComments} />
+                <ItemContent {...itemList} type={type} itemId={itemId} getVideoData={getVideoData} numberOfComments={numberOfComments} />
                 <div className="itemDetails-footer">
                     <ItemComments comments={comments} onDeliteComment={onDeliteComment} />
                     <ItemAddComment onAddComment={onAddComment} />

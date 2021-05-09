@@ -1,12 +1,12 @@
-@import './../../Variables.scss';
-@import './../../Mixins-media.scss';
+@import "./../../Variables.scss";
+@import "./../../Mixins-media.scss";
 
 .footer {
     display: flex;
     justify-content: space-between;
     background-color: $color-dark;
 
-    @include xs{
+    @include xs {
         width: 100vw;
     }
 
@@ -34,12 +34,12 @@
                 font-weight: normal;
 
                 @include md-sm {
-                    font-size: .9rem;
+                    font-size: 0.9rem;
                 }
 
                 @include sm {
                     margin-top: $gap;
-                    font-size: .9rem;
+                    font-size: 0.9rem;
                 }
             }
 
@@ -57,14 +57,13 @@
                         cursor: pointer;
 
                         @include md {
-                            font-size: .8rem;
+                            font-size: 0.8rem;
                         }
                     }
 
                     .item-link:hover {
                         color: $color-accent;
                     }
-
                 }
             }
         }

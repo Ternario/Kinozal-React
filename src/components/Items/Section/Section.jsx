@@ -17,9 +17,9 @@ export default class Section extends Component {
     }
 
     getMovies() {
-        const { getData } = this.props;
+        const { type, getData } = this.props;
 
-        getData()
+        getData(type)
             .then((itemList) => {
                 this.setState({
                     itemList
@@ -34,17 +34,17 @@ export default class Section extends Component {
             return (
                 <div key={id} className="section"
                     onClick={() => {
-                        this.props.onItemSelected("movies", id, title)
+                        this.props.onItemSelected(id, title)
                     }} >
                     <div className="section-poster">
-                        <img src={`https://image.tmdb.org/t/p/w500${poster}`} alt="section" />
+                        <img className="poster" src={`https://image.tmdb.org/t/p/w500${poster}`} alt="section" />
                     </div>
-                    <div className="section-name">
+                    <div className="section-info">
                         <div className="name">{title}</div>
-                        <div className="date" >{date}</div>
-                        <div className="section-name__rating">
-                            <div className="rating-title">Rating:</div>
-                            <div className="rating-number">{rating}</div>
+                        <div className="date">Release date: {date}</div>
+                        <div className="section-info__rating">
+                            <div className="title">Rating:</div>
+                            <div className="number">{rating}</div>
                         </div>
 
                     </div>

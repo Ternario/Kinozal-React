@@ -8,12 +8,16 @@ export default class ItemContent extends Component {
     }
 
     componentDidMount() {
-        const { itemId, getVideoData } = this.props;
+        const { type, itemId, getVideoData } = this.props;
 
-        getVideoData(itemId)
+        getVideoData(type, itemId)
             .then((itemVideoList) => {
+
+                const trailer = itemVideoList > [] ? itemVideoList[0].trailer : null;
+
                 this.setState({
-                    itemVideoList
+                    itemVideoList,
+                    trailer
                 });
             });
     };
@@ -21,30 +25,26 @@ export default class ItemContent extends Component {
     videoToggler(item) {
         const { itemVideoList } = this.state;
 
-        console.log(item)
-
-        const ttt = itemVideoList.filter((itemId) => {
-            return itemId.id === item
-        });
-
-        const trailer = ttt.map((item) => {
-            return item.trailer;
+        const trailer = itemVideoList.filter((itemId) => {
+            return itemId.id === item;
         });
 
         this.setState({
-            trailer
+            trailer: trailer[0].trailer
         });
 
     };
 
     getVideos(item) {
-        return item.map(({ id, name }) => {
+        return item.map(({ id, name, trailer }) => {
             return <div
                 key={id}
                 onClick={() => {
-                    this.videoToggler(id)
+                    this.videoToggler(id);
                 }}
-                className="trailer-name">{name}</div>
+                className={this.state.trailer === trailer ? "name active" : "name"}>
+                {name}
+            </div>
         });
     };
 
@@ -67,6 +67,7 @@ export default class ItemContent extends Component {
                     <div className="description">{overview}</div>
                 </div>
                 <div className="itemDetails-content__trailer">
+                    <div className="title" >Trailers: </div>
                     <div className="trailer-wrapper">
                         {items}
                     </div>

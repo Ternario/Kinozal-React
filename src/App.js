@@ -117,6 +117,7 @@ export default class App extends Component {
 
                         <Route path="/" exact component={() =>
                             <Main
+                                type={"movie"}
                                 getNewMovies={this.service.getNewMovies}
                                 getTopMovies={this.service.getTopMovies}
                                 movieNews={movieNews}
@@ -126,23 +127,26 @@ export default class App extends Component {
                         <Route path="/movies" exact component={() =>
                             <ItemsWrapper
                                 title={"Movies"}
-                                getData={this.service.getMovies}
+                                type={"movie"}
+                                getData={this.service.getItems}
                             />
                         } />
 
                         <Route path="/tv" exact component={() =>
                             <ItemsWrapper
                                 title={"Tv Shows"}
-                                getData={this.service.getSerials}
+                                type={"tv"}
+                                getData={this.service.getItems}
                             />
                         } />
 
                         <Route path={"/:type/:id"} render={
                             ({ match }) => {
-                                const { id } = match.params;
+                                const { id, type } = match.params;
 
                                 return <ItemDetails
                                     itemId={id}
+                                    type={type}
                                     comments={comments}
                                     getData={this.service.getItemById}
                                     getVideoData={this.service.getItemMovieById}

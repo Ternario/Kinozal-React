@@ -9,14 +9,15 @@ import { withRouter } from 'react-router-dom';
 class Items extends Component {
 
     render() {
-        const { getData} = this.props;
+        const { type, getData } = this.props;
 
         return (
 
             <Section
-                onItemSelected={(type, id, title) => {
+                onItemSelected={(id, title) => {
                     this.props.history.push(`/${type}/${id}-${title}`)
                 }}
+                type={type}
                 getData={getData} />
 
         );

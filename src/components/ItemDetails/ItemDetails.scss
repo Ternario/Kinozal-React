@@ -1,6 +1,6 @@
-@import './../../Variables.scss';
-@import './../../Mixins-media.scss';
-@import './../../common.scss';
+@import "./../../Variables.scss";
+@import "./../../Mixins-media.scss";
+@import "./../../common.scss";
 
 .itemDetails {
     position: relative;
@@ -8,14 +8,12 @@
     margin-left: $gap * 2;
     overflow: hidden;
 
-
     @include md {
         margin: 0 auto;
     }
 
     .itemDetails-header {
         margin-bottom: $gap;
-
 
         .title {
             margin-top: -$gap;
@@ -32,27 +30,34 @@
             margin-left: $gap;
             border-bottom: 3px solid $color-accent;
         }
-        
-        &__wrapper {
 
+        &__wrapper {
             display: flex;
-            justify-content: space-between;
+
+            @include lg {
+                justify-content: space-between;
+            }
 
             .item-poster {
                 display: flex;
                 justify-content: center;
                 align-items: center;
+                margin-right: $gap * 3;
                 width: 200px;
                 height: 280px;
                 border: 1px solid $color-dark;
                 border-radius: 7px;
+
+                @include lg {
+                    margin: 0;
+                }
 
                 .poster {
                     width: 95%;
                     height: 95%;
                 }
             }
-    
+
             .items-info {
                 width: 460px;
 
@@ -63,7 +68,7 @@
                     font-size: 1.3rem;
 
                     .item-title {
-                        width: 120px; 
+                        width: 120px;
                     }
 
                     .item {
@@ -75,9 +80,44 @@
     }
 
     .itemDetails-content {
-
-
         &__description {
+            .title {
+                margin: ($gap * 2) ($gap * 2.5);
+                font-size: 2rem;
+                font-weight: normal;
+                color: lighten($color: $color-dark, $amount: 10%);
+            }
+
+            .title::before {
+                content: "";
+                position: absolute;
+                left: 0;
+                width: 30px;
+                margin: ($gap / 1.5) 0;
+                border-bottom: 3px solid $color-accent;
+            }
+
+            .title::after {
+                content: "";
+                position: absolute;
+                width: 100%;
+                margin-top: $gap * 2;
+                margin-left: $gap;
+                border-bottom: 3px solid $color-accent;
+            }
+
+            .description {
+                margin-bottom: $gap;
+            }
+        }
+
+        &__trailer {
+            width: 100%;
+
+            .active {
+                color: $color-light;
+                background-color: $color-accent;
+            }
 
             .title {
                 margin: ($gap * 2) ($gap * 2.5);
@@ -93,7 +133,6 @@
                 width: 30px;
                 margin: ($gap / 1.5) 0;
                 border-bottom: 3px solid $color-accent;
-
             }
 
             .title::after {
@@ -104,15 +143,29 @@
                 margin-left: $gap;
                 border-bottom: 3px solid $color-accent;
             }
-            
-            .description {
+
+            .trailer-wrapper {
                 margin-bottom: $gap;
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: flex-start;
+
+                .name {
+                    margin-right: 10px;
+                    margin-bottom: 5px;
+                    padding: 5px 10px;
+                    font-weight: bold;
+                    border: 1px solid $color-gray;
+                    border-radius: 7px;
+                    cursor: pointer;
+                    transition: 0.4s;
+                }
+
+                .name:hover {
+                    color: $color-light;
+                    background-color: $color-accent;
+                }
             }
-        }
-
-        &__trailer {
-            width: 100%;
-
 
             .trailer {
                 height: 450px;
@@ -129,9 +182,9 @@
                 margin-bottom: $gap * 2;
                 background-color: lighten($color: $color-dark, $amount: 20%);
                 border-radius: 0 0 7px 7px;
-                
+
                 .item {
-                    padding:5px 15px;
+                    padding: 5px 15px;
                     font-size: 1rem;
                     color: $color-light;
                     background-color: $color-accent;
@@ -143,9 +196,7 @@
     }
 
     .itemDetails-footer {
-
         &__comments {
-
             .title {
                 margin: ($gap * 2) ($gap * 2.5);
                 font-size: 2rem;
@@ -160,7 +211,6 @@
                 width: 30px;
                 margin: ($gap / 1.5) 0;
                 border-bottom: 3px solid $color-accent;
-
             }
 
             .title::after {
@@ -190,7 +240,7 @@
                             height: 20px;
                             width: 20px;
                         }
-    
+
                         .name {
                             margin-left: $gap / 1.5;
                             margin-right: $gap / 1.5;
@@ -204,7 +254,6 @@
                 }
 
                 &__comment {
-                    
                     padding: 10px 15px;
                     background-color: $color-gray;
                     border: 1px solid $color-gray;
@@ -218,7 +267,7 @@
                     .delite-comment {
                         display: flex;
                         justify-content: flex-end;
-                        
+
                         .delite {
                             text-align: center;
                             padding: 5px 0;
@@ -229,8 +278,8 @@
                             border: 1px solid transparent;
                             border-radius: 6px;
                             transition: 0.4s;
-                            cursor: pointer; 
-                        } 
+                            cursor: pointer;
+                        }
 
                         .delite:hover {
                             color: $color-dark;
@@ -238,10 +287,7 @@
                             border: 1px solid $color-dark;
                         }
                     }
-
-                    
                 }
-
             }
         }
 
@@ -262,7 +308,6 @@
                 width: 30px;
                 margin: ($gap / 1.5) 0;
                 border-bottom: 3px solid $color-accent;
-
             }
 
             .title::after {
@@ -288,7 +333,7 @@
                         border: 1px solid lighten($color: $color-dark, $amount: 40%);
                         border-radius: 6px;
                     }
-    
+
                     .text {
                         box-sizing: border-box;
                         resize: vertical;
@@ -296,7 +341,7 @@
                         width: 100%;
                         padding: 15px 15px 0 15px;
                         border: 1px solid lighten($color: $color-dark, $amount: 40%);
-                        border-radius: 6px;     
+                        border-radius: 6px;
                     }
                 }
 
@@ -319,7 +364,5 @@
                 }
             }
         }
-
     }
-
 }

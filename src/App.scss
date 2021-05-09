@@ -1,8 +1,7 @@
-@import './Variables.scss';
-@import './Mixins-media.scss';
+@import "./Variables.scss";
+@import "./Mixins-media.scss";
 
 .app {
-
     .container {
         display: grid;
         grid-template-columns: 1fr 3fr;
@@ -61,7 +60,6 @@
                 display: flex;
 
                 .image-wrapper {
-
                     &__newsImage {
                         width: 65px;
                         border: 4px solid $color-light;
@@ -75,7 +73,7 @@
                     width: 100%;
 
                     &__newsText {
-                        font-size: .9rem;
+                        font-size: 0.9rem;
                         color: $color-primary;
                         height: 60px;
                         cursor: pointer;
@@ -86,9 +84,9 @@
                     &__wrapperDate {
                         display: flex;
                         justify-content: flex-end;
-            
+
                         .date {
-                            font-size: .8rem;
+                            font-size: 0.8rem;
                             color: $color-primary;
                         }
                     }
@@ -96,18 +94,15 @@
             }
 
             .wrapperItem:hover {
-
                 .image-wrapper {
-
                     &__newsImage {
                         border: 4px solid $color-accent;
                     }
                 }
 
                 .text-wrapper {
-
                     &__newsText {
-                        color: $color-accent
+                        color: $color-accent;
                     }
                 }
             }
@@ -116,7 +111,7 @@
         &__wrapper::after {
             content: "";
             position: absolute;
-            bottom : 0;
+            bottom: 0;
             right: 8%;
             height: 1px;
             width: 55%;
@@ -176,36 +171,32 @@
                 cursor: pointer;
 
                 .wrapper-name {
-
                     &__movieName {
                         color: $color-primary;
                     }
                 }
 
                 .wrapper-rating {
-
                     &__rating {
                         padding: 0 $gap / 2;
-                        font-size: .9rem;
+                        font-size: 0.9rem;
                         color: $color-light;
                         border-radius: 20px;
-                        background-color: darken($color: $color-gray, $amount: 50%)
+                        background-color: darken($color: $color-gray, $amount: 50%);
                     }
                 }
             }
-            
+
             .content:hover {
                 background-color: $color-accent;
 
                 .wrapper-name {
-
                     &__movieName {
                         color: $color-light;
                     }
                 }
 
                 .wrapper-rating {
-
                     &__rating {
                         background-color: $color-dark;
                     }

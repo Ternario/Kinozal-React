@@ -1,6 +1,6 @@
-@import './../../Variables.scss';
-@import './../../Mixins-media.scss';
-@import './../../common.scss';
+@import "./../../Variables.scss";
+@import "./../../Mixins-media.scss";
+@import "./../../common.scss";
 
 .sectionWrapper {
     grid-area: m;
@@ -13,7 +13,6 @@
     }
 
     .sectionWrapper-label {
-
         @include sm {
             margin-bottom: $gap;
         }
@@ -23,7 +22,7 @@
             font-size: 3rem;
             font-weight: normal;
             color: lighten($color: $color-dark, $amount: 10%);
-            letter-spacing: .1em;
+            letter-spacing: 0.1em;
 
             @include sm-xs {
                 margin-top: -$gap / 2;
@@ -75,45 +74,70 @@
 
         .section {
             text-align: center;
-            padding-top: 5px;
-            border: 1px solid $color-gray;
-            border-radius: 5px;
-            overflow: hidden;
-            transition: 0.4s;
             cursor: pointer;
-    
-        
-            .section-poster img{
-                width: 96%;
+
+            .section-poster {
+                padding-top: 5px;
+                border: 1px solid $color-gray;
+                border-radius: 5px;
+                transition: 0.4s;
+
+                .poster {
+                    height: 280px;
+                    width: 96%;
+                }
             }
-        
-            .section-name {
+
+            .section-info {
+                align-items: center;
                 padding: 0 2px;
                 height: 85px;
-        
+
                 .name {
-                    font-size: 1rem;
+                    font-size: 0.9rem;
                     font-weight: bold;
                     color: $color-dark;
-        
+                    transition: 0.4s;
+
                     @include xs {
-                        font-size: .8rem;
+                        font-size: 0.8rem;
                     }
-                }  
-            }
-        }
-        
-        .section:hover {
-            background-color: $color-accent;
-        
-            .section-name {
-        
-                .name {
-                    color: $color-light;
+                }
+
+                .date {
+                    font-size: 0.8rem;
+                    transition: 0.4s;
+                }
+
+                &__rating {
+                    display: flex;
+                    justify-content: center;
+                    transition: 0.4s;
+
+                    .title {
+                        margin-right: $gap / 2;
+                        font-size: 0.8rem;
+                    }
+
+                    .number {
+                        font-size: 0.8rem;
+                    }
                 }
             }
         }
-        
-        
+
+        .section:hover {
+            .section-poster {
+                background-color: $color-accent;
+            }
+
+            .section-info {
+                .name,
+                .date,
+                &__rating {
+                    color: $color-accent;
+                }
+            }
+        }
     }
 }

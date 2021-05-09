@@ -1,5 +1,5 @@
-@import './../../Variables.scss';
-@import './../../Mixins-media.scss';
+@import "./../../Variables.scss";
+@import "./../../Mixins-media.scss";
 
 .sideBar {
     grid-area: s;
@@ -60,9 +60,9 @@
             bottom: 0;
             right: 0;
             width: 15%;
-            transition: 0.5s;      
+            transition: 0.5s;
 
-            .left{
+            .left {
                 position: absolute;
                 height: 7px;
                 width: 25px;
@@ -72,7 +72,7 @@
                 transform: rotate(135deg);
             }
 
-            .right{
+            .right {
                 position: absolute;
                 height: 7px;
                 width: 25px;
@@ -90,7 +90,7 @@
         &__slides {
             width: 100%;
 
-            .slides-item{
+            .slides-item {
                 height: 390px;
 
                 &__img {
@@ -132,7 +132,7 @@
             display: flex;
             align-items: center;
             padding: $gap;
-            background-color: lighten($color:$color-gray, $amount: 3%);
+            background-color: lighten($color: $color-gray, $amount: 3%);
 
             .wrapper-form {
                 display: flex;
@@ -163,7 +163,7 @@
                     width: 100%;
                     border: none;
                 }
-    
+
                 .searchBtn {
                     vertical-align: middle;
                     width: 50px;
@@ -200,10 +200,9 @@
         &__form {
             text-align: center;
             padding: $gap;
-            background-color: lighten($color:$color-gray, $amount: 3%);
+            background-color: lighten($color: $color-gray, $amount: 3%);
 
             .input-wrapper {
-                
                 .login {
                     padding-left: $gap;
                     height: 40px;
@@ -228,7 +227,7 @@
                     }
                 }
 
-                .password  {
+                .password {
                     margin: $gap 0;
                     padding-left: $gap;
                     height: 40px;
@@ -284,7 +283,7 @@
                 .form-btn:hover {
                     background-color: $color-gray;
                 }
-            }  
+            }
         }
     }
 
@@ -307,13 +306,12 @@
         &__wrapper {
             position: relative;
             padding: $gap / 1.5 $gap;
-            background-color: lighten($color:$color-gray, $amount: 3%);
+            background-color: lighten($color: $color-gray, $amount: 3%);
 
             .wrapperItem {
                 display: flex;
 
                 .image-wrapper {
-
                     &__newsImage {
                         width: 65px;
                         border: 4px solid $color-light;
@@ -326,7 +324,7 @@
                     margin: 0 0 0 $gap;
 
                     &__newsText {
-                        font-size: .9rem;
+                        font-size: 0.9rem;
                         color: $color-primary;
                         height: 60px;
                         cursor: pointer;
@@ -337,9 +335,9 @@
                     &__wrapperDate {
                         display: flex;
                         justify-content: flex-end;
-            
+
                         .date {
-                            font-size: .8rem;
+                            font-size: 0.8rem;
                             color: $color-primary;
                         }
                     }
@@ -347,18 +345,15 @@
             }
 
             .wrapperItem:hover {
-
                 .image-wrapper {
-
                     &__newsImage {
                         border: 4px solid $color-accent;
                     }
                 }
 
                 .text-wrapper {
-
                     &__newsText {
-                        color: $color-accent
+                        color: $color-accent;
                     }
                 }
             }
@@ -367,7 +362,7 @@
         &__wrapper::after {
             content: "";
             position: absolute;
-            bottom : 0;
+            bottom: 0;
             right: 8%;
             height: 1px;
             width: 55%;
@@ -401,47 +396,43 @@
 
         &__wrapper {
             padding: $gap / 1.5 0;
-            background-color: lighten($color:$color-gray, $amount: 3%);
+            background-color: lighten($color: $color-gray, $amount: 3%);
 
             .content {
                 display: flex;
                 justify-content: space-between;
                 padding: $gap / 1.2;
                 border-bottom: 1px solid darken($color: $color-gray, $amount: 10%);
-                background-color: lighten($color:$color-gray, $amount: 3%);
+                background-color: lighten($color: $color-gray, $amount: 3%);
                 cursor: pointer;
 
                 .wrapper-name {
-
                     &__movieName {
                         color: $color-primary;
                     }
                 }
 
                 .wrapper-rating {
-
                     &__rating {
                         padding: 0 $gap / 2;
-                        font-size: .9rem;
+                        font-size: 0.9rem;
                         color: $color-light;
                         border-radius: 20px;
-                        background-color: darken($color: $color-gray, $amount: 50%)
+                        background-color: darken($color: $color-gray, $amount: 50%);
                     }
                 }
             }
-            
+
             .content:hover {
                 background-color: $color-accent;
 
                 .wrapper-name {
-
                     &__movieName {
                         color: $color-light;
                     }
                 }
 
                 .wrapper-rating {
-
                     &__rating {
                         background-color: $color-dark;
                     }
