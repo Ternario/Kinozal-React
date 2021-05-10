@@ -4,34 +4,29 @@
 .app {
     .container {
         display: grid;
-        grid-template-columns: 1fr 3fr;
+        grid-template-columns: 1fr 3.5fr;
         grid-template-areas: "s m";
 
         margin: 0 auto;
-        padding: 0 $gap;
-        width: 1170px;
+        padding: 0 78px;
 
         @include lg-md {
-            width: 970px;
+            padding: 0 45px;
         }
 
         @include md-sm {
             display: block;
-            width: 750px;
+
         }
 
         @include sm-xs {
             display: block;
-            margin: 0 auto;
-            padding: 0 $gap;
-            width: 546px;
+            padding: 0 40px;
         }
 
         @include xs {
             display: block;
-            margin: 0 auto;
-            padding: 0 $gap;
-            width: 328px;
+            padding: 0 20px;
         }
     }
 

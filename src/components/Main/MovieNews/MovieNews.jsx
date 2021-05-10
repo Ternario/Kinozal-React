@@ -1,11 +1,27 @@
 import React from 'react';
-import News from './News/News';
 
-const MovieNews = ({movieNews}) => {
+const MovieNews = ({ movieNews }) => {
 
-    const elements = movieNews.map((item) => {
+    const elements = movieNews.map(({ id, title, image, content }) => {
         return (
-            <News key={item.id} image={item.image} title={item.title} content={item.content} />
+            <div key={id} className="news">
+                <div className="news-title">
+                    <h2 className="title">{title}</h2>
+                </div>
+                <div className="news-wrapper">
+                    <div className="news-wrapper__poster">
+                        <img src={image} alt="news" className="poster" />
+                    </div>
+                    <div className="news-wrapper__content">
+                        <div className="content">
+                            <div className="content-text">{content}</div>
+                        </div>
+                        <div className="content-btn">
+                            <button className="btn">More details</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
         )
     })
 

@@ -1,0 +1,30 @@
+%sidebar-label {
+    padding: $gap / 2 $gap;
+    font-size: 0.5rem;
+    background-color: $color-accent;
+}
+
+%itemDetails-title {
+    margin: ($gap) ($gap * 2.5);
+    font-size: 1.5rem;
+    font-weight: normal;
+    color: lighten($color: $color-dark, $amount: 10%);
+}
+
+%itemDetails-title-before {
+    content: "";
+    position: absolute;
+    left: 0;
+    width: 30px;
+    margin: ($gap / 2.2) 0;
+    border-bottom: 3px solid $color-accent;
+}
+
+%itemDetails-title-after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    margin-top: $gap * 1.4;
+    margin-left: $gap / 1.5;
+    border-bottom: 3px solid $color-accent;
+}

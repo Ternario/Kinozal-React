@@ -56,7 +56,7 @@
 
     .sectionWrapper-items {
         display: grid;
-        grid-template-columns: repeat(4, 1fr);
+        grid-template-columns: repeat(5, 1fr);
         grid-gap: $gap;
         margin-bottom: $gap * 3;
 
@@ -69,6 +69,10 @@
         }
 
         @include sm {
+            grid-template-columns: repeat(4, 1fr);
+        }
+
+        @include xs {
             grid-template-columns: repeat(3, 1fr);
         }
 
@@ -83,8 +87,16 @@
                 transition: 0.4s;
 
                 .poster {
-                    height: 280px;
+                    height: 210px;
                     width: 96%;
+
+                    @include sm {
+                        height: 170px;
+                    }
+
+                    @include xs {
+                        height: 130px;
+                    }
                 }
             }
 

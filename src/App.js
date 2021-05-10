@@ -5,8 +5,6 @@ import Main from './components/Main/Main';
 import ItemsWrapper from './components/ItemsWrapper/ItemsWrapper';
 import SideBar from './components/SideBar/SideBar';
 import Footer from './components/Footer/Footer';
-import MovieRating from './components/SideBar/MovieRating/MovieRating';
-import SiteNews from './components/SideBar/SiteNews/SiteNews';
 import ItemDetails from './components/ItemDetails/ItemDetails';
 
 import MoviesData from './Service/Service';
@@ -24,6 +22,7 @@ export default class App extends Component {
     service = new MoviesData();
 
     state = {
+        sideBar: "movie",
         dataNews: [
             { id: 1, image: image, title: "We launched a new service - KinoMonster", date: "April 27, 2019" },
             { id: 2, image: image, title: "New functionality added to the site", date: "August 15, 2019" },
@@ -106,14 +105,14 @@ export default class App extends Component {
 
     render() {
 
-        const { dataNews, ratingMovie, movieNews, comments } = this.state;
+        const { sideBar, dataNews, ratingMovie, movieNews, comments } = this.state;
 
         return (
             <Router>
                 <div className="app">
                     <Header />
                     <div className="container">
-                        <SideBar dataNews={dataNews} ratingMovie={ratingMovie} autorization={this.autorization} />
+                        <SideBar getGenresList={this.service.getGenresList} sideBar={sideBar} dataNews={dataNews} ratingMovie={ratingMovie} autorization={this.autorization} />
 
                         <Route path="/" exact component={() =>
                             <Main
@@ -156,8 +155,7 @@ export default class App extends Component {
                             }
                         } />
 
-                        <SiteNews dataNews={dataNews} />
-                        <MovieRating ratingMovie={ratingMovie} />
+
                     </div>
                     <Footer />
                 </div>

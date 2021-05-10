@@ -17,7 +17,7 @@ h2 {
 
 h3 {
     margin: 0;
-    font-size: 1.3rem;
+    font-size: 1rem;
     font-weight: normal;
     color: $color-light;
 }
@@ -25,3 +25,107 @@ h3 {
 a {
     text-decoration: none;
 }
+
+
+
+
+// .sideBar-authorization {
+//     grid-area: i;
+//     margin-bottom: $gap * 2;
+//     border: 1px solid $color-gray;
+//     border-radius: 5px;
+//     overflow: hidden;
+
+//     &__label {
+//         @extend %sidebar-label;
+//     }
+
+//     &__form {
+//         text-align: center;
+//         padding: $gap;
+//         background-color: lighten($color: $color-gray, $amount: 3%);
+
+//         .input-wrapper {
+//             .login {
+//                 padding-left: $gap;
+//                 height: 40px;
+//                 // width: 253px;
+//                 border: 1px solid darken($color: $color-gray, $amount: 20%);
+//                 border-radius: 5px;
+
+//                 @include lg-md {
+//                     width: 190px;
+//                 }
+
+//                 @include md-sm {
+//                     width: 700px;
+//                 }
+
+//                 @include sm-xs {
+//                     width: 495px;
+//                 }
+
+//                 @include xs {
+//                     width: 276px;
+//                 }
+//             }
+
+//             .password {
+//                 margin: $gap 0;
+//                 padding-left: $gap;
+//                 height: 40px;
+//                 // width: 253px;
+//                 border: 1px solid darken($color: $color-gray, $amount: 20%);
+//                 border-radius: 5px;
+
+//                 @include lg-md {
+//                     width: 190px;
+//                 }
+
+//                 @include md-sm {
+//                     width: 700px;
+//                 }
+
+//                 @include sm-xs {
+//                     width: 495px;
+//                 }
+
+//                 @include xs {
+//                     width: 276px;
+//                 }
+//             }
+
+//             .form-btn {
+//                 height: 40px;
+//                 // width: 272px;
+//                 font-size: 1rem;
+//                 letter-spacing: 0.1em;
+//                 background-color: $color-light;
+//                 border: 1px solid darken($color: $color-gray, $amount: 20%);
+//                 border-radius: 5px;
+//                 cursor: pointer;
+//                 transition: 0.4s;
+
+//                 @include lg-md {
+//                     width: 210px;
+//                 }
+
+//                 @include md-sm {
+//                     width: 717px;
+//                 }
+
+//                 @include sm-xs {
+//                     width: 512px;
+//                 }
+
+//                 @include xs {
+//                     width: 294px;
+//                 }
+//             }
+
+//             .form-btn:hover {
+//                 background-color: $color-gray;
+//             }
+//         }
+//     }
+// }

@@ -1,22 +1,38 @@
-import React from 'react';
+import React, { Component } from 'react';
 import './SideBar.scss';
-import PostSlider from './PostSlider/PostSlider';
-import SearchPanel from './SearchPanel/SearchPanel';
-import Authorization from './Authorization/Authorization';
-import SiteNews from './SiteNews/SiteNews';
-import MovieRating from './MovieRating/MovieRating';
+import MainSideBar from './MainSideBar/MainSideBar'
+import FilterSideBar from './FiltersSideBar/FiltersSideBar'
 
-const SideBar = ({dataNews, ratingMovie, autorization}) => {
+export default class SideBar extends Component {
+    state = {
+        sideBar: "main"
+    }
 
-    return (
-        <div className="sideBar">
-            <PostSlider />
-            <SearchPanel />
-            <Authorization autorization={autorization} />
-            <SiteNews dataNews={dataNews} />
-            <MovieRating ratingMovie={ratingMovie} />
-        </div>
-    );
-}
+    componentDidMount() {
+        this.toggleSideBar();
+    };
 
-export default SideBar;
+    toggleSideBar() {
+        const { sideBar } = this.props;
+
+        this.setState({
+            sideBar
+        })
+    };
+
+
+    render() {
+
+        const { sideBar } = this.state;
+        const { getGenresList, dataNews, ratingMovie } = this.props;
+
+        const item = sideBar === "main" ? <MainSideBar dataNews={dataNews} ratingMovie={ratingMovie} /> 
+        : <FilterSideBar getGenresList={getGenresList} />;
+
+        return (
+            <div className="sideBar">
+                {item}
+            </div>
+        );
+    };
+};

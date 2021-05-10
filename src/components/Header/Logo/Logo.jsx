@@ -1,10 +1,12 @@
 import React from 'react';
-import ContainerLogo from './ContainerLogo/ContainerLogo';
 
 const Logo = () => {
     return (
         <div className="header-logo">
-            <ContainerLogo />
+            <div className="container-logo">
+                <div className="container-label">KinoZal</div>
+                <div className="container-description">Find your movie</div>
+            </div>
         </div>
     );
 }

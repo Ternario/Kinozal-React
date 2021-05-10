@@ -1,447 +1,278 @@
 @import "./../../Variables.scss";
 @import "./../../Mixins-media.scss";
+@import "./../../extends.scss";
 
 .sideBar {
     grid-area: s;
 
-    .sideBar-postSlider {
-        display: flex;
-        position: relative;
-        border-radius: 10px;
-        margin-bottom: $gap * 2;
-        overflow: hidden;
+    .sideBar-MainSideBar {
+        .sideBar-postSlider {
+            display: flex;
+            position: relative;
+            height: 370px;
+            border-radius: 10px;
+            margin-bottom: $gap * 2;
+            overflow: hidden;
 
-        @include lg-md {
-            height: 360px;
-        }
-
-        @include md {
-            display: none;
-        }
-
-        &__buttonLeft {
-            cursor: pointer;
-            position: absolute;
-            top: 0;
-            bottom: 0;
-            left: 0;
-            width: 15%;
-            transition: 0.5s;
-
-            .left {
-                position: absolute;
-                height: 7px;
-                width: 25px;
-                top: calc(50% + 3px);
-                left: 5px;
-                background-color: $color-light;
-                transform: rotate(45deg);
+            @include md {
+                display: none;
             }
 
-            .right {
-                position: absolute;
-                height: 7px;
-                width: 25px;
-                top: calc(50% - 10px);
-                left: 5px;
-                background-color: $color-light;
-                transform: rotate(-45deg);
-            }
-        }
-
-        &__buttonLeft:hover {
-            transform: scale(1.2);
-        }
-
-        &__buttonRight {
-            cursor: pointer;
-            position: absolute;
-            top: 0;
-            bottom: 0;
-            right: 0;
-            width: 15%;
-            transition: 0.5s;
-
-            .left {
-                position: absolute;
-                height: 7px;
-                width: 25px;
-                top: calc(50% + 3px);
-                right: 5px;
-                background-color: $color-light;
-                transform: rotate(135deg);
-            }
-
-            .right {
-                position: absolute;
-                height: 7px;
-                width: 25px;
-                top: calc(50% - 10px);
-                right: 5px;
-                background-color: $color-light;
-                transform: rotate(-135deg);
-            }
-        }
-
-        &__buttonRight:hover {
-            transform: scale(1.2);
-        }
-
-        &__slides {
-            width: 100%;
-
-            .slides-item {
-                height: 390px;
-
-                &__img {
-                    display: block;
-                    width: 100%;
-                }
-            }
-
-            .slides-item::before {
-                content: "";
+            &__buttonLeft {
+                cursor: pointer;
                 position: absolute;
                 top: 0;
-                right: 0;
                 bottom: 0;
                 left: 0;
-                background-color: $color-dark;
-                opacity: 0.4;
-            }
+                width: 15%;
+                transition: 0.5s;
 
-            .active {
-                display: block;
-            }
-        }
-    }
-
-    .sideBar-searchPanel {
-        grid-area: s;
-        margin-bottom: $gap * 2;
-        border: 1px solid $color-gray;
-        border-radius: 5px;
-        overflow: hidden;
-
-        &__label {
-            padding: $gap / 2 $gap;
-            background-color: $color-accent;
-        }
-
-        &__form {
-            display: flex;
-            align-items: center;
-            padding: $gap;
-            background-color: lighten($color: $color-gray, $amount: 3%);
-
-            .wrapper-form {
-                display: flex;
-                width: 270px;
-                border: 1px solid darken($color: $color-gray, $amount: 20%);
-                border-radius: 5px;
-                overflow: hidden;
-
-                @include lg-md {
-                    width: 208px;
-                }
-
-                @include md-sm {
-                    width: 716px;
-                }
-
-                @include sm-xs {
-                    width: 511px;
-                }
-
-                @include xs {
-                    width: 293px;
-                }
-
-                .inputSearch {
-                    padding-left: $gap;
-                    height: 40px;
-                    width: 100%;
-                    border: none;
-                }
-
-                .searchBtn {
-                    vertical-align: middle;
-                    width: 50px;
-                    border: none;
-                    border-left: 1px solid darken($color: $color-gray, $amount: 20%);
+                .left {
+                    position: absolute;
+                    height: 7px;
+                    width: 25px;
+                    top: calc(50% + 3px);
+                    left: 5px;
                     background-color: $color-light;
-                    cursor: pointer;
-                    transition: 0.4s;
-
-                    @include md-sm {
-                        width: 70px;
-                    }
+                    transform: rotate(45deg);
                 }
 
-                .searchBtn:hover {
-                    background-color: $color-gray;
-                }
-            }
-        }
-    }
-
-    .sideBar-authorization {
-        grid-area: i;
-        margin-bottom: $gap * 2;
-        border: 1px solid $color-gray;
-        border-radius: 5px;
-        overflow: hidden;
-
-        &__label {
-            padding: $gap / 2 $gap;
-            background-color: $color-accent;
-        }
-
-        &__form {
-            text-align: center;
-            padding: $gap;
-            background-color: lighten($color: $color-gray, $amount: 3%);
-
-            .input-wrapper {
-                .login {
-                    padding-left: $gap;
-                    height: 40px;
-                    width: 253px;
-                    border: 1px solid darken($color: $color-gray, $amount: 20%);
-                    border-radius: 5px;
-
-                    @include lg-md {
-                        width: 190px;
-                    }
-
-                    @include md-sm {
-                        width: 700px;
-                    }
-
-                    @include sm-xs {
-                        width: 495px;
-                    }
-
-                    @include xs {
-                        width: 276px;
-                    }
-                }
-
-                .password {
-                    margin: $gap 0;
-                    padding-left: $gap;
-                    height: 40px;
-                    width: 253px;
-                    border: 1px solid darken($color: $color-gray, $amount: 20%);
-                    border-radius: 5px;
-
-                    @include lg-md {
-                        width: 190px;
-                    }
-
-                    @include md-sm {
-                        width: 700px;
-                    }
-
-                    @include sm-xs {
-                        width: 495px;
-                    }
-
-                    @include xs {
-                        width: 276px;
-                    }
-                }
-
-                .form-btn {
-                    height: 40px;
-                    width: 272px;
-                    font-size: 1rem;
-                    letter-spacing: 0.1em;
+                .right {
+                    position: absolute;
+                    height: 7px;
+                    width: 25px;
+                    top: calc(50% - 10px);
+                    left: 5px;
                     background-color: $color-light;
-                    border: 1px solid darken($color: $color-gray, $amount: 20%);
-                    border-radius: 5px;
-                    cursor: pointer;
-                    transition: 0.4s;
+                    transform: rotate(-45deg);
+                }
+            }
 
-                    @include lg-md {
-                        width: 210px;
-                    }
+            &__buttonLeft:hover {
+                transform: scale(1.2);
+            }
 
-                    @include md-sm {
-                        width: 717px;
-                    }
+            &__buttonRight {
+                cursor: pointer;
+                position: absolute;
+                top: 0;
+                bottom: 0;
+                right: 0;
+                width: 15%;
+                transition: 0.5s;
 
-                    @include sm-xs {
-                        width: 512px;
-                    }
+                .left {
+                    position: absolute;
+                    height: 7px;
+                    width: 25px;
+                    top: calc(50% + 3px);
+                    right: 5px;
+                    background-color: $color-light;
+                    transform: rotate(135deg);
+                }
 
-                    @include xs {
-                        width: 294px;
+                .right {
+                    position: absolute;
+                    height: 7px;
+                    width: 25px;
+                    top: calc(50% - 10px);
+                    right: 5px;
+                    background-color: $color-light;
+                    transform: rotate(-135deg);
+                }
+            }
+
+            &__buttonRight:hover {
+                transform: scale(1.2);
+            }
+
+            &__slides {
+                width: 100%;
+
+                .slides-item {
+                    height: 390px;
+
+                    &__img {
+                        display: block;
+                        width: 100%;
                     }
                 }
 
-                .form-btn:hover {
-                    background-color: $color-gray;
+                .slides-item::before {
+                    content: "";
+                    position: absolute;
+                    top: 0;
+                    right: 0;
+                    bottom: 0;
+                    left: 0;
+                    background-color: $color-dark;
+                    opacity: 0.4;
+                }
+
+                .active {
+                    display: block;
                 }
             }
         }
-    }
 
-    .sideBar-siteNews {
-        display: block;
-        margin-bottom: $gap * 2;
-        border: 1px solid $color-gray;
-        border-radius: 5px;
-        overflow: hidden;
+        .sideBar-siteNews {
+            display: block;
+            margin-bottom: $gap * 2;
+            border: 1px solid $color-gray;
+            border-radius: 5px;
+            overflow: hidden;
 
-        @include md {
-            display: none;
-        }
+            @include md {
+                display: none;
+            }
 
-        &__label {
-            padding: $gap / 2 $gap;
-            background-color: $color-accent;
-        }
+            &__label {
+                @extend %sidebar-label;
+            }
 
-        &__wrapper {
-            position: relative;
-            padding: $gap / 1.5 $gap;
-            background-color: lighten($color: $color-gray, $amount: 3%);
+            &__wrapper {
+                position: relative;
+                padding: $gap / 1.5 $gap;
+                background-color: lighten($color: $color-gray, $amount: 3%);
 
-            .wrapperItem {
-                display: flex;
+                .wrapperItem {
+                    display: flex;
 
-                .image-wrapper {
-                    &__newsImage {
-                        width: 65px;
-                        border: 4px solid $color-light;
-                        border-radius: 5px;
-                        transition: 0.5s;
-                    }
-                }
-
-                .text-wrapper {
-                    margin: 0 0 0 $gap;
-
-                    &__newsText {
-                        font-size: 0.9rem;
-                        color: $color-primary;
-                        height: 60px;
-                        cursor: pointer;
-                        transition: 0.5s;
-                        overflow: hidden;
+                    .image-wrapper {
+                        &__newsImage {
+                            width: 65px;
+                            border: 4px solid $color-light;
+                            border-radius: 5px;
+                            transition: 0.5s;
+                        }
                     }
 
-                    &__wrapperDate {
-                        display: flex;
-                        justify-content: flex-end;
+                    .text-wrapper {
+                        margin: 0 0 0 $gap;
 
-                        .date {
-                            font-size: 0.8rem;
+                        &__newsText {
+                            font-size: 0.9rem;
                             color: $color-primary;
+                            height: 60px;
+                            cursor: pointer;
+                            transition: 0.5s;
+                            overflow: hidden;
+                        }
+
+                        &__wrapperDate {
+                            display: flex;
+                            justify-content: flex-end;
+
+                            .date {
+                                font-size: 0.8rem;
+                                color: $color-primary;
+                            }
+                        }
+                    }
+                }
+
+                .wrapperItem:hover {
+                    .image-wrapper {
+                        &__newsImage {
+                            border: 4px solid $color-accent;
+                        }
+                    }
+
+                    .text-wrapper {
+                        &__newsText {
+                            color: $color-accent;
                         }
                     }
                 }
             }
 
-            .wrapperItem:hover {
-                .image-wrapper {
-                    &__newsImage {
-                        border: 4px solid $color-accent;
-                    }
-                }
+            &__wrapper::after {
+                content: "";
+                position: absolute;
+                bottom: 0;
+                right: 8%;
+                height: 1px;
+                width: 55%;
+                background-color: darken($color: $color-gray, $amount: 20%);
+            }
 
-                .text-wrapper {
-                    &__newsText {
-                        color: $color-accent;
-                    }
+            &__wrapper:last-child {
+                padding-bottom: $gap / 2;
+
+                &::after {
+                    display: none;
                 }
             }
         }
 
-        &__wrapper::after {
-            content: "";
-            position: absolute;
-            bottom: 0;
-            right: 8%;
-            height: 1px;
-            width: 55%;
-            background-color: darken($color: $color-gray, $amount: 20%);
-        }
+        .sideBar-movieRating {
+            display: block;
+            margin-bottom: $gap * 2;
+            border-radius: 5px;
+            border: 1px solid $color-gray;
+            overflow: hidden;
 
-        &__wrapper:last-child {
-            padding-bottom: $gap / 2;
-
-            &::after {
+            @include md {
                 display: none;
+            }
+
+            &__label {
+                @extend %sidebar-label;
+            }
+
+            &__wrapper {
+                padding: $gap / 1.5 0;
+                background-color: lighten($color: $color-gray, $amount: 3%);
+
+                .content {
+                    display: flex;
+                    justify-content: space-between;
+                    padding: $gap / 1.2;
+                    border-bottom: 1px solid darken($color: $color-gray, $amount: 10%);
+                    background-color: lighten($color: $color-gray, $amount: 3%);
+                    cursor: pointer;
+
+                    .wrapper-name {
+                        &__movieName {
+                            color: $color-primary;
+                        }
+                    }
+
+                    .wrapper-rating {
+                        &__rating {
+                            padding: 0 $gap / 2;
+                            font-size: 0.9rem;
+                            color: $color-light;
+                            border-radius: 20px;
+                            background-color: darken($color: $color-gray, $amount: 50%);
+                        }
+                    }
+                }
+
+                .content:hover {
+                    background-color: $color-accent;
+
+                    .wrapper-name {
+                        &__movieName {
+                            color: $color-light;
+                        }
+                    }
+
+                    .wrapper-rating {
+                        &__rating {
+                            background-color: $color-dark;
+                        }
+                    }
+                }
+            }
+
+            .content:last-child {
+                border-bottom: none;
             }
         }
     }
 
-    .sideBar-movieRating {
-        display: block;
-        margin-bottom: $gap * 2;
-        border-radius: 5px;
-        border: 1px solid $color-gray;
-        overflow: hidden;
-
-        @include md {
-            display: none;
-        }
-
-        &__label {
-            padding: $gap / 2 $gap;
-            background-color: $color-accent;
-        }
-
-        &__wrapper {
-            padding: $gap / 1.5 0;
-            background-color: lighten($color: $color-gray, $amount: 3%);
-
-            .content {
-                display: flex;
-                justify-content: space-between;
-                padding: $gap / 1.2;
-                border-bottom: 1px solid darken($color: $color-gray, $amount: 10%);
-                background-color: lighten($color: $color-gray, $amount: 3%);
-                cursor: pointer;
-
-                .wrapper-name {
-                    &__movieName {
-                        color: $color-primary;
-                    }
-                }
-
-                .wrapper-rating {
-                    &__rating {
-                        padding: 0 $gap / 2;
-                        font-size: 0.9rem;
-                        color: $color-light;
-                        border-radius: 20px;
-                        background-color: darken($color: $color-gray, $amount: 50%);
-                    }
-                }
-            }
-
-            .content:hover {
-                background-color: $color-accent;
-
-                .wrapper-name {
-                    &__movieName {
-                        color: $color-light;
-                    }
-                }
-
-                .wrapper-rating {
-                    &__rating {
-                        background-color: $color-dark;
-                    }
-                }
-            }
-        }
-
-        .content:last-child {
-            border-bottom: none;
-        }
+    .sideBar-FilterSideBar {
+        
     }
 }

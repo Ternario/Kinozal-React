@@ -1,9 +1,9 @@
 import React, {Component} from 'react';
 import Slides from './Slides/Slides';
 
-import knight from '../../../img/the-dark-knight.jpg'
-import doser from '../../../img/doser.jpg'
-import dream from '../../../img/dream-horse.jpg'
+import knight from '../../../../img/the-dark-knight.jpg'
+import doser from '../../../../img/doser.jpg'
+import dream from '../../../../img/dream-horse.jpg'
 
 
 export default class PostSlider extends Component {

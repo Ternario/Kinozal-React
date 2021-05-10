@@ -17,6 +17,12 @@ export default class MoviesData {
         return await res.json();
     };
 
+    getGenresList = async (type) => {
+        const res = await this.getResource(`/${type}`);
+
+        return res.genres.map(this._transformGenres);
+    }
+
     getNewMovies = async (type) => {
         const res = await this.getResource(`/${type}/upcoming`, "&page=1");
 
@@ -56,7 +62,14 @@ export default class MoviesData {
 
         return res.results.map(this._transformVideoItemId);
     };
-    
+
+    _transformGenres(item) {
+        return {
+            id: item.id,
+            name: item.name
+        }
+    }
+
     _transformItem(item) {
         return {
             poster: item.poster_path || item.backdrop_path,

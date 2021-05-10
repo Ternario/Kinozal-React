@@ -23,14 +23,18 @@ export default class ItemContent extends Component {
     };
 
     videoToggler(item) {
-        const { itemVideoList } = this.state;
+        const { itemVideoList, trailer } = this.state;
 
-        const trailer = itemVideoList.filter((itemId) => {
-            return itemId.id === item;
+        if (item === trailer) {
+            return
+        }
+
+        const trailerKey = itemVideoList.filter((itemKey) => {
+            return itemKey.trailer === item;
         });
 
         this.setState({
-            trailer: trailer[0].trailer
+            trailer: trailerKey[0].trailer
         });
 
     };
@@ -40,7 +44,7 @@ export default class ItemContent extends Component {
             return <div
                 key={id}
                 onClick={() => {
-                    this.videoToggler(id);
+                    this.videoToggler(trailer);
                 }}
                 className={this.state.trailer === trailer ? "name active" : "name"}>
                 {name}
@@ -67,7 +71,7 @@ export default class ItemContent extends Component {
                     <div className="description">{overview}</div>
                 </div>
                 <div className="itemDetails-content__trailer">
-                    <div className="title" >Trailers: </div>
+                    <div className="title" >Trailers</div>
                     <div className="trailer-wrapper">
                         {items}
                     </div>

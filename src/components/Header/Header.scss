@@ -45,39 +45,33 @@
     .header-navbar {
         display: flex;
         justify-content: space-between;
-        padding: 0 $gap;
+        align-items: center;
+        padding: 0 70px;
         margin: 0 auto;
         height: 66px;
-        width: 1170px;
 
         @include lg-md {
-            width: 970px;
+            padding: 0 40px;
         }
 
         @include md-sm {
-            width: 750px;
+            padding: 0 30px;
         }
 
         @include sm-xs {
-            justify-content: center;
-            align-items: center;
-            padding: 0 $gap;
+            padding: 0 40px;
             margin: 0 auto;
-            width: 546px;
         }
 
         @include xs {
-            justify-content: center;
-            align-items: center;
-            padding: 0 $gap;
+            padding: 0 20px;
             margin: 0 auto;
-            width: 328px;
         }
 
         &__btn {
             display: none;
             justify-content: center;
-            padding: $gap / 2.5;
+            padding: 7px;
             width: 35px;
             border: 1px solid $color-gray;
             border-radius: 4px;
@@ -109,7 +103,9 @@
             }
         }
 
-        &__info {
+        &__menu {
+            display: flex;
+
             @include sm-xs {
                 display: none;
             }
@@ -118,48 +114,89 @@
                 display: none;
             }
 
-            .info-item {
-                display: flex;
+            .itemMenu {
+                margin: $gap / 2;
+                padding: $gap;
+                color: $color-light;
+                border-radius: 5px;
+                text-decoration: none;
+                transition: 0.5s;
+                cursor: pointer;
+            }
 
-                .itemInfo {
-                    margin: $gap / 2;
-                    padding: $gap;
-                    color: $color-light;
-                    border-radius: 5px;
-                    transition: 0.5s;
-                    cursor: pointer;
-                }
-
-                .itemInfo:hover {
-                    background-color: $color-primary;
-                }
+            .itemMenu:hover {
+                background-color: $color-primary;
             }
         }
 
-        &__menu {
-            @include sm-xs {
-                display: none;
-            }
-
+        &__info {
+            display: flex;
             @include xs {
                 display: none;
             }
 
-            .menu-item {
-                display: flex;
+            .itemInfo {
+                margin: $gap / 2;
+                padding: 15px;
+                color: $color-light;
+                border-radius: 5px;
+                transition: 0.5s;
+                cursor: pointer;
 
-                .itemMenu {
-                    margin: $gap / 2;
-                    padding: $gap;
-                    color: $color-light;
-                    border-radius: 5px;
-                    text-decoration: none;
-                    transition: 0.5s;
-                    cursor: pointer;
+                @include sm-xs {
+                    margin: $gap / 4;
+                    padding: 10px;
+                }
+            }
+
+            .itemInfo:hover {
+                background-color: $color-primary;
+            }
+        }
+
+        &__searchPanel {
+            .wrapper-form {
+                display: flex;
+                border-radius: 5px;
+                overflow: hidden;
+
+                .inputSearch {
+                    padding-left: $gap;
+                    height: 30px;
+                    width: 300px;
+                    border: none;
+                    outline: none;
+
+                    @include lg-md {
+                        width: 300px;
+                    }
+
+                    @include md-sm {
+                        width: 200px;
+                    }
+
+                    @include sm-xs {
+                        width: 200px;
+                    }
+
+                    @include xs {
+                        width: 200px;
+                    }
                 }
 
-                .itemMenu:hover {
-                    background-color: $color-primary;
+                .searchBtn {
+                    vertical-align: middle;
+                    width: 50px;
+                    border: none;
+                    outline: none;
+                    border-left: 1px solid darken($color: $color-gray, $amount: 20%);
+                    background-color: $color-light;
+                    cursor: pointer;
+                    transition: 0.4s;
+                }
+
+                .searchBtn:hover {
+                    background-color: $color-accent;
                 }
             }
         }
