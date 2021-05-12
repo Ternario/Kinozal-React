@@ -22,7 +22,14 @@ export default class App extends Component {
     service = new MoviesData();
 
     state = {
-        sideBar: "movie",
+        sideBar: "main",
+        routePath: "movie",
+        filters: {
+            page: 1,
+            releaseYear: "",
+            sort_by: "popularity.desc",
+            genres: ""
+        },
         dataNews: [
             { id: 1, image: image, title: "We launched a new service - KinoMonster", date: "April 27, 2019" },
             { id: 2, image: image, title: "New functionality added to the site", date: "August 15, 2019" },
@@ -47,7 +54,30 @@ export default class App extends Component {
             { id: 274856, profile: "https://media.istockphoto.com/photos/businessman-silhouette-as-avatar-or-default-profile-picture-picture-id476085198?k=6&m=476085198&s=170667a&w=0&h=7XdJ-qzwSni92-B7nN6TlRF_u8d50RcA8adlGKLIDYc=", name: "Serg_Frost", date: "22.03.2021, 18:18:12", comment: "I love this show. Its chic tube atmosphere and really legendary humor. And I'm even glad that I got on him at a time when I was still waiting for several seasons, from this he is even more dear and beloved. Forever I fell in love with these characters and their actors)). And never give up, even if you're late" },
             { id: 317853, profile: "https://media.istockphoto.com/photos/businessman-silhouette-as-avatar-or-default-profile-picture-picture-id476085198?k=6&m=476085198&s=170667a&w=0&h=7XdJ-qzwSni92-B7nN6TlRF_u8d50RcA8adlGKLIDYc=", name: "Harlan", date: "21.03.2021, 15:45:33", comment: "Love for life!) I can look for days and I know by heart) In the most difficult times thisfilm were there! And during partings, and crisis, illness, quarantine, and when real friends betrayed! Turn on - and warmth in your soul! I have been watching the series since my school days, the best voice acting for me is Ukrainian! I advise everyone" }
         ]
-    }
+    };
+
+    changePathSidebar = (item) => {
+        this.setState({
+            sideBar: item
+        });
+    };
+
+    changePathItems = (item) => {
+        this.setState({
+            routePath: item
+        });
+    };
+
+    onChangeFilters = (e) => {
+
+        console.log(e.target.name, e.target.value)
+        this.setState({
+            filters: {
+                ...this.state.filters,
+                [e.target.name]: e.target.value
+            }
+        });
+    };
 
     deliteComment = (id) => {
         this.setState(({ comments }) => {
@@ -62,14 +92,14 @@ export default class App extends Component {
                 comments: newComments
             }
         });
-    }
+    };
 
     getNumber() {
         const min = Math.ceil(10000);
         const max = Math.floor(999999);
 
         return Math.floor(Math.random() * (max - min)) + min;
-    }
+    };
 
     getUnicId(getNumber) {
         const { comments } = this.state;
@@ -81,7 +111,7 @@ export default class App extends Component {
         })
 
         return flag ? this.getUnicId(this.getNumber) : randomNumber;
-    }
+    };
 
     addComment = (name, date, comment) => {
         const id = this.getUnicId(this.getNumber);
@@ -101,18 +131,26 @@ export default class App extends Component {
                 comments: newArr
             }
         });
-    }
+    };
 
     render() {
 
-        const { sideBar, dataNews, ratingMovie, movieNews, comments } = this.state;
+        const { sideBar, routePath, filters, dataNews, ratingMovie, movieNews, comments } = this.state;
 
         return (
             <Router>
                 <div className="app">
-                    <Header />
+
+                    <Header changePathSidebar={this.changePathSidebar} changePathItems={this.changePathItems} />
+
                     <div className="container">
-                        <SideBar getGenresList={this.service.getGenresList} sideBar={sideBar} dataNews={dataNews} ratingMovie={ratingMovie} autorization={this.autorization} />
+                        <SideBar
+                            getGenresList={this.service.getGenresList}
+                            filters={filters}
+                            onChangeFilters={this.onChangeFilters}
+                            sideBar={sideBar} dataNews={dataNews}
+                            ratingMovie={ratingMovie}
+                        />
 
                         <Route path="/" exact component={() =>
                             <Main
@@ -125,27 +163,28 @@ export default class App extends Component {
 
                         <Route path="/movies" exact component={() =>
                             <ItemsWrapper
+                                filters={filters}
                                 title={"Movies"}
-                                type={"movie"}
-                                getData={this.service.getItems}
+                                getData={this.service.discoverMovie}
                             />
                         } />
 
                         <Route path="/tv" exact component={() =>
                             <ItemsWrapper
+                                filters={filters}
                                 title={"Tv Shows"}
                                 type={"tv"}
-                                getData={this.service.getItems}
+                                getData={this.service.discoverTv}
                             />
                         } />
 
-                        <Route path={"/:type/:id"} render={
+                        <Route path={`/${routePath}/:id`} render={
                             ({ match }) => {
-                                const { id, type } = match.params;
+                                const { id } = match.params;
 
                                 return <ItemDetails
                                     itemId={id}
-                                    type={type}
+                                    type={routePath}
                                     comments={comments}
                                     getData={this.service.getItemById}
                                     getVideoData={this.service.getItemMovieById}
@@ -155,11 +194,12 @@ export default class App extends Component {
                             }
                         } />
 
-
                     </div>
+
                     <Footer />
+
                 </div>
             </Router>
         );
-    }
-}
+    };
+};

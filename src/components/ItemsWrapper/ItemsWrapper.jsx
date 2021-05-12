@@ -6,7 +6,7 @@ export default class ItemsWrapper extends Component {
 
     render() {
 
-        const { title, type, getData } = this.props;
+        const { title, getData, filters } = this.props;
 
         return (
             <div className="sectionWrapper">
@@ -14,7 +14,7 @@ export default class ItemsWrapper extends Component {
                     <h2 className="label">{title}</h2>
                 </div>
                 <div className="sectionWrapper-items">
-                    <Items title={title} type={type} getData={getData} />
+                    <Items title={title} getData={getData} filters={filters} />
                 </div>
             </div>
         );

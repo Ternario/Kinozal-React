@@ -3,11 +3,11 @@ import './Header.scss';
 import Logo from './Logo/Logo';
 import Navbar from './Navbar/Navbar';
 
-const Header = () => {
+const Header = ({changePathSidebar, changePathItems}) => {
     return (
         <div className="header">
             <Logo />
-            <Navbar />
+            <Navbar changePathSidebar={changePathSidebar} changePathItems={changePathItems} />
         </div>
     );
 }

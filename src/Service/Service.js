@@ -4,9 +4,9 @@ export default class MoviesData {
         this._apiKey = "?api_key=f78065abe3763cb2694006821dbaca97";
     }
 
-    async getResource(url, sortBy) {
+    async getDiscoverItems(url, page, releaseYear, sortBy, genres) {
 
-        const path = sortBy ? `${this._apiBase}${url}${this._apiKey}${sortBy}` : `${this._apiBase}${url}${this._apiKey}`
+        const path = `${this._apiBase}${url}${this._apiKey}&page=${page}${releaseYear}&sort_by=${sortBy}${genres}`;
 
         const res = await fetch(path);
 
@@ -17,14 +17,25 @@ export default class MoviesData {
         return await res.json();
     };
 
+    async getItems(url) {
+        const path = `${this._apiBase}${url}${this._apiKey}`
+        const res = await fetch(path);
+
+        if (!res.ok) {
+            throw new Error(`Could not Fetch ${path}, status ${res.status}`);
+        };
+
+        return await res.json();
+    }
+
     getGenresList = async (type) => {
-        const res = await this.getResource(`/${type}`);
+        const res = await this.getItems(`/genre/${type}/list`);
 
         return res.genres.map(this._transformGenres);
     }
 
-    getNewMovies = async (type) => {
-        const res = await this.getResource(`/${type}/upcoming`, "&page=1");
+    getNewMovies = async () => {
+        const res = await this.getItems("/movie/upcoming");
 
         const dataArray = res.results.map((item) => {
 
@@ -38,26 +49,34 @@ export default class MoviesData {
         });
     };
 
-    getTopMovies = async (type) => {
-        const res = await this.getResource(`/${type}/top_rated`, "&page=1");
+    getTopMovies = async () => {
+        const res = await this.getItems("/movie/top_rated");
 
         return res.results.map(this._transformItem);
     };
 
-    getItems = async (type) => {
-        const res = await this.getResource(`/discover/${type}`, "&page=1");
+    discoverMovie = async (page, releaseYear, sortBy, genre) => {
+
+        const res = await this.getDiscoverItems(`/discover/movie`, page,`&primary_release_year=${releaseYear}`, sortBy, genre);
+
+        return res.results.map(this._transformItem);
+    };
+
+    discoverTv = async (page, releaseYear, sortBy, genre) => {
+
+        const res = await this.getDiscoverItems(`/discover/tv`, page,`&first_air_date_year=${releaseYear}`, sortBy, genre);
 
         return res.results.map(this._transformItem);
     };
 
     getItemById = async (type, id) => {
-        const res = await this.getResource(`/${type}/${id}`);
+        const res = await this.getItems(`/${type}/${id}`);
 
         return this._transformItemId(res);
     };
 
     getItemMovieById = async (type, id) => {
-        const res = await this.getResource(`/${type}/${id}/videos`);
+        const res = await this.getItems(`/${type}/${id}/videos`);
         // if type === tv ?
 
         return res.results.map(this._transformVideoItemId);

@@ -11,15 +11,16 @@ export default class Section extends Component {
     };
 
     componentDidUpdate(prevProps) {
-        if (this.props.title !== prevProps.title) {
+        if (this.props.filters.sort_by !== prevProps.filters.sort_by &&
+            this.props.filters.releaseYear !== prevProps.filters.releaseYear) {
             this.getMovies();
         }
     }
 
     getMovies() {
-        const { type, getData } = this.props;
+        const { getData, filters: { page, releaseYear, sort_by, genres } } = this.props;
 
-        getData(type)
+        getData(page, releaseYear, sort_by, genres)
             .then((itemList) => {
                 this.setState({
                     itemList
