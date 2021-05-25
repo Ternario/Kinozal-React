@@ -6,7 +6,7 @@ import FilterSideBar from './FiltersSideBar/FiltersSideBar'
 export default class SideBar extends Component {
     state = {
         sideBar: ""
-    }
+    };
 
     componentDidMount() {
         this.toggleSideBar();
@@ -15,15 +15,15 @@ export default class SideBar extends Component {
     componentDidUpdate(prevProps) {
         if (this.props.sideBar !== prevProps.sideBar) {
             this.toggleSideBar()
-        }
-    }
+        };
+    };
 
     toggleSideBar() {
         const { sideBar } = this.props;
 
         this.setState({
             sideBar
-        })
+        });
     };
 
 
@@ -31,7 +31,7 @@ export default class SideBar extends Component {
 
         const { sideBar } = this.state;
 
-        const { filters, onChangeFilters, getGenresList, dataNews, ratingMovie } = this.props;
+        const { filters, onChangeFilters, onChangeGenres, getGenresList, dataNews, ratingMovie } = this.props;
 
         if (sideBar === "") {
             return <div>Loading...</div>
@@ -39,7 +39,7 @@ export default class SideBar extends Component {
 
         const item = sideBar === "main"
             ? <MainSideBar dataNews={dataNews} ratingMovie={ratingMovie} />
-            : <FilterSideBar filters={filters} onChangeFilters={onChangeFilters} getGenresList={getGenresList} sideBar={sideBar} />;
+            : <FilterSideBar sideBar={sideBar} filters={filters} getGenresList={getGenresList} onChangeFilters={onChangeFilters} onChangeGenres={onChangeGenres} />;
 
         return (
             <div className="sideBar">

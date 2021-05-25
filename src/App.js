@@ -56,27 +56,35 @@ export default class App extends Component {
         ]
     };
 
-    changePathSidebar = (item) => {
+    onChangePath = (sideBar,  routePath) => {
         this.setState({
-            sideBar: item
-        });
-    };
-
-    changePathItems = (item) => {
-        this.setState({
-            routePath: item
-        });
-    };
-
+            sideBar,
+            routePath,
+            filters: {
+                page: 1,
+                releaseYear: "",
+                sort_by: "popularity.desc",
+                genres: ""
+            }
+        })
+    }
+    
     onChangeFilters = (e) => {
-
-        console.log(e.target.name, e.target.value)
         this.setState({
             filters: {
                 ...this.state.filters,
                 [e.target.name]: e.target.value
             }
         });
+    };
+
+    onChangeGenres = (items) => {
+        this.setState({
+            filters: {
+                ...this.state.filters,
+                genres: items
+            }
+        })
     };
 
     deliteComment = (id) => {
@@ -141,30 +149,32 @@ export default class App extends Component {
             <Router>
                 <div className="app">
 
-                    <Header changePathSidebar={this.changePathSidebar} changePathItems={this.changePathItems} />
+                    <Header onChangePath={this.onChangePath} />
 
                     <div className="container">
                         <SideBar
-                            getGenresList={this.service.getGenresList}
                             filters={filters}
+                            getGenresList={this.service.getGenresList}
                             onChangeFilters={this.onChangeFilters}
+                            onChangeGenres={this.onChangeGenres}
                             sideBar={sideBar} dataNews={dataNews}
                             ratingMovie={ratingMovie}
                         />
 
                         <Route path="/" exact component={() =>
                             <Main
-                                type={"movie"}
+                                filters={filters}
+                                type={routePath}
                                 getNewMovies={this.service.getNewMovies}
-                                getTopMovies={this.service.getTopMovies}
                                 movieNews={movieNews}
                             />
                         } />
 
-                        <Route path="/movies" exact component={() =>
+                        <Route path="/movie" exact component={() =>
                             <ItemsWrapper
                                 filters={filters}
                                 title={"Movies"}
+                                type={routePath}
                                 getData={this.service.discoverMovie}
                             />
                         } />
@@ -173,12 +183,12 @@ export default class App extends Component {
                             <ItemsWrapper
                                 filters={filters}
                                 title={"Tv Shows"}
-                                type={"tv"}
+                                type={routePath}
                                 getData={this.service.discoverTv}
                             />
                         } />
 
-                        <Route path={`/${routePath}/:id`} render={
+                        <Route path={`/:type/:id`} render={
                             ({ match }) => {
                                 const { id } = match.params;
 

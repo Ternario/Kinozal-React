@@ -11,11 +11,15 @@ export default class Section extends Component {
     };
 
     componentDidUpdate(prevProps) {
-        if (this.props.filters.sort_by !== prevProps.filters.sort_by &&
-            this.props.filters.releaseYear !== prevProps.filters.releaseYear) {
+        if (this.props.filters.sort_by !== prevProps.filters.sort_by
+            &&
+            this.props.filters.releaseYear !== prevProps.filters.releaseYear
+            &&
+            this.props.filters.genres !== prevProps.filters.genres
+        ) {
             this.getMovies();
-        }
-    }
+        };
+    };
 
     getMovies() {
         const { getData, filters: { page, releaseYear, sort_by, genres } } = this.props;
@@ -26,9 +30,7 @@ export default class Section extends Component {
                     itemList
                 });
             });
-
-
-    }
+    };
 
     renderItems = (arr) => {
         return arr.map(({ id, poster, title, date, rating }) => {
@@ -50,7 +52,7 @@ export default class Section extends Component {
 
                     </div>
                 </div>
-            )
+            );
         });
     };
 
@@ -60,7 +62,7 @@ export default class Section extends Component {
 
         if (!itemList) {
             return <div>loading...</div>
-        }
+        };
 
         const items = this.renderItems(itemList);
 
@@ -69,5 +71,5 @@ export default class Section extends Component {
                 {items}
             </>
         );
-    }
-}
+    };
+};

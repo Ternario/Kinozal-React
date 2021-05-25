@@ -10,14 +10,14 @@ export default class FilterSideBar extends Component {
     }
 
     componentDidMount() {
-        this.getDate()
-    }
+        this.getDate();
+    };
 
     componentDidUpdate(prevProps) {
         if (this.props.sideBar !== prevProps.sideBar) {
-            this.getDate()
-        }
-    }
+            this.getDate();
+        };
+    };
 
     getDate() {
         const { getGenresList, sideBar } = this.props;
@@ -26,26 +26,25 @@ export default class FilterSideBar extends Component {
             .then((itemList) => {
                 this.setState({
                     itemList
-                })
-            })
-    }
-
+                });
+            });
+    };
 
     render() {
 
         const { itemList } = this.state;
 
-        const { filters, onChangeFilters } = this.props
+        const { filters, onChangeFilters, onChangeGenres } = this.props;
 
         if (!itemList) {
-            return <div>Loading...</div>
-        }
+            return <div>Loading...</div>;
+        };
 
         return (
             <div className="sideBar-FilterSideBar">
                 <SortBy filters={filters} onChangeFilters={onChangeFilters} />
                 <ReleaseYear filters={filters} onChangeFilters={onChangeFilters} />
-                <FilterGenres itemList={itemList} />
+                <FilterGenres itemList={itemList} onChangeGenres={onChangeGenres} />
             </div>
         );
     };

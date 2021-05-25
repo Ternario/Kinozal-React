@@ -1,23 +1,22 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const Menu = ({ changePathSidebar,changePathItems }) => {
+const Menu = ({ onChangePath }) => {
     return (
         <div className="header-navbar__menu">
             <Link
                 to="/"
                 className="itemMenu"
                 onClick={() => {
-                    changePathSidebar("main");
+                    onChangePath("main", "movie")
                 }}>
                 Main page
             </Link>
             <Link
-                to="/movies/"
+                to="/movie/"
                 className="itemMenu"
                 onClick={() => {
-                    changePathSidebar("movie");
-                    changePathItems("movie");
+                    onChangePath("movie", "movie")
                 }}>
                 Movies
             </Link>
@@ -25,8 +24,7 @@ const Menu = ({ changePathSidebar,changePathItems }) => {
                 to="/tv/"
                 className="itemMenu"
                 onClick={() => {
-                    changePathSidebar("tv");
-                    changePathItems("tv");
+                    onChangePath("tv", "tv")
                 }}>
                 TV Shows
             </Link>

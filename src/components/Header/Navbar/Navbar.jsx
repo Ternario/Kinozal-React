@@ -4,11 +4,11 @@ import SearchPanel from './SearchPanel/SearchPanel';
 import Info from './Info/Info';
 import Btn from './Btn/Btn';
 
-const Navbar = ({ changePathSidebar, changePathItems }) => {
+const Navbar = ({ onChangePath }) => {
     return (
         <div className="header-navbar">
             <Btn />
-            <Menu changePathSidebar={changePathSidebar} changePathItems={changePathItems} />
+            <Menu onChangePath={onChangePath} />
             <Info />
             <SearchPanel />
         </div>

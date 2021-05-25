@@ -11,7 +11,7 @@ export default class MoviesData {
         const res = await fetch(path);
 
         if (!res.ok) {
-            throw new Error(`Could not Fetch ${this._apiBase}${url}${this._apiKey}${sortBy}, status ${res.status}`);
+            throw new Error(`Could not Fetch ${path}, status ${res.status}`);
         };
 
         return await res.json();
@@ -49,11 +49,11 @@ export default class MoviesData {
         });
     };
 
-    getTopMovies = async () => {
-        const res = await this.getItems("/movie/top_rated");
+    // getTopMovies = async () => {
+    //     const res = await this.getItems("/movie/top_rated");
 
-        return res.results.map(this._transformItem);
-    };
+    //     return res.results.map(this._transformItem);
+    // };
 
     discoverMovie = async (page, releaseYear, sortBy, genre) => {
 
@@ -85,9 +85,10 @@ export default class MoviesData {
     _transformGenres(item) {
         return {
             id: item.id,
-            name: item.name
-        }
-    }
+            name: item.name,
+            checked: false
+        };
+    };
 
     _transformItem(item) {
         return {

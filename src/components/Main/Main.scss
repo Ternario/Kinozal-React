@@ -1,6 +1,6 @@
-@import './../../Variables.scss';
-@import './../../Mixins-media.scss';
-@import './../../common.scss';
+@import "./../../Variables.scss";
+@import "./../../Mixins-media.scss";
+@import "./../../common.scss";
 
 .main {
     grid-area: m;
@@ -14,14 +14,12 @@
         position: relative;
 
         .sectionWrapper-label {
-
-
             .label-new {
                 margin-top: -$gap;
                 font-size: 3rem;
                 font-weight: normal;
                 color: lighten($color: $color-dark, $amount: 10%);
-                letter-spacing: .1em;
+                letter-spacing: 0.1em;
 
                 @include sm-xs {
                     margin-top: -$gap / 2;
@@ -58,13 +56,13 @@
                 font-size: 3rem;
                 font-weight: normal;
                 color: lighten($color: $color-dark, $amount: 10%);
-                letter-spacing: .1em;
-    
+                letter-spacing: 0.1em;
+
                 @include sm-xs {
                     margin-top: -$gap / 2;
                     font-size: 2rem;
                 }
-    
+
                 @include xs {
                     margin-top: -$gap / 2;
                     margin-left: $gap * 2.5;
@@ -72,7 +70,7 @@
                     letter-spacing: 0;
                 }
             }
-    
+
             .label-top::before {
                 content: "";
                 position: absolute;
@@ -80,16 +78,16 @@
                 width: 30px;
                 margin-top: $gap;
                 border-bottom: 3px solid $color-accent;
-    
+
                 @include sm-xs {
                     margin-top: $gap / 2;
                 }
-    
+
                 @include xs {
                     margin-top: $gap / 1.8;
                 }
             }
-    
+
             .label-top::after {
                 content: "";
                 position: absolute;
@@ -97,19 +95,17 @@
                 margin-left: $gap / 1.5;
                 width: 100%;
                 border-bottom: 3px solid $color-accent;
-    
+
                 @include sm-xs {
                     margin-top: $gap * 2;
                 }
-    
+
                 @include xs {
                     margin-top: $gap * 2;
                     margin-left: $gap / 2;
                 }
             }
         }
-
-        
     }
 
     .main-movieNews {
@@ -124,21 +120,19 @@
             margin-left: 0;
         }
 
-
         &__label {
-
             .label {
                 margin: -$gap 0 $gap ($gap * 2.5);
                 font-size: 3rem;
                 font-weight: normal;
                 color: lighten($color: $color-dark, $amount: 10%);
-                letter-spacing: .1em;
-    
+                letter-spacing: 0.1em;
+
                 @include sm-xs {
                     margin-top: -$gap / 2;
                     font-size: 2rem;
                 }
-    
+
                 @include xs {
                     margin-top: -$gap / 2;
                     margin-left: $gap * 2.5;
@@ -153,11 +147,11 @@
                 width: 30px;
                 margin-top: $gap;
                 border-bottom: 3px solid $color-accent;
-    
+
                 @include sm-xs {
                     margin-top: $gap / 2;
                 }
-    
+
                 @include xs {
                     margin-top: $gap / 1.8;
                 }
@@ -170,11 +164,11 @@
                 margin-left: $gap / 1.5;
                 width: 100%;
                 border-bottom: 3px solid $color-accent;
-    
+
                 @include sm-xs {
                     margin-top: $gap * 2;
                 }
-    
+
                 @include xs {
                     margin-top: $gap * 2;
                     margin-left: $gap / 2;
@@ -183,7 +177,6 @@
         }
 
         &__wrapper {
-            
             .news {
                 margin-bottom: $gap * 3;
 
@@ -202,7 +195,7 @@
                     }
 
                     @include sm {
-                        font-size: .8rem;
+                        font-size: 0.8rem;
                     }
                 }
 
@@ -215,7 +208,7 @@
 
                     &__poster {
                         text-align: center;
-                        padding: $gap / 3 0 ;
+                        padding: $gap / 3 0;
                         height: 150px;
                         width: 240px;
                         border: 1px solid $color-gray;
@@ -226,14 +219,14 @@
                         @include sm-xs {
                             height: 300px;
                             width: 100%;
-                            padding: $gap / 4 0 ;
+                            padding: $gap / 4 0;
                             margin-bottom: $gap / 2;
                         }
 
                         @include xs {
                             height: 220px;
                             width: 100%;
-                            padding: $gap / 4 0 ;
+                            padding: $gap / 4 0;
                             margin-bottom: $gap / 2;
                         }
 
@@ -267,7 +260,7 @@
                                 font-size: 1rem;
 
                                 @include sm {
-                                    font-size: .9rem;
+                                    font-size: 0.9rem;
                                 }
                             }
                         }
@@ -276,7 +269,7 @@
                             display: flex;
                             justify-content: flex-end;
                             width: 100%;
-    
+
                             .btn {
                                 padding: $gap / 3 $gap;
                                 border: 1px solid $color-accent;
@@ -292,22 +285,18 @@
 
             .news:hover {
                 .news-title {
-
                     .title {
                         color: $color-accent;
                     }
                 }
 
                 .news-wrapper {
-
                     &__poster {
                         background-color: $color-accent;
                     }
 
                     &__content {
-
                         .content-btn {
-    
                             .btn {
                                 color: $color-light;
                                 background-color: $color-accent;
