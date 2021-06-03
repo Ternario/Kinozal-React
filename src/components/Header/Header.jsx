@@ -3,11 +3,11 @@ import './Header.scss';
 import Logo from './Logo/Logo';
 import Navbar from './Navbar/Navbar';
 
-const Header = ({ onChangePath }) => {
+const Header = ({ filterReset }) => {
     return (
         <div className="header">
             <Logo />
-            <Navbar onChangePath={onChangePath} />
+            <Navbar filterReset={filterReset} />
         </div>
     );
 }

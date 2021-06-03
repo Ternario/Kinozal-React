@@ -4,11 +4,11 @@ import SearchPanel from './SearchPanel/SearchPanel';
 import Info from './Info/Info';
 import Btn from './Btn/Btn';
 
-const Navbar = ({ onChangePath }) => {
+const Navbar = ({ filterReset }) => {
     return (
         <div className="header-navbar">
             <Btn />
-            <Menu onChangePath={onChangePath} />
+            <Menu filterReset={filterReset} />
             <Info />
             <SearchPanel />
         </div>

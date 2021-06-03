@@ -22,8 +22,8 @@ export default class App extends Component {
     service = new MoviesData();
 
     state = {
-        sideBar: "main",
-        routePath: "movie",
+        sideBarPath: null,
+        genresList: null,
         filters: {
             page: 1,
             releaseYear: "",
@@ -56,10 +56,73 @@ export default class App extends Component {
         ]
     };
 
-    onChangePath = (sideBar,  routePath) => {
+    componentDidUpdate(prevProps, prevState) {
+        if (prevState.genresList !== this.state.genresList) {
+            this.toggleGenres();
+        }
+    }
+
+    getGenresData = (type) => {
+
+        this.service.getGenresList(type)
+            .then((genresList) => {
+                this.setState({
+                    sideBarPath: type,
+                    genresList
+                });
+            });
+    };
+
+    checkSwitcher = (e) => {
+
+        const id = Number(e.target.id)
+        const checked = e.target.checked;
+
+        const { genresList } = this.state;
+
+        const itemIndex = genresList.findIndex((item) => {
+            return item.id === id;
+        })
+
+        const isChecked = genresList[itemIndex];
+        isChecked.checked = checked
+
+        const newItemList = [...genresList.slice(0, itemIndex), isChecked, ...genresList.slice(itemIndex + 1)];
+
+        return this.setState({
+            genresList: newItemList
+        })
+    }
+
+    toggleGenres() {
+        const { genresList } = this.state;
+
+        const checkedItems = genresList.filter((item) => {
+            return item.checked
+        });
+
+        let genresId = "";
+
+        checkedItems.forEach((item) => {
+            if (!item) {
+                genresId = "";
+            };
+
+            genresId += `&with_genres=${item.id}`;
+        })
+
         this.setState({
-            sideBar,
-            routePath,
+            filters: {
+                ...this.state.filters,
+                genres: genresId
+            }
+        })
+
+    }
+
+    filterReset = () => {
+        this.getGenresData(this.state.sideBarPath)
+        this.setState({
             filters: {
                 page: 1,
                 releaseYear: "",
@@ -68,7 +131,7 @@ export default class App extends Component {
             }
         })
     }
-    
+
     onChangeFilters = (e) => {
         this.setState({
             filters: {
@@ -76,15 +139,6 @@ export default class App extends Component {
                 [e.target.name]: e.target.value
             }
         });
-    };
-
-    onChangeGenres = (items) => {
-        this.setState({
-            filters: {
-                ...this.state.filters,
-                genres: items
-            }
-        })
     };
 
     deliteComment = (id) => {
@@ -143,28 +197,30 @@ export default class App extends Component {
 
     render() {
 
-        const { sideBar, routePath, filters, dataNews, ratingMovie, movieNews, comments } = this.state;
+        const { sideBarPath, genresList, filters, dataNews, ratingMovie, movieNews, comments } = this.state;
 
         return (
             <Router>
                 <div className="app">
 
-                    <Header onChangePath={this.onChangePath} />
+                    <Header filterReset={this.filterReset} />
 
                     <div className="container">
                         <SideBar
+                            sideBarPath={sideBarPath}
+                            genresList={genresList}
                             filters={filters}
-                            getGenresList={this.service.getGenresList}
                             onChangeFilters={this.onChangeFilters}
-                            onChangeGenres={this.onChangeGenres}
-                            sideBar={sideBar} dataNews={dataNews}
+                            checkSwitcher={this.checkSwitcher}
+                            dataNews={dataNews}
                             ratingMovie={ratingMovie}
                         />
 
                         <Route path="/" exact component={() =>
                             <Main
+                                sideBarPath={sideBarPath}
                                 filters={filters}
-                                type={routePath}
+                                type={"main"}
                                 getNewMovies={this.service.getNewMovies}
                                 movieNews={movieNews}
                             />
@@ -172,29 +228,33 @@ export default class App extends Component {
 
                         <Route path="/movie" exact component={() =>
                             <ItemsWrapper
+                                sideBarPath={sideBarPath}
                                 filters={filters}
                                 title={"Movies"}
-                                type={routePath}
+                                type={"movie"}
+                                getGenresData={this.getGenresData}
                                 getData={this.service.discoverMovie}
                             />
                         } />
 
                         <Route path="/tv" exact component={() =>
                             <ItemsWrapper
+                                sideBarPath={sideBarPath}
                                 filters={filters}
                                 title={"Tv Shows"}
-                                type={routePath}
+                                type={"tv"}
+                                getGenresData={this.getGenresData}
                                 getData={this.service.discoverTv}
                             />
                         } />
 
-                        <Route path={`/:type/:id`} render={
+                        <Route path={`/${sideBarPath}/:id`} render={
                             ({ match }) => {
                                 const { id } = match.params;
 
                                 return <ItemDetails
                                     itemId={id}
-                                    type={routePath}
+                                    type={sideBarPath}
                                     comments={comments}
                                     getData={this.service.getItemById}
                                     getVideoData={this.service.getItemMovieById}

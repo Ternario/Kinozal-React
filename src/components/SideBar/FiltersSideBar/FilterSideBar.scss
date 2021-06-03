@@ -1,0 +1,51 @@
+@import "./../../../Variables.scss";
+@import "./../../../Mixins-media.scss";
+@import "./../../../extends.scss";
+
+.FilterSideBar {
+    grid-area: s;
+
+    .sideBar-FilterSideBar__wrapper {
+        display: block;
+        margin-bottom: $gap * 2;
+        border-radius: 5px;
+        border: 1px solid $color-gray;
+        overflow: hidden;
+
+        .wrapper-label {
+            .label {
+                @extend %sidebar-label;
+            }
+        }
+
+        .wrapper-select {
+            .select {
+                padding: $gap / 1.5 0;
+                width: 100%;
+                font-size: 1rem;
+                color: $color-primary;
+                border: none;
+                outline: none;
+                background-color: lighten($color: $color-gray, $amount: 3%);
+                cursor: pointer;
+            }
+        }
+
+        .wrapper-items {
+            .item {
+                padding: 7px;
+                border-bottom: 1px solid darken($color: $color-gray, $amount: 10%);
+                background-color: lighten($color: $color-gray, $amount: 3%);
+
+                .selectGenre {
+                    color: $color-primary;
+                    cursor: pointer;
+                }
+            }
+
+            .item:last-child {
+                border-bottom: none;
+            }
+        }
+    }
+}

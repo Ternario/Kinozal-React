@@ -1,31 +1,25 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const Menu = ({ onChangePath }) => {
+const Menu = ({ filterReset }) => {
     return (
         <div className="header-navbar__menu">
             <Link
                 to="/"
                 className="itemMenu"
-                onClick={() => {
-                    onChangePath("main", "movie")
-                }}>
+                onClick={filterReset}>
                 Main page
             </Link>
             <Link
                 to="/movie/"
                 className="itemMenu"
-                onClick={() => {
-                    onChangePath("movie", "movie")
-                }}>
+                onClick={filterReset}>
                 Movies
             </Link>
             <Link
                 to="/tv/"
                 className="itemMenu"
-                onClick={() => {
-                    onChangePath("tv", "tv")
-                }}>
+                onClick={filterReset}>
                 TV Shows
             </Link>
         </div>

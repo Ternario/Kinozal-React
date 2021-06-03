@@ -10,17 +10,6 @@ export default class Section extends Component {
         this.getMovies();
     };
 
-    componentDidUpdate(prevProps) {
-        if (this.props.filters.sort_by !== prevProps.filters.sort_by
-            &&
-            this.props.filters.releaseYear !== prevProps.filters.releaseYear
-            &&
-            this.props.filters.genres !== prevProps.filters.genres
-        ) {
-            this.getMovies();
-        };
-    };
-
     getMovies() {
         const { getData, filters: { page, releaseYear, sort_by, genres } } = this.props;
 

@@ -5,6 +5,12 @@ import Items from '../Items/Items';
 
 export default class Main extends Component {
 
+    // componentDidMount() {
+    //     if (this.props.sideBarPath === null || this.props.sideBarPath !== this.props.type) {
+    //         this.props.getGenresData(this.props.type);
+    //     };
+    // };
+
     render() {
         const { filters, getNewMovies, type } = this.props;
 
