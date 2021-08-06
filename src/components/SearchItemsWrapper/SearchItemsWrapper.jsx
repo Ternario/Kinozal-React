@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import Items from '../Items/Items';
-import './ItemsWrapper.scss'
+import '../SearchItemsWrapper/SearchItemsWrapper.scss'
 
-export default class ItemsWrapper extends Component {
+export default class SearchItemsWrapper extends Component {
 
     state = {
         items: {}
@@ -13,55 +13,63 @@ export default class ItemsWrapper extends Component {
     };
 
     componentDidUpdate(prevProps) {
-        if (this.props.filters !== prevProps.filters) {
+        if (this.props.name !== prevProps.name || this.props.page !== prevProps.page) {
             this.getMovies();
+            console.log(123)
         };
     };
 
     getMovies() {
-        const { getData, type, page, filters: { releaseYear, sort_by, genres } } = this.props;
+        const { getData, name, page, } = this.props;
 
-        if (type !== "main") {
-            getData(page, releaseYear, sort_by, genres)
-                .then((items) => {
-                    this.setState({
-                        items
-                    })
+        this.props.isShowSideBar(false)
+
+        getData(name, page)
+            .then((items) => {
+                this.setState({
+                    items
                 })
-        };
+            })
     };
+
+    componentWillUnmount() {
+        this.props.isShowSideBar(true)
+    };
+
 
     render() {
 
         const { items: { totalPages, results } } = this.state;
 
+
         if (!totalPages && !results) {
             return <div>Loading...</div>
         };
 
-        const { page, filters, type, title, isShowSideBar, changeCurrentPage } = this.props;
+        const { page, filters, name, isShowSideBar, changeCurrentPage } = this.props;
 
         return (
-            <div className="sectionWrapper">
-                <div className="sectionWrapper-label">
-                    <h2 className="label">{title}</h2>
+            <div className="searchSection">
+                <div className="searchSection-label">
+                    <h2 className="label">{name}</h2>
                 </div>
-                <div className="sectionWrapper-items">
+                <div className="searchSection-items">
                     <Items
-                        type={type}
+                        title={name}
+                        type={name}
                         page={page}
                         filters={filters}
                         isShowSideBar={isShowSideBar}
                         results={results}
                     />
                 </div>
-                <div className="sectionWrapper-pagination">
-                    <button className="sectionWrapper-pagination__btn"
+                <div className="searchSection-pagination">
+                    <button className="searchSection-pagination__btn"
                         onClick={() => {
                             changeCurrentPage("prev")
                         }} >Prev</button>
                     <div className="currentPage">{page} of {totalPages}</div>
-                    <button className="sectionWrapper-pagination__btn"
+                    <button className="searchSection-pagination__btn"
                         onClick={() => {
                             changeCurrentPage("next")
                         }} >Next</button>

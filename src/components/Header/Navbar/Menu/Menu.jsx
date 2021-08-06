@@ -7,19 +7,25 @@ const Menu = ({ filterReset }) => {
             <Link
                 to="/"
                 className="itemMenu"
-                onClick={filterReset}>
+                onClick={()=> {
+                    filterReset("main")
+                }}>
                 Main page
             </Link>
             <Link
                 to="/movie/"
                 className="itemMenu"
-                onClick={filterReset}>
+                onClick={()=> {
+                    filterReset("movie")
+                }}>
                 Movies
             </Link>
             <Link
                 to="/tv/"
                 className="itemMenu"
-                onClick={filterReset}>
+                onClick={()=> {
+                    filterReset("tv")
+                }}>
                 TV Shows
             </Link>
         </div>

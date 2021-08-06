@@ -1,58 +1,32 @@
-import React, { Component } from 'react';
-import search from '../../../../img/icons-search.png'
+import React from 'react';
+import search from '../../../../img/icons-search.png';
 
-import { withRouter } from 'react-router-dom';
+const SearchPanel = ({ name, searchItem, getItems,changeFocus }) => {
 
-class SearchPanel extends Component {
 
-    state = {
-        name: ""
-    }
+    return (
+        <div className="header-navbar__searchPanel">
+            <form className="wrapper-form" onSubmit={getItems}>
+                <input
+                    type="search"
+                    className="inputSearch"
+                    placeholder="Site search"
+                    onChange={searchItem}
+                    value={name}
+                    onFocus={()=> {
+                        changeFocus(true)
+                    }}
+                    onBlur={()=> {
+                        changeFocus(false)
+                    }}
+                />
+                <button type="submit" className="searchBtn">
+                    <img src={search} alt="search" className="searchBtn-image" />
+                </button>
+            </form>
+        </div>
+    );
+};
 
-    searchItem = (e) => {
+export default SearchPanel;
 
-        this.setState({
-            name: e.target.value
-        });
-    }
-
-    showSerchItem = (e) => {
-
-        e.preventDefault();
-
-        const { name } = this.state
-
-        if (name === "") {
-            return
-        }
-
-        this.props.history.push(`/search=${name}`)
-
-        this.setState({
-            name: ""
-        });
-    }
-
-    render() {
-
-        const { name } = this.state
-
-        return (
-            <div className="header-navbar__searchPanel">
-                <form className="wrapper-form" onSubmit={this.showSerchItem}>
-                    <input
-                        type="search"
-                        className="inputSearch"
-                        placeholder="Site search"
-                        onChange={this.searchItem}
-                        value={name} />
-                    <button type="submit" className="searchBtn">
-                        <img src={search} alt="search" className="searchBtn-image" />
-                    </button>
-                </form>
-            </div>
-        );
-    }
-}
-
-export default withRouter(SearchPanel);

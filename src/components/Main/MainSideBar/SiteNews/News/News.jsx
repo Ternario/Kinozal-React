@@ -2,7 +2,7 @@ import React from 'react';
 
 const News = ({image, title, date}) => {
     return (
-        <div className="sideBar-siteNews__wrapper">
+        <div className="mainSideBar-siteNews__wrapper">
             <div className="wrapperItem">
                 <div className="image-wrapper">
                     <img src={image} alt="news" className="image-wrapper__newsImage"/>

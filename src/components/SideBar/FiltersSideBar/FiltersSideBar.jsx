@@ -7,11 +7,7 @@ export default class FilterSideBar extends Component {
 
     render() {
 
-        const { genresList, filters, onChangeFilters, checkSwitcher } = this.props;
-
-        if (!genresList) {
-            return <div>Loading...</div>;
-        };
+        const { filters, genresList, onChangeFilters,checkSwitcher } = this.props;
 
         return (
             <div className="sideBar-FilterSideBar">

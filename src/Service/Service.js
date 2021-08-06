@@ -18,7 +18,9 @@ export default class MoviesData {
     };
 
     async getItems(url) {
-        const path = `${this._apiBase}${url}${this._apiKey}`
+
+        const path = `${this._apiBase}${url}${this._apiKey}`;
+
         const res = await fetch(path);
 
         if (!res.ok) {
@@ -26,13 +28,26 @@ export default class MoviesData {
         };
 
         return await res.json();
-    }
+    };
+
+    async searchItem(name, page) {
+
+        const path = `${this._apiBase}/search/multi${this._apiKey}&page=${page}&query=${name}&sort_by=popularity.desc`
+
+        const res = await fetch(path);
+
+        if (!res.ok) {
+            throw new Error(`Could not Fetch ${path}, status ${res.status}`);
+        };
+
+        return await res.json();
+    };
 
     getGenresList = async (type) => {
         const res = await this.getItems(`/genre/${type}/list`);
 
         return res.genres.map(this._transformGenres);
-    }
+    };
 
     getNewMovies = async () => {
         const res = await this.getItems("/movie/upcoming");
@@ -41,7 +56,7 @@ export default class MoviesData {
 
             const newDate = item.release_date.split("", 4).join("");
 
-            return newDate >= 2021 ? this._transformItem(item) : null;
+            return newDate >= 2021 ? this._transformItemmmm(item) : null;
         });
 
         return dataArray.filter((item) => {
@@ -49,24 +64,22 @@ export default class MoviesData {
         });
     };
 
-    // getTopMovies = async () => {
-    //     const res = await this.getItems("/movie/top_rated");
-
-    //     return res.results.map(this._transformItem);
-    // };
-
     discoverMovie = async (page, releaseYear, sortBy, genre) => {
 
-        const res = await this.getDiscoverItems(`/discover/movie`, page,`&primary_release_year=${releaseYear}`, sortBy, genre);
+        const res = await this.getDiscoverItems(`/discover/movie`, page, `&primary_release_year=${releaseYear}`, sortBy, genre);
 
-        return res.results.map(this._transformItem);
+        const trtr = res.results.map(this._transformItemmmm);
+
+        return this._transformItem(res, trtr);
     };
 
     discoverTv = async (page, releaseYear, sortBy, genre) => {
 
-        const res = await this.getDiscoverItems(`/discover/tv`, page,`&first_air_date_year=${releaseYear}`, sortBy, genre);
+        const res = await this.getDiscoverItems(`/discover/tv`, page, `&first_air_date_year=${releaseYear}`, sortBy, genre);
+        
+        const trtr = res.results.map(this._transformItemmmm);
 
-        return res.results.map(this._transformItem);
+        return this._transformItem(res, trtr);
     };
 
     getItemById = async (type, id) => {
@@ -75,12 +88,25 @@ export default class MoviesData {
         return this._transformItemId(res);
     };
 
+    getPersonById = async (id) => {
+        const res = await this.getItems(`/person/${id}`);
+
+        return this._transformPersonId(res);
+    }
+
     getItemMovieById = async (type, id) => {
         const res = await this.getItems(`/${type}/${id}/videos`);
-        // if type === tv ?
 
         return res.results.map(this._transformVideoItemId);
     };
+
+    searchMultiple = async (name, page) => {
+        const res = await this.searchItem(name, page); 
+        
+        const trtr = res.results.map(this._transformItemmmm);
+
+        return this._transformItem(res, trtr);
+    }
 
     _transformGenres(item) {
         return {
@@ -90,13 +116,23 @@ export default class MoviesData {
         };
     };
 
-    _transformItem(item) {
+    _transformItem(item, trtr) {
         return {
-            poster: item.poster_path || item.backdrop_path,
-            title: item.title || item.name,
-            id: item.id,
-            rating: item.vote_average || "await",
-            date: item.release_date || item.first_air_date
+            totalPages: item.total_pages,
+            totalResults: item.total_results,
+            results: trtr
+
+        };
+    };
+
+    _transformItemmmm(item) {
+        return {
+                poster: item.poster_path || item.backdrop_path,
+                title: item.title || item.name,
+                id: item.id,
+                itemsType: item.media_type,
+                rating: item.vote_average,
+                date: item.release_date || item.first_air_date
         };
     };
 
@@ -114,6 +150,19 @@ export default class MoviesData {
             runtime: item.runtime
         };
     };
+
+    _transformPersonId(item) {
+        return {
+            id: item.id,
+            profilePath: item.profile_path,
+            name: item.name,
+            birthday: item.birthday,
+            deathday: item.deathday,
+            placeOfBirth: item.place_of_birth,
+            popularity: item.popularity,
+            imdbId: item.imdb_id,
+        }
+    }
 
     _transformVideoItemId(item) {
         return {

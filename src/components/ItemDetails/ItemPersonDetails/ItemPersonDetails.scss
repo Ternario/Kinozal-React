@@ -1,11 +1,10 @@
-@import "./../../Variables.scss";
-@import "./../../Mixins-media.scss";
-@import "./../../extends";
+@import "./../../../Variables.scss";
+@import "./../../../Mixins-media.scss";
+@import "./../../../extends";
 
 .itemDetails {
     position: relative;
-    grid-area: m;
-    margin-left: $gap * 2;
+    margin: 0 200px;
     overflow: hidden;
 
     @include md {
@@ -89,7 +88,8 @@
             }
 
             .description {
-                margin-bottom: $gap;
+                font-weight: bold;
+                letter-spacing: 0.05rem;
             }
         }
 

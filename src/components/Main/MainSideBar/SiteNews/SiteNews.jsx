@@ -11,8 +11,8 @@ const SiteNews = ({dataNews}) => {
     })
 
     return (
-        <div className="sideBar-siteNews">
-            <div className="sideBar-siteNews__label">
+        <div className="mainSideBar-siteNews">
+            <div className="mainSideBar-siteNews__label">
                 <h3 className="label">Site news</h3>
             </div>
             {elements}

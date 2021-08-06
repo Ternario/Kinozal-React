@@ -9,18 +9,19 @@ import { withRouter } from 'react-router-dom';
 class Items extends Component {
 
     render() {
-        const { getData, filters } = this.props;
+        const { type, page, results, isShowSideBar } = this.props;
 
         return (
 
             <Section
-                onItemSelected={(id, title) => {
-                    this.props.history.push(`${id}-${title}`)
+                page={page}
+                results={results}
+                type={type}
+                isShowSideBar={isShowSideBar}
+                onItemSelected={(type, id, title) => {
+                    this.props.history.push(`/${type}/${id}-${title}`)
                 }}
-                getData={getData}
-                filters={filters}
             />
-
         );
     };
 };

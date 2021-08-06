@@ -1,48 +1,46 @@
 import React, { Component } from 'react';
-import "./ItemDetails.scss"
-import ItemHeader from './ItemHeader/ItemHeader';
-import ItemContent from './ItemContent/ItemContent';
-import ItemComments from './ItemComments/ItemComments'
-import ItemAddComment from './ItemAddComment/ItemAddComment';
+import ItemVideoDetails from './ItemVideoDetails/ItemVideoDetails';
+import ItemPersonDetails from './ItemPersonDetails/ItemPersonDetails'
 
 export default class ItemDetails extends Component {
 
-    state = {
-        itemList: null,
+    componentDidMount() {
+        this.props.isShowSideBar(false)
     };
 
-    componentDidMount() {
-        const { type, itemId, getData } = this.props;
+    componentWillUnmount() {
+        this.props.isShowSideBar(true)
+    };
 
-        getData(type, itemId)
-            .then((itemList) => {
-                this.setState({
-                    itemList
-                });
-            });
-    }
+    renderItems() {
+        const { getData, comments, getVideoData, type, itemId, onDeliteComment, onAddComment, getPerson, getPersonVideoData } = this.props;
+
+        if (type === "person") {
+            return <ItemPersonDetails
+            getPerson={getPerson}
+            getPersonVideoData={getPersonVideoData}
+            />
+        }
+
+        return <ItemVideoDetails
+            type={type}
+            itemId={itemId}
+            getData={getData}
+            getVideoData={getVideoData}
+            comments={comments}
+            onAddComment={onAddComment}
+            onDeliteComment={onDeliteComment}
+        />
+    };
 
     render() {
 
-        const { itemList } = this.state;
-
-        const { comments, getVideoData, type, itemId, onDeliteComment, onAddComment } = this.props;
-
-        const numberOfComments = comments.length;
-
-        if (!itemList) {
-            return <div>loading...</div>
-        }
+        const item = this.renderItems();
 
         return (
-            <div className="itemDetails">
-                <ItemHeader {...itemList} />
-                <ItemContent {...itemList} type={type} itemId={itemId} getVideoData={getVideoData} numberOfComments={numberOfComments} />
-                <div className="itemDetails-footer">
-                    <ItemComments comments={comments} onDeliteComment={onDeliteComment} />
-                    <ItemAddComment onAddComment={onAddComment} />
-                </div>
-            </div>
+            <>
+                {item}
+            </>
         );
     }
 }

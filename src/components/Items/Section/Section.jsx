@@ -7,33 +7,47 @@ export default class Section extends Component {
     };
 
     componentDidMount() {
+
         this.getMovies();
     };
 
-    getMovies() {
-        const { getData, filters: { page, releaseYear, sort_by, genres } } = this.props;
-
-        getData(page, releaseYear, sort_by, genres)
-            .then((itemList) => {
-                this.setState({
-                    itemList
-                });
-            });
+    componentDidUpdate(prevProps) {
+        if (this.props.results !== prevProps.results) {
+            this.getMovies()
+        };
     };
 
+    getMovies() {
+        const { results } = this.props;
+
+        this.setState({
+            itemList: results
+        });
+    };
+
+    // componentWillUnmount() {
+    //     this.props.isShowSideBar(false)
+    // }
+
     renderItems = (arr) => {
-        return arr.map(({ id, poster, title, date, rating }) => {
+
+        const { type,onItemSelected } = this.props;
+
+        return arr.map(({ id, poster, title, date, rating, itemsType }) => {
+
+            const itemType = itemsType === undefined ? type : itemsType;
+
             return (
                 <div key={id} className="section"
                     onClick={() => {
-                        this.props.onItemSelected(id, title)
+                        onItemSelected(itemType, id, title)
                     }} >
                     <div className="section-poster">
                         <img className="poster" src={`https://image.tmdb.org/t/p/w500${poster}`} alt="section" />
                     </div>
                     <div className="section-info">
                         <div className="name">{title}</div>
-                        <div className="date">Release date: {date}</div>
+                        <div className="date">{date}</div>
                         <div className="section-info__rating">
                             <div className="title">Rating:</div>
                             <div className="number">{rating}</div>

@@ -1,0 +1,275 @@
+@import "./../../../Variables.scss";
+@import "./../../../Mixins-media.scss";
+@import "./../../../extends.scss";
+
+.mainSideBar {
+    grid-area: s;
+
+    .mainSideBar-postSlider {
+        display: flex;
+        position: relative;
+        height: 370px;
+        border-radius: 10px;
+        margin-bottom: $gap * 2;
+        overflow: hidden;
+
+        @include md {
+            display: none;
+        }
+
+        &__buttonLeft {
+            cursor: pointer;
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            width: 15%;
+            transition: 0.5s;
+
+            .left {
+                position: absolute;
+                height: 7px;
+                width: 25px;
+                top: calc(50% + 3px);
+                left: 5px;
+                background-color: $color-light;
+                transform: rotate(45deg);
+            }
+
+            .right {
+                position: absolute;
+                height: 7px;
+                width: 25px;
+                top: calc(50% - 10px);
+                left: 5px;
+                background-color: $color-light;
+                transform: rotate(-45deg);
+            }
+        }
+
+        &__buttonLeft:hover {
+            transform: scale(1.2);
+        }
+
+        &__buttonRight {
+            cursor: pointer;
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            right: 0;
+            width: 15%;
+            transition: 0.5s;
+
+            .left {
+                position: absolute;
+                height: 7px;
+                width: 25px;
+                top: calc(50% + 3px);
+                right: 5px;
+                background-color: $color-light;
+                transform: rotate(135deg);
+            }
+
+            .right {
+                position: absolute;
+                height: 7px;
+                width: 25px;
+                top: calc(50% - 10px);
+                right: 5px;
+                background-color: $color-light;
+                transform: rotate(-135deg);
+            }
+        }
+
+        &__buttonRight:hover {
+            transform: scale(1.2);
+        }
+
+        &__slides {
+
+            .slides-item {
+                height: 390px;
+
+                &__img {
+                    display: block;
+                    width: 100%;
+                }
+            }
+
+            .slides-item::before {
+                content: "";
+                position: absolute;
+                top: 0;
+                right: 0;
+                bottom: 0;
+                left: 0;
+                background-color: $color-dark;
+                opacity: 0.4;
+            }
+
+            .active {
+                display: block;
+            }
+        }
+    }
+
+    .mainSideBar-siteNews {
+        display: block;
+        margin-bottom: $gap * 2;
+        border: 1px solid $color-gray;
+        border-radius: 5px;
+        overflow: hidden;
+
+        @include md {
+            display: none;
+        }
+
+        &__label {
+            .label {
+                @extend %sidebar-label;
+            }
+        }
+
+        &__wrapper {
+            position: relative;
+            padding: $gap / 1.5 $gap;
+            background-color: lighten($color: $color-gray, $amount: 3%);
+
+            .wrapperItem {
+                display: flex;
+
+                .image-wrapper {
+                    &__newsImage {
+                        width: 65px;
+                        border: 4px solid $color-light;
+                        border-radius: 5px;
+                        transition: 0.5s;
+                    }
+                }
+
+                .text-wrapper {
+                    margin: 0 0 0 $gap;
+
+                    &__newsText {
+                        font-size: 0.9rem;
+                        color: $color-primary;
+                        height: 60px;
+                        cursor: pointer;
+                        transition: 0.5s;
+                        overflow: hidden;
+                    }
+
+                    &__wrapperDate {
+                        display: flex;
+                        justify-content: flex-end;
+
+                        .date {
+                            font-size: 0.8rem;
+                            color: $color-primary;
+                        }
+                    }
+                }
+            }
+
+            .wrapperItem:hover {
+                .image-wrapper {
+                    &__newsImage {
+                        border: 4px solid $color-accent;
+                    }
+                }
+
+                .text-wrapper {
+                    &__newsText {
+                        color: $color-accent;
+                    }
+                }
+            }
+        }
+
+        &__wrapper::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            right: 8%;
+            height: 1px;
+            width: 55%;
+            background-color: darken($color: $color-gray, $amount: 20%);
+        }
+
+        &__wrapper:last-child {
+            padding-bottom: $gap / 2;
+
+            &::after {
+                display: none;
+            }
+        }
+    }
+
+    .mainSideBar-movieRating {
+        display: block;
+        margin-bottom: $gap * 2;
+        border-radius: 5px;
+        border: 1px solid $color-gray;
+        overflow: hidden;
+
+        @include md {
+            display: none;
+        }
+
+        &__label {
+            .label {
+                @extend %sidebar-label;
+            }
+        }
+
+        &__wrapper {
+            padding: $gap / 1.5 0;
+            background-color: lighten($color: $color-gray, $amount: 3%);
+
+            .content {
+                display: flex;
+                justify-content: space-between;
+                padding: $gap / 1.2;
+                border-bottom: 1px solid darken($color: $color-gray, $amount: 10%);
+                background-color: lighten($color: $color-gray, $amount: 3%);
+                cursor: pointer;
+
+                .wrapper-name {
+                    &__movieName {
+                        color: $color-primary;
+                    }
+                }
+
+                .wrapper-rating {
+                    &__rating {
+                        padding: 0 $gap / 2;
+                        font-size: 0.9rem;
+                        color: $color-light;
+                        border-radius: 20px;
+                        background-color: darken($color: $color-gray, $amount: 50%);
+                    }
+                }
+            }
+
+            .content:hover {
+                background-color: $color-accent;
+
+                .wrapper-name {
+                    &__movieName {
+                        color: $color-light;
+                    }
+                }
+
+                .wrapper-rating {
+                    &__rating {
+                        background-color: $color-dark;
+                    }
+                }
+            }
+        }
+
+        .content:last-child {
+            border-bottom: none;
+        }
+    }
+}

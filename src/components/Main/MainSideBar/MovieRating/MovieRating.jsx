@@ -10,11 +10,11 @@ const MovieRating = ({ratingMovie}) => {
     })
 
     return (
-        <div className="sideBar-movieRating">
-            <div className="sideBar-movieRating__label">
+        <div className="mainSideBar-movieRating">
+            <div className="mainSideBar-movieRating__label">
                 <h3 className="label">Movie ratings</h3>
             </div>
-            <div className="sideBar-movieRating__wrapper">
+            <div className="mainSideBar-movieRating__wrapper">
                 {elements}
             </div>
         </div>

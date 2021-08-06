@@ -1,0 +1,52 @@
+@import "./../../Variables.scss";
+@import "./../../Mixins-media.scss";
+@import "./../../common.scss";
+@import "./../../extends.scss";
+
+.sectionWrapper {
+    grid-area: m;
+    position: relative;
+    margin-left: $gap * 2;
+    overflow: hidden;
+
+    @include md {
+        margin: 0 auto;
+    }
+
+    .sectionWrapper-label {
+        @include sm {
+            margin-bottom: $gap;
+        }
+
+        .label {
+            @extend %items-label;
+        }
+
+        .label::after {
+            @extend %Items-label-after;
+        }
+    }
+
+    .sectionWrapper-items {
+        @extend %items-layout;
+
+    }
+
+    .sectionWrapper-pagination {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 50px;
+
+        .currentPage {
+            padding: 8px 15px;
+        }
+
+        &__btn {
+            @extend %pagination-btn;
+        }
+
+        &__btn:hover {
+            @extend %pagination-btn-hover;
+        }
+    }
+}

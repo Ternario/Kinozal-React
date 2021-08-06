@@ -31,3 +31,80 @@
     margin-left: $gap / 1.5;
     border-bottom: 3px solid $color-accent;
 }
+
+%items-label {
+    margin-top: -$gap;
+    font-size: 3rem;
+    font-weight: normal;
+    color: lighten($color: $color-dark, $amount: 10%);
+    letter-spacing: 0.1em;
+
+    @include sm-xs {
+        margin-top: -$gap / 2;
+        font-size: 2rem;
+    }
+
+    @include xs {
+        margin-top: -$gap / 2;
+        font-size: 2rem;
+    }
+}
+
+%Items-label-after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    margin-top: $gap * 3;
+    margin-left: $gap;
+    border-bottom: 3px solid $color-accent;
+
+    @include sm-xs {
+        margin-top: $gap * 2;
+    }
+
+    @include xs {
+        margin-top: $gap * 2;
+        margin-left: $gap / 2;
+    }
+}
+
+%items-layout {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-gap: $gap;
+    margin-bottom: $gap * 3;
+
+    @include lg {
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+    @include md {
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+    @include sm {
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+    @include xs {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+%pagination-btn {
+    padding: 5px 0;
+    width: 80px;
+    font-size: 0.8rem;
+    color: $color-light;
+    background-color: lighten($color: $color-accent, $amount: 5%);
+    border: 1px solid transparent;
+    border-radius: 6px;
+    transition: 0.4s;
+    cursor: pointer;
+}
+
+%pagination-btn-hover {
+    color: $color-dark;
+    background-color: $color-accent;
+    border: 1px solid $color-dark;
+}

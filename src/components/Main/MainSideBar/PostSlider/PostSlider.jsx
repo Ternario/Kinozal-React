@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import Slides from './Slides/Slides';
 
 import knight from '../../../../img/the-dark-knight.jpg'
@@ -20,7 +20,7 @@ export default class PostSlider extends Component {
     }
 
     // interval(){ 
-        
+
     //     setInterval(() => {
 
     //         let newIndex = this.state.currentImage;
@@ -40,41 +40,44 @@ export default class PostSlider extends Component {
     slideHendle(e) {
         let newIndex = this.state.currentImage;
 
-        if(e.currentTarget.dataset.direction === "next") {
+        if (e.currentTarget.dataset.direction === "next") {
 
-            if(newIndex < this.state.images.length - 1){
+            if (newIndex < this.state.images.length - 1) {
                 newIndex = this.state.currentImage + 1;
-            } else if(newIndex === this.state.images.length - 1) {
+            } else if (newIndex === this.state.images.length - 1) {
                 newIndex = 0
             }
 
         } else {
 
-            if(newIndex > 0) {
+            if (newIndex > 0) {
                 newIndex = this.state.currentImage - 1;
-            } else if(newIndex === 0) {
+            } else if (newIndex === 0) {
                 newIndex = this.state.images.length - 1;
             }
 
         }
 
-        this.setState({currentImage: newIndex})
+        this.setState({ currentImage: newIndex })
     }
 
     render() {
         return (
-            <div className="sideBar-postSlider">
-                <Slides  src={this.state.images[this.state.currentImage]} number={this.state.currentImage} />
-                <div data-direction="prev" onClick={this.slideHendle.bind(this)} className="sideBar-postSlider__buttonLeft">
+            <div className="mainSideBar-postSlider">
+                <Slides
+                    src={this.state.images[this.state.currentImage]}
+                    number={this.state.currentImage}
+                />
+                <div data-direction="prev" onClick={this.slideHendle.bind(this)} className="mainSideBar-postSlider__buttonLeft">
                     <span className="left"></span>
                     <span className="right"></span>
                 </div>
-                <div data-direction="next" onClick={this.slideHendle.bind(this)} className="sideBar-postSlider__buttonRight">
+                <div data-direction="next" onClick={this.slideHendle.bind(this)} className="mainSideBar-postSlider__buttonRight">
                     <span className="left"></span>
                     <span className="right"></span>
                 </div>
             </div>
         );
-    } 
+    }
 }
 

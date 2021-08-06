@@ -6,6 +6,7 @@ import ItemsWrapper from './components/ItemsWrapper/ItemsWrapper';
 import SideBar from './components/SideBar/SideBar';
 import Footer from './components/Footer/Footer';
 import ItemDetails from './components/ItemDetails/ItemDetails';
+import SearchItemsWrapper from './components/SearchItemsWrapper/SearchItemsWrapper'
 
 import MoviesData from './Service/Service';
 
@@ -16,20 +17,20 @@ import news1 from './img/news-1.jpg';
 import news2 from './img/news-2.jpg';
 import news3 from './img/news-3.jpg';
 
-
 export default class App extends Component {
 
     service = new MoviesData();
 
     state = {
-        sideBarPath: null,
-        genresList: null,
+        sideBarPath: "main",
+        page: 1,
         filters: {
-            page: 1,
             releaseYear: "",
             sort_by: "popularity.desc",
             genres: ""
         },
+        genresList: null,
+        showSideBar: true,
         dataNews: [
             { id: 1, image: image, title: "We launched a new service - KinoMonster", date: "April 27, 2019" },
             { id: 2, image: image, title: "New functionality added to the site", date: "August 15, 2019" },
@@ -57,17 +58,71 @@ export default class App extends Component {
     };
 
     componentDidUpdate(prevProps, prevState) {
-        if (prevState.genresList !== this.state.genresList) {
-            this.toggleGenres();
-        }
+
+        if (this.state.sideBarPath !== prevState.sideBarPath && this.state.sideBarPath !== "main") {
+            this.getGenresData();
+        };
+    };
+
+    isShowSideBar = (item) => {
+        this.setState({
+            showSideBar: item
+        })
     }
 
-    getGenresData = (type) => {
+    changeCurrentPage = (item) => {
+        const { page } = this.state;
+        console.log(item)
 
-        this.service.getGenresList(type)
+        const newPage = item === "next" ? page + 1 : page - 1;
+
+        this.setState({
+            page: newPage
+        })
+    }
+
+    filterReset = (item) => {
+
+        const { genresList } = this.state;
+
+        let newGenresList = [];
+
+        if (genresList) {
+            newGenresList = genresList.map((item) => {
+                const newItem = item
+                newItem.checked = false
+
+                return newItem;
+            });
+        };
+
+        this.setState({
+            sideBarPath: item,
+            page: 1,
+            filters: {
+                releaseYear: "",
+                sort_by: "popularity.desc",
+                genres: ""
+            },
+            genresList: newGenresList
+        });
+    };
+
+    onChangeFilters = (e) => {
+        this.setState({
+            filters: {
+                ...this.state.filters,
+                [e.target.name]: e.target.value
+            }
+        });
+    };
+
+    getGenresData = () => {
+        const { sideBarPath } = this.state;
+
+        this.service.getGenresList(sideBarPath)
             .then((genresList) => {
                 this.setState({
-                    sideBarPath: type,
                     genresList
                 });
             });
@@ -89,54 +144,28 @@ export default class App extends Component {
 
         const newItemList = [...genresList.slice(0, itemIndex), isChecked, ...genresList.slice(itemIndex + 1)];
 
-        return this.setState({
+        this.setState({
             genresList: newItemList
-        })
-    }
+        }, this.toggleGenres());
+    };
 
-    toggleGenres() {
+    toggleGenres = () => {
         const { genresList } = this.state;
 
-        const checkedItems = genresList.filter((item) => {
-            return item.checked
-        });
+        let genres = "";
 
-        let genresId = "";
-
-        checkedItems.forEach((item) => {
-            if (!item) {
-                genresId = "";
+        genresList.forEach((item) => {
+            if (item.checked) {
+                genres += `&with_genres=${item.id}`;
             };
 
-            genresId += `&with_genres=${item.id}`;
-        })
+            return
+        });
 
         this.setState({
             filters: {
                 ...this.state.filters,
-                genres: genresId
-            }
-        })
-
-    }
-
-    filterReset = () => {
-        this.getGenresData(this.state.sideBarPath)
-        this.setState({
-            filters: {
-                page: 1,
-                releaseYear: "",
-                sort_by: "popularity.desc",
-                genres: ""
-            }
-        })
-    }
-
-    onChangeFilters = (e) => {
-        this.setState({
-            filters: {
-                ...this.state.filters,
-                [e.target.name]: e.target.value
+                genres
             }
         });
     };
@@ -195,76 +224,124 @@ export default class App extends Component {
         });
     };
 
+    sideBar(sideBarPath, showSideBar) {
+        const { genresList, filters } = this.state;
+
+        if (sideBarPath !== "main" && showSideBar) {
+            return <SideBar
+                genresList={genresList}
+                filters={filters}
+                onChangeFilters={this.onChangeFilters}
+                checkSwitcher={this.checkSwitcher}
+            />
+        }
+    }
+
     render() {
 
-        const { sideBarPath, genresList, filters, dataNews, ratingMovie, movieNews, comments } = this.state;
+        const { sideBarPath, page, filters, showSideBar, dataNews, ratingMovie, movieNews, comments } = this.state;
+
+        const sideBar = this.sideBar(sideBarPath, showSideBar);
 
         return (
             <Router>
                 <div className="app">
 
-                    <Header filterReset={this.filterReset} />
+                    <Header
+                        filterReset={this.filterReset}
+                        getData={this.service.searchMultiple}
+                    />
 
                     <div className="container">
-                        <SideBar
-                            sideBarPath={sideBarPath}
-                            genresList={genresList}
-                            filters={filters}
-                            onChangeFilters={this.onChangeFilters}
-                            checkSwitcher={this.checkSwitcher}
-                            dataNews={dataNews}
-                            ratingMovie={ratingMovie}
-                        />
 
-                        <Route path="/" exact component={() =>
-                            <Main
-                                sideBarPath={sideBarPath}
+                        {sideBar}
+
+                        <Route path="/" exact component={() => {
+                            return <Main
                                 filters={filters}
-                                type={"main"}
+                                isShowSideBar={this.isShowSideBar}
                                 getNewMovies={this.service.getNewMovies}
+                                dataNews={dataNews}
+                                ratingMovie={ratingMovie}
                                 movieNews={movieNews}
                             />
+                        }
                         } />
 
-                        <Route path="/movie" exact component={() =>
-                            <ItemsWrapper
-                                sideBarPath={sideBarPath}
+                        <Route path="/movie" exact component={() => {
+                            return <ItemsWrapper
+                                type={sideBarPath}
+                                page={page}
                                 filters={filters}
                                 title={"Movies"}
-                                type={"movie"}
-                                getGenresData={this.getGenresData}
+                                isShowSideBar={this.isShowSideBar}
                                 getData={this.service.discoverMovie}
+                                changeCurrentPage={this.changeCurrentPage}
                             />
+                        }
                         } />
 
-                        <Route path="/tv" exact component={() =>
-                            <ItemsWrapper
-                                sideBarPath={sideBarPath}
+                        <Route path="/tv" exact component={() => {
+                            return <ItemsWrapper
+                                type={sideBarPath}
+                                page={page}
                                 filters={filters}
                                 title={"Tv Shows"}
-                                type={"tv"}
-                                getGenresData={this.getGenresData}
+                                isShowSideBar={this.isShowSideBar}
                                 getData={this.service.discoverTv}
+                                changeCurrentPage={this.changeCurrentPage}
                             />
+                        }
                         } />
 
-                        <Route path={`/${sideBarPath}/:id`} render={
-                            ({ match }) => {
-                                const { id } = match.params;
-
-                                return <ItemDetails
-                                    itemId={id}
-                                    type={sideBarPath}
-                                    comments={comments}
-                                    getData={this.service.getItemById}
-                                    getVideoData={this.service.getItemMovieById}
-                                    onDeliteComment={this.deliteComment}
-                                    onAddComment={this.addComment}
-                                />
-                            }
-                        } />
+                        {/* <Route path="/person" exact component={() => {
+                            return <ItemsWrapper
+                                type={sideBarPath}
+                                page={page}
+                                filters={filters}
+                                title={"Tv Shows"}
+                                isShowSideBar={this.isShowSideBar}
+                                getData={this.service.discoverTv}
+                                changeCurrentPage={this.changeCurrentPage}
+                            />
+                        }
+                        } /> */}
 
                     </div>
+
+                    <Route path={`/:type/:id`} render={({ match }) => {
+                        const { type, id } = match.params;
+
+                        return <ItemDetails
+                            itemId={id}
+                            type={type}
+                            comments={comments}
+
+                            getData={this.service.getItemById}
+                            getVideoData={this.service.getItemMovieById}
+
+                            isShowSideBar={this.isShowSideBar}
+                            onDeliteComment={this.deliteComment}
+                            onAddComment={this.addComment}
+
+                            getPerson={this.service.getPersonById}
+                            // getPersonVideoData={}
+                        />
+                    }
+                    } />
+
+                    <Route path={`/search=:name`} render={({ match }) => {
+                        const { name } = match.params;
+
+                        return <SearchItemsWrapper
+                            name={name}
+                            page={page}
+                            isShowSideBar={this.isShowSideBar}
+                            changeCurrentPage={this.changeCurrentPage}
+                            getData={this.service.searchMultiple}
+                        />
+                    }
+                    } />
 
                     <Footer />
 

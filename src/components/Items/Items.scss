@@ -1,155 +1,80 @@
 @import "./../../Variables.scss";
 @import "./../../Mixins-media.scss";
 @import "./../../common.scss";
+@import "./../../extends.scss";
 
-.sectionWrapper {
-    grid-area: m;
-    position: relative;
-    margin-left: $gap * 2;
-    overflow: hidden;
+.section {
+    text-align: center;
+    cursor: pointer;
 
-    @include md {
-        margin: 0 auto;
-    }
+    .section-poster {
+        padding-top: 5px;
+        
+        height: 210px;
+        border: 1px solid $color-gray;
+        border-radius: 5px;
+        transition: 0.4s;
 
-    .sectionWrapper-label {
-        @include sm {
-            margin-bottom: $gap;
-        }
-
-        .label {
-            margin-top: -$gap;
-            font-size: 3rem;
-            font-weight: normal;
-            color: lighten($color: $color-dark, $amount: 10%);
-            letter-spacing: 0.1em;
-
-            @include sm-xs {
-                margin-top: -$gap / 2;
-                font-size: 2rem;
+        .poster {
+            width: 96%;
+            height: 98%;
+            
+            @include sm {
+                height: 170px;
             }
 
             @include xs {
-                margin-top: -$gap / 2;
-                font-size: 2rem;
-            }
-        }
-
-        .label::after {
-            content: "";
-            position: absolute;
-            width: 100%;
-            margin-top: $gap * 3;
-            margin-left: $gap;
-            border-bottom: 3px solid $color-accent;
-
-            @include sm-xs {
-                margin-top: $gap * 2;
-            }
-
-            @include xs {
-                margin-top: $gap * 2;
-                margin-left: $gap / 2;
+                height: 130px;
             }
         }
     }
 
-    .sectionWrapper-items {
-        display: grid;
-        grid-template-columns: repeat(5, 1fr);
-        grid-gap: $gap;
-        margin-bottom: $gap * 3;
+    .section-info {
+        align-items: center;
 
-        @include lg {
-            grid-template-columns: repeat(4, 1fr);
-        }
+        .name {
+            font-size: 0.9rem;
+            font-weight: bold;
+            color: $color-dark;
+            transition: 0.4s;
 
-        @include md {
-            grid-template-columns: repeat(4, 1fr);
-        }
-
-        @include sm {
-            grid-template-columns: repeat(4, 1fr);
-        }
-
-        @include xs {
-            grid-template-columns: repeat(3, 1fr);
-        }
-
-        .section {
-            text-align: center;
-            cursor: pointer;
-
-            .section-poster {
-                padding-top: 5px;
-                border: 1px solid $color-gray;
-                border-radius: 5px;
-                transition: 0.4s;
-
-                .poster {
-                    height: 210px;
-                    width: 96%;
-
-                    @include sm {
-                        height: 170px;
-                    }
-
-                    @include xs {
-                        height: 130px;
-                    }
-                }
-            }
-
-            .section-info {
-                align-items: center;
-                padding: 0 2px;
-                height: 85px;
-
-                .name {
-                    font-size: 0.9rem;
-                    font-weight: bold;
-                    color: $color-dark;
-                    transition: 0.4s;
-
-                    @include xs {
-                        font-size: 0.8rem;
-                    }
-                }
-
-                .date {
-                    font-size: 0.8rem;
-                    transition: 0.4s;
-                }
-
-                &__rating {
-                    display: flex;
-                    justify-content: center;
-                    transition: 0.4s;
-
-                    .title {
-                        margin-right: $gap / 2;
-                        font-size: 0.8rem;
-                    }
-
-                    .number {
-                        font-size: 0.8rem;
-                    }
-                }
+            @include xs {
+                font-size: 0.8rem;
             }
         }
 
-        .section:hover {
-            .section-poster {
-                background-color: $color-accent;
+        .date {
+            font-size: 0.8rem;
+            transition: 0.4s;
+        }
+
+        &__rating {
+            display: flex;
+            justify-content: center;
+            transition: 0.4s;
+
+            .title {
+                margin-right: $gap / 2;
+                font-size: 0.8rem;
             }
 
-            .section-info {
-                .name,
-                .date,
-                &__rating {
-                    color: $color-accent;
-                }
+            .number {
+                font-size: 0.8rem;
             }
+        }
+    }
+}
+
+.section:hover {
+    .section-poster {
+        background-color: $color-accent;
+    }
+
+    .section-info {
+        .name,
+        .date,
+        &__rating {
+            color: $color-accent;
         }
     }
 }

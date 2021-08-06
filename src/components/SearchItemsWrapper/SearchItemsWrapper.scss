@@ -1,0 +1,47 @@
+@import "./../../Variables.scss";
+@import "./../../Mixins-media.scss";
+@import "./../../common.scss";
+@import "./../../extends.scss";
+
+.searchSection {
+    position: relative;
+    margin: 0 200px;
+    overflow: hidden;
+
+    .searchSection-label {
+
+        @include sm {
+            margin-bottom: $gap;
+        }
+
+        .label {
+            @extend %items-label;
+        }
+
+        .label::after {
+            @extend %Items-label-after;
+        }
+    }
+
+    .searchSection-items {
+        @extend %items-layout;
+    }
+
+    .searchSection-pagination {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 50px;
+
+        &__btn {
+            @extend %pagination-btn;
+        }
+
+        &__btn:hover {
+            @extend %pagination-btn-hover;
+        }
+
+        .currentPage {
+            padding: 8px 15px;
+        }
+    }
+}

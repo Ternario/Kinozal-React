@@ -8,6 +8,16 @@ export default class ItemContent extends Component {
     }
 
     componentDidMount() {
+        this.getData();
+    };
+
+    componentDidUpdate(prevProps) {
+        if(this.props.itemId !== prevProps.itemId) {
+            this.getData();
+        };
+    };
+
+    getData() {
         const { type, itemId, getVideoData } = this.props;
 
         getVideoData(type, itemId)
