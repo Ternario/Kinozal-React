@@ -2,18 +2,8 @@
 @import "./../../../Mixins-media.scss";
 @import "./../../../extends";
 
-.itemDetails {
-    position: relative;
-    margin: 0 200px;
-    overflow: hidden;
-
-    @include md {
-        margin: 0 auto;
-    }
-
-    .itemDetails-header {
-        margin-bottom: $gap;
-
+.itemDetails-itemVideoDetails {
+    &__content {
         .title {
             margin-top: -$gap / 2.8;
             margin-left: 0;
@@ -24,7 +14,7 @@
             @extend %itemDetails-title-after;
         }
 
-        &__wrapper {
+        .content-data {
             display: flex;
 
             @include lg {
@@ -36,7 +26,7 @@
                 justify-content: center;
                 align-items: center;
                 margin-right: $gap * 3;
-                width: 180px;
+                width: 230px;
                 height: 250px;
                 border: 1px solid $color-dark;
                 border-radius: 7px;
@@ -52,29 +42,22 @@
             }
 
             .items-info {
-                width: 460px;
+                width: 100%;
 
                 .items {
-                    width: 100%;
                     display: flex;
                     margin-bottom: $gap / 2;
                     font-size: 1rem;
 
                     .item-title {
-                        width: 120px;
+                        width: 160px;
                         font-weight: bold;
-                    }
-
-                    .item {
-                        width: 340px;
                     }
                 }
             }
         }
-    }
 
-    .itemDetails-content {
-        &__description {
+       .content-description {
             .title {
                 @extend %itemDetails-title;
             }
@@ -93,7 +76,7 @@
             }
         }
 
-        &__trailer {
+        .content-trailer {
             width: 100%;
 
             .active {
@@ -102,7 +85,7 @@
             }
 
             .title {
-                @extend %itemDetails-title;;
+                @extend %itemDetails-title;
             }
 
             .title::before {

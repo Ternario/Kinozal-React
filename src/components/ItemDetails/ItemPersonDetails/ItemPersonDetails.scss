@@ -2,18 +2,8 @@
 @import "./../../../Mixins-media.scss";
 @import "./../../../extends";
 
-.itemDetails {
-    position: relative;
-    margin: 0 200px;
-    overflow: hidden;
-
-    @include md {
-        margin: 0 auto;
-    }
-
-    .itemDetails-header {
-        margin-bottom: $gap;
-
+.itemDetails-itemPersonDetails {
+    &__person {
         .title {
             margin-top: -$gap / 2.8;
             margin-left: 0;
@@ -24,14 +14,14 @@
             @extend %itemDetails-title-after;
         }
 
-        &__wrapper {
+        .person-data {
             display: flex;
 
             @include lg {
                 justify-content: space-between;
             }
 
-            .item-poster {
+            &__poster {
                 display: flex;
                 justify-content: center;
                 align-items: center;
@@ -51,7 +41,7 @@
                 }
             }
 
-            .items-info {
+            &__wrapper {
                 width: 460px;
 
                 .items {
@@ -71,10 +61,8 @@
                 }
             }
         }
-    }
 
-    .itemDetails-content {
-        &__description {
+        .person-biography {
             .title {
                 @extend %itemDetails-title;
             }
@@ -92,221 +80,58 @@
                 letter-spacing: 0.05rem;
             }
         }
+    }
 
-        &__trailer {
-            width: 100%;
+    &__personVideo {
+        margin-bottom: 40px;
 
-            .active {
+        .toggleButton {
+            display: flex;
+            justify-content: center;
+            margin: 15px 0;
+
+            .btn {
+                margin-right: $gap / 1.7;
+                margin-bottom: $gap / 2.6;
+                padding: 8px 20px;
+                font-size: 0.9rem;
+                font-weight: bold;
+                border: 1px solid $color-gray;
+                border-radius: 7px;
+                cursor: pointer;
+                transition: 0.4s;
+            }
+
+            .btn:hover {
                 color: $color-light;
                 background-color: $color-accent;
             }
+        }
 
-            .title {
-                @extend %itemDetails-title;;
+        .active {
+            color: $color-light;
+            background-color: $color-accent;
+        }
+
+        .personVideo {
+            .personItems-wrapper {
+                @extend %items-layout;
             }
 
-            .title::before {
-                @extend %itemDetails-title-before;
+            .currentPage {
+                padding: 8px 15px;
             }
 
-            .title::after {
-                @extend %itemDetails-title-after;
-            }
-
-            .trailer-wrapper {
+            .personVideo-btn {
                 display: flex;
-                flex-wrap: wrap;
                 justify-content: center;
-                margin-bottom: $gap / 2.6;
-
-                .name {
-                    margin-right: $gap / 1.7;
-                    margin-bottom: $gap / 2.6;
-                    padding: 5px 5px;
-                    font-size: 0.9rem;
-                    font-weight: bold;
-                    border: 1px solid $color-gray;
-                    border-radius: 7px;
-                    cursor: pointer;
-                    transition: 0.4s;
-                }
-
-                .name:hover {
-                    color: $color-light;
-                    background-color: $color-accent;
-                }
-            }
-
-            .trailer {
-                height: 400px;
-                width: 100%;
-                border: none;
-                border-radius: 7px 7px 0 0;
-            }
-
-            .itemBar {
-                display: flex;
-                justify-content: space-between;
-                padding: 15px 80px;
-                margin-top: -$gap / 3.4;
-                margin-bottom: $gap;
-                background-color: lighten($color: $color-dark, $amount: 20%);
-                border-radius: 0 0 7px 7px;
-
-                .item {
-                    padding: 5px 15px;
-                    font-size: 1rem;
-                    color: $color-light;
-                    background-color: $color-accent;
-                    border-radius: 18px;
-                    cursor: pointer;
-                }
-            }
-        }
-    }
-
-    .itemDetails-footer {
-        &__comments {
-            .title {
-                @extend %itemDetails-title;
-            }
-
-            .title::before {
-                @extend %itemDetails-title-before;
-            }
-
-            .title::after {
-                @extend %itemDetails-title-after;
-            }
-
-            .comments-wrapper {
-                margin-bottom: $gap * 2;
-
-                &__name {
-                    display: flex;
-                    justify-content: space-between;
-                    padding: 10px 10px;
-                    font-size: 0.8rem;
-                    background-color: $color-accent;
-                    border-top-left-radius: 5px;
-                    border-top-right-radius: 5px;
-
-                    .wrapper {
-                        display: flex;
-
-                        .image {
-                            height: 15px;
-                            width: 15px;
-                        }
-
-                        .name {
-                            margin-left: $gap / 1.5;
-                            margin-right: $gap / 1.5;
-                            color: $color-light;
-                        }
-                    }
-
-                    .date {
-                        color: $color-light;
-                    }
-                }
-
-                &__comment {
-                    padding: 10px 15px;
-                    font-size: 0.8rem;
-                    background-color: $color-gray;
-                    border: 1px solid $color-gray;
-                    border-bottom-left-radius: 5px;
-                    border-bottom-right-radius: 5px;
-
-                    .comment {
-                        margin-bottom: 10px;
-                    }
-
-                    .delite-comment {
-                        display: flex;
-                        justify-content: flex-end;
-
-                        .delite {
-                            text-align: center;
-                            padding: 5px 0;
-                            width: 120px;
-                            font-size: 0.8rem;
-                            color: $color-light;
-                            background-color: lighten($color: $color-accent, $amount: 5%);
-                            border: 1px solid transparent;
-                            border-radius: 6px;
-                            transition: 0.4s;
-                            cursor: pointer;
-                        }
-
-                        .delite:hover {
-                            color: $color-dark;
-                            background-color: $color-accent;
-                            border: 1px solid $color-dark;
-                        }
-                    }
-                }
-            }
-        }
-
-        &__addComment {
-            margin-bottom: $gap * 2;
-
-            .title {
-                @extend %itemDetails-title;
-            }
-
-            .title::before {
-                @extend %itemDetails-title-before;
-            }
-
-            .title::after {
-                @extend %itemDetails-title-after;
-            }
-
-            .addComment-form {
-                text-align: center;
-
-                .form-group {
-                    margin-bottom: $gap;
-
-                    .input-name {
-                        box-sizing: border-box;
-                        padding: 10px 15px;
-                        height: 35px;
-                        width: 100%;
-                        border: 1px solid lighten($color: $color-dark, $amount: 40%);
-                        border-radius: 6px;
-                    }
-
-                    .text {
-                        box-sizing: border-box;
-                        resize: vertical;
-                        min-height: 35px;
-                        width: 100%;
-                        padding: 15px 10px 0 15px;
-                        border: 1px solid lighten($color: $color-dark, $amount: 40%);
-                        border-radius: 6px;
-                    }
-                }
 
                 .btn {
-                    box-sizing: border-box;
-                    padding: 12px 40px;
-                    font-size: 1rem;
-                    color: $color-light;
-                    background-color: lighten($color: $color-accent, $amount: 5%);
-                    border: 1px solid transparent;
-                    border-radius: 6px;
-                    transition: 0.4s;
-                    cursor: pointer;
+                    @extend %pagination-btn;
                 }
 
                 .btn:hover {
-                    color: $color-dark;
-                    background-color: $color-accent;
-                    border: 1px solid $color-dark;
+                    @extend %pagination-btn-hover;
                 }
             }
         }

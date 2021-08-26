@@ -72,7 +72,6 @@ export default class App extends Component {
 
     changeCurrentPage = (item) => {
         const { page } = this.state;
-        console.log(item)
 
         const newPage = item === "next" ? page + 1 : page - 1;
 
@@ -294,19 +293,6 @@ export default class App extends Component {
                         }
                         } />
 
-                        {/* <Route path="/person" exact component={() => {
-                            return <ItemsWrapper
-                                type={sideBarPath}
-                                page={page}
-                                filters={filters}
-                                title={"Tv Shows"}
-                                isShowSideBar={this.isShowSideBar}
-                                getData={this.service.discoverTv}
-                                changeCurrentPage={this.changeCurrentPage}
-                            />
-                        }
-                        } /> */}
-
                     </div>
 
                     <Route path={`/:type/:id`} render={({ match }) => {
@@ -325,7 +311,6 @@ export default class App extends Component {
                             onAddComment={this.addComment}
 
                             getPerson={this.service.getPersonById}
-                            // getPersonVideoData={}
                         />
                     }
                     } />

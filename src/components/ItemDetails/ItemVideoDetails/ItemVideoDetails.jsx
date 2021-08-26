@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import "./ItemVideoDetails.scss"
-import ItemHeader from './ItemHeader/ItemHeader';
 import ItemContent from './ItemContent/ItemContent';
 import ItemComments from './ItemComments/ItemComments'
 import ItemAddComment from './ItemAddComment/ItemAddComment';
@@ -42,11 +41,10 @@ export default class ItemDetails extends Component {
 
         if (!itemList) {
             return <div>loading...</div>
-        }
+        };
 
         return (
-            <div className="itemDetails">
-                <ItemHeader {...itemList} />
+            <div className="itemDetails-itemVideoDetails" >
                 <ItemContent
                     {...itemList}
                     type={type}

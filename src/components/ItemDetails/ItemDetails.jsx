@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
+import './ItemDetails.scss';
 import ItemVideoDetails from './ItemVideoDetails/ItemVideoDetails';
-import ItemPersonDetails from './ItemPersonDetails/ItemPersonDetails'
+import ItemPersonDetails from './ItemPersonDetails/ItemPersonDetails';
 
 export default class ItemDetails extends Component {
 
@@ -13,12 +14,12 @@ export default class ItemDetails extends Component {
     };
 
     renderItems() {
-        const { getData, comments, getVideoData, type, itemId, onDeliteComment, onAddComment, getPerson, getPersonVideoData } = this.props;
+        const { getData, comments, getVideoData, type, itemId, onDeliteComment, onAddComment, getPerson } = this.props;
 
         if (type === "person") {
             return <ItemPersonDetails
-            getPerson={getPerson}
-            getPersonVideoData={getPersonVideoData}
+                itemId={itemId}
+                getPerson={getPerson}
             />
         }
 
@@ -38,9 +39,9 @@ export default class ItemDetails extends Component {
         const item = this.renderItems();
 
         return (
-            <>
+            <div className="itemDetails">
                 {item}
-            </>
+            </div>
         );
     }
 }

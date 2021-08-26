@@ -26,7 +26,7 @@ export default class ItemAddComment extends Component {
 
         const { name, comment } = this.state;
 
-        if (name === "" && comment === "") {
+        if (name === "" || comment === "") {
             return
         }
 

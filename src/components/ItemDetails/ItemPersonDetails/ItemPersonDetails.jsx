@@ -1,55 +1,50 @@
 import React, { Component } from 'react';
 import "./ItemPersonDetails.scss"
+import Person from './Person/Person';
+import PersonVideo from './PersonVideo/PersonVideo';
 
 export default class ItemDetails extends Component {
 
-    // state = {
-    //     itemList: null,
-    // };
+    state = {
+        itemPerson: null,
+        itemVideo: null
+    };
 
-    // componentDidMount() {
-    //     this.props.isShowSideBar(false)
+    componentDidMount() {
+        this.getDataItems();
+    };
 
-    //     this.getDataItems();
-    // };
+    componentDidUpdate(prevProps) {
+        if (this.props.itemId !== prevProps.itemId) {
+            this.getDataItems();
+        };
+    };
 
-    // componentDidUpdate(prevProps) {
-    //     if (this.props.itemId !== prevProps.itemId) {
-    //         this.getDataItems();
-    //     };
-    // };
+    getDataItems() {
+        const { itemId, getPerson } = this.props;
 
-    // componentWillUnmount() {
-    //     this.props.isShowSideBar(true)
-    // };
-
-    // getDataItems() {
-    //     const { type, itemId, getData } = this.props;
-
-    //     getData(type, itemId)
-    //         .then((itemList) => {
-    //             this.setState({
-    //                 itemList
-    //             });
-    //         });
-    // };
+        getPerson(itemId)
+            .then(({itemPerson, itemVideo}) => {
+                this.setState({
+                    itemPerson,
+                    itemVideo
+                });
+            });
+    };
 
     render() {
 
-        // const { itemList } = this.state;
+        const { itemPerson, itemVideo } = this.state;
 
-        // const { comments, getVideoData, type, itemId, onDeliteComment, onAddComment } = this.props;
-
-        // const numberOfComments = comments.length;
-
-        // if (!itemList) {
-        //     return <div>loading...</div>
-        // }
+        if (!itemPerson) {
+            return <div>loading...</div>
+        };
 
         return (
-            <div className="itemDetails">
-                helloo
+            <div className="itemDetails-itemPersonDetails" >
+                <Person person={itemPerson} />
+                <PersonVideo personVideoData={itemVideo} />
             </div>
         );
-    }
-}
+    };
+};

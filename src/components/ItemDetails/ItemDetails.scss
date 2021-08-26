@@ -1,0 +1,13 @@
+@import "./../../Variables.scss";
+@import "./../../Mixins-media.scss";
+@import "./../../extends";
+
+.itemDetails {
+    position: relative;
+    margin: 0 200px;
+    overflow: hidden;
+
+    @include md {
+        margin: 0 auto;
+    }
+}

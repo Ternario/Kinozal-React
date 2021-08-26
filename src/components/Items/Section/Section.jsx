@@ -25,13 +25,9 @@ export default class Section extends Component {
         });
     };
 
-    // componentWillUnmount() {
-    //     this.props.isShowSideBar(false)
-    // }
-
     renderItems = (arr) => {
 
-        const { type,onItemSelected } = this.props;
+        const { type, onItemSelected } = this.props;
 
         return arr.map(({ id, poster, title, date, rating, itemsType }) => {
 
@@ -49,7 +45,7 @@ export default class Section extends Component {
                         <div className="name">{title}</div>
                         <div className="date">{date}</div>
                         <div className="section-info__rating">
-                            <div className="title">Rating:</div>
+                            <div className="rating">Rating:</div>
                             <div className="number">{rating}</div>
                         </div>
 
