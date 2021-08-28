@@ -21,7 +21,7 @@ export default class ItemDetails extends Component {
                 itemId={itemId}
                 getPerson={getPerson}
             />
-        }
+        };
 
         return <ItemVideoDetails
             type={type}
@@ -43,5 +43,5 @@ export default class ItemDetails extends Component {
                 {item}
             </div>
         );
-    }
-}
+    };
+};

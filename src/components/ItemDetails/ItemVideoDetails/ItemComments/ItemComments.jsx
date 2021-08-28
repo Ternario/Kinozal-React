@@ -25,14 +25,14 @@ export default class ItemFooter extends Component {
                 </div>
             );
         });
-    }
+    };
 
     render() {
         const { comments, onDeliteComment } = this.props;
 
         if (!comments) {
             return <div>loading...</div>
-        }
+        };
 
         const item = this.getComments(comments, onDeliteComment);
 
@@ -44,5 +44,5 @@ export default class ItemFooter extends Component {
             </div>
 
         );
-    }
-}
+    };
+};

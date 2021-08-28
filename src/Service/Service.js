@@ -2,7 +2,7 @@ export default class MoviesData {
     constructor() {
         this._apiBase = "https://api.themoviedb.org/3";
         this._apiKey = "?api_key=f78065abe3763cb2694006821dbaca97";
-    }
+    };
 
     async getDiscoverItems(url, page, releaseYear, sortBy, genres) {
 
@@ -112,7 +112,7 @@ export default class MoviesData {
     searchMultiple = async (name, page) => {
         const res = await this.searchItem(name, page);
 
-        const itemResults = res.results.map(this._transformI);
+        const itemResults = res.results.map(this._transformItem);
 
         return this._transformItemResults(res, itemResults);
     };

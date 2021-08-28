@@ -31,6 +31,7 @@ export default class App extends Component {
         },
         genresList: null,
         showSideBar: true,
+        ref: React.createRef(),
         dataNews: [
             { id: 1, image: image, title: "We launched a new service - KinoMonster", date: "April 27, 2019" },
             { id: 2, image: image, title: "New functionality added to the site", date: "August 15, 2019" },
@@ -68,17 +69,32 @@ export default class App extends Component {
         this.setState({
             showSideBar: item
         })
-    }
+    };
 
-    changeCurrentPage = (item) => {
-        const { page } = this.state;
+    changeCurrentPage = (item, totalItems) => {
+        const { page, ref } = this.state;
 
-        const newPage = item === "next" ? page + 1 : page - 1;
+        if (item === "next" && page < totalItems) {
 
-        this.setState({
-            page: newPage
-        })
-    }
+            ref.current.scrollIntoView({ behavior: 'smooth' });
+
+            const newPage = page + 1;
+
+            this.setState({
+                page: newPage
+            });
+
+        } else if (item === "prev" && page > 1) {
+
+            ref.current.scrollIntoView({ behavior: 'smooth' });
+
+            const newPage = page - 1;
+
+            this.setState({
+                page: newPage
+            });
+        };
+    };
 
     filterReset = (item) => {
 
@@ -233,12 +249,12 @@ export default class App extends Component {
                 onChangeFilters={this.onChangeFilters}
                 checkSwitcher={this.checkSwitcher}
             />
-        }
-    }
+        };
+    };
 
     render() {
 
-        const { sideBarPath, page, filters, showSideBar, dataNews, ratingMovie, movieNews, comments } = this.state;
+        const { sideBarPath, page, filters, showSideBar, dataNews, ratingMovie, movieNews, comments, ref } = this.state;
 
         const sideBar = this.sideBar(sideBarPath, showSideBar);
 
@@ -251,7 +267,7 @@ export default class App extends Component {
                         getData={this.service.searchMultiple}
                     />
 
-                    <div className="container">
+                    <div ref={ref} className="container">
 
                         {sideBar}
 
@@ -319,7 +335,7 @@ export default class App extends Component {
                         const { name } = match.params;
 
                         return <SearchItemsWrapper
-                            name={name}
+                            title={name}
                             page={page}
                             isShowSideBar={this.isShowSideBar}
                             changeCurrentPage={this.changeCurrentPage}

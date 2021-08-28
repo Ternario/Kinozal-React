@@ -2,12 +2,16 @@ import React from 'react';
 import News from './News/News';
 
 
-const SiteNews = ({dataNews}) => {
+const SiteNews = ({ dataNews }) => {
 
-    const elements = dataNews.map((item) =>{
-        return(
-            <News key={item.id} image={item.image} title={item.title} date={item.date} />
-        )
+    const elements = dataNews.map((item) => {
+        return (
+            <News key={item.id}
+                image={item.image}
+                title={item.title}
+                date={item.date}
+            />
+        );
     })
 
     return (
@@ -18,6 +22,6 @@ const SiteNews = ({dataNews}) => {
             {elements}
         </div>
     );
-}
+};
 
 export default SiteNews;

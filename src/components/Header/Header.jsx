@@ -12,13 +12,13 @@ class Header extends Component {
         itemList: [],
         name: "",
         showShortSearch: true
-    }
+    };
 
     componentDidUpdate(prevProps, prevState) {
         if (this.state.name !== prevState.name) {
             this.changeItemName(this.state.name)
-        }
-    }
+        };
+    };
 
     searchItem = (e) => {
         this.setState({
@@ -40,7 +40,7 @@ class Header extends Component {
             .then((item) => {
                 this.setState({
                     itemList: item
-                })
+                });
             });
     };
 
@@ -54,7 +54,7 @@ class Header extends Component {
             return
         };
 
-        this.showSerchItem(name)
+        this.showSerchItem(name);
     };
 
     showSerchItem = (item) => {
@@ -77,11 +77,11 @@ class Header extends Component {
         this.setState({
             showShortSearch: item
         });
-    }
+    };
 
     render() {
 
-        const { name, itemList: { results, totalResults }, showShortSearch } = this.state;
+        const { name, itemList: { results, totalResults }, showShortSearch, ref } = this.state;
 
         const { filterReset } = this.props;
 
@@ -89,6 +89,7 @@ class Header extends Component {
             <div className="header" >
                 <Logo />
                 <Navbar
+                    ref={ref}
                     filterReset={filterReset}
                     getItems={this.getItems}
                     searchItem={this.searchItem}
@@ -104,7 +105,7 @@ class Header extends Component {
                 />
             </div>
         );
-    }
+    };
 };
 
 export default withRouter(Header);

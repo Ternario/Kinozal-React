@@ -60,14 +60,16 @@ export default class ItemContent extends Component {
 
     renderVideos(item) {
         return item.map(({ id, name, trailer }) => {
-            return <div
-                key={id}
-                onClick={() => {
-                    this.videoToggler(trailer);
-                }}
-                className={this.state.trailer === trailer ? "name active" : "name"}>
-                {name}
-            </div>
+            return (
+                <div
+                    key={id}
+                    onClick={() => {
+                        this.videoToggler(trailer);
+                    }}
+                    className={this.state.trailer === trailer ? "name active" : "name"}>
+                    {name}
+                </div>
+            );
         });
     };
 
@@ -85,10 +87,12 @@ export default class ItemContent extends Component {
 
         personName = personName.slice(0, -2);
 
-        return <div className="items">
-            <div className="item-title">Created by</div>
-            <div className="item">{personName}</div>
-        </div>
+        return (
+            <div className="items">
+                <div className="item-title">Created by</div>
+                <div className="item">{personName}</div>
+            </div>
+        );
     };
 
     runeTime = (item) => {
@@ -207,5 +211,5 @@ export default class ItemContent extends Component {
             </div>
         );
     };
-}
+};
 

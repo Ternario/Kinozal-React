@@ -1,65 +1,75 @@
 import React, { Component } from 'react';
 import Slides from './Slides/Slides';
 
-import knight from '../../../../img/the-dark-knight.jpg'
-import doser from '../../../../img/doser.jpg'
-import dream from '../../../../img/dream-horse.jpg'
-
+import knight from '../../../../img/the-dark-knight.jpg';
+import doser from '../../../../img/doser.jpg';
+import dream from '../../../../img/dream-horse.jpg';
 
 export default class PostSlider extends Component {
-    constructor(props) {
-        super(props);
+    
+    state = {
+        images: [knight, doser, dream],
+        currentImage: 0,
+        interval: null,
+        flag: true
+    };
 
-        this.state = {
-            images: [knight, doser, dream],
-            currentImage: 0
-        }
+    componentDidMount() {
+        this.setState({
+            interval: setInterval(this.toggleSlider, 3000)
+        });
+    };
 
-        this.slideHendle = this.slideHendle.bind(this);
-        // this.interval = this.interval.bind(this);
-    }
+    componentDidUpdate(prevProps, prevState) {
+        if (this.state.flag !== prevState.flag) {
+            const { interval } = this.state;
 
-    // interval(){ 
+            this.setState({
+                interval: clearInterval(interval)
+            });
+        };
+    };
 
-    //     setInterval(() => {
+    componentWillUnmount() {
+        const { interval } = this.state;
 
-    //         let newIndex = this.state.currentImage;
+        this.setState({
+            interval: clearInterval(interval)
+        });
+    };
 
-    //         if(newIndex < this.state.images.length - 1){
-    //             newIndex = this.state.currentImage + 1;
-    //         } else if(newIndex === this.state.images.length - 1) {
-    //             newIndex = 0
-    //         }
+    toggleSlider = () => {
+        const { images, currentImage, flag } = this.state;
 
-    //         this.setState({currentImage: newIndex})
-    //     }, 2000);
+        const newIndex = flag && currentImage < images.length - 1 ? currentImage + 1 : 0;
 
-    // }
-    // onLoad={this.interval.bind(this)}
+        this.setState({
+            currentImage: newIndex
+        });
+    };
 
-    slideHendle(e) {
-        let newIndex = this.state.currentImage;
+    slideHendle = (item) => {
+        const { currentImage, images } = this.state;
 
-        if (e.currentTarget.dataset.direction === "next") {
+        if (item === "next") {
 
-            if (newIndex < this.state.images.length - 1) {
-                newIndex = this.state.currentImage + 1;
-            } else if (newIndex === this.state.images.length - 1) {
-                newIndex = 0
-            }
+            const newIndex = currentImage < images.length - 1 ? currentImage + 1 : 0;
+
+            this.setState({
+                currentImage: newIndex,
+                flag: false
+            });
 
         } else {
 
-            if (newIndex > 0) {
-                newIndex = this.state.currentImage - 1;
-            } else if (newIndex === 0) {
-                newIndex = this.state.images.length - 1;
-            }
+            const newIndex = currentImage > 0 ? currentImage - 1 : images.length - 1;
 
-        }
-
-        this.setState({ currentImage: newIndex })
-    }
+            this.setState({
+                currentImage: newIndex,
+                flag: false
+            });
+        };
+    };
 
     render() {
         return (
@@ -68,11 +78,20 @@ export default class PostSlider extends Component {
                     src={this.state.images[this.state.currentImage]}
                     number={this.state.currentImage}
                 />
-                <div data-direction="prev" onClick={this.slideHendle.bind(this)} className="mainSideBar-postSlider__buttonLeft">
+                <div
+                    className="mainSideBar-postSlider__buttonLeft"
+                    onClick={() => {
+                        this.slideHendle("prev")
+                    }}
+                >
                     <span className="left"></span>
                     <span className="right"></span>
                 </div>
-                <div data-direction="next" onClick={this.slideHendle.bind(this)} className="mainSideBar-postSlider__buttonRight">
+                <div className="mainSideBar-postSlider__buttonRight"
+                    onClick={() => {
+                        this.slideHendle("next")
+                    }}
+                >
                     <span className="left"></span>
                     <span className="right"></span>
                 </div>

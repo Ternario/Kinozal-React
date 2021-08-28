@@ -9,7 +9,7 @@ export default class Main extends Component {
     state = {
         type: "movie",
         results: null
-    }
+    };
 
     componentDidMount() {
 
@@ -23,18 +23,18 @@ export default class Main extends Component {
             .then((results) => {
                 this.setState({
                     results
-                })
-            })
+                });
+            });
     };
 
     render() {
         const { type, results } = this.state;
 
-        const { filters, isShowSideBar, dataNews, ratingMovie } = this.props;
+        const { filters, isShowSideBar, dataNews, ratingMovie, movieNews } = this.props;
 
-        if(!results) {
+        if (!results) {
             return <div>Loading...</div>
-        }
+        };
 
         return (
             <>
@@ -56,7 +56,7 @@ export default class Main extends Component {
                         </div>
                     </div>
 
-                    <MovieNews movieNews={this.props.movieNews} />
+                    <MovieNews movieNews={movieNews} />
                 </div>
             </>
         );

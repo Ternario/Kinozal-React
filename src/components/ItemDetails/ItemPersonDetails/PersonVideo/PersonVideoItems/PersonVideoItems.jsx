@@ -9,6 +9,7 @@ export default class PersonVidoe extends Component {
         currentItems: null,
         totalPages: null,
         currentPage: 1,
+        ref: React.createRef()
     };
 
     componentDidMount() {
@@ -47,7 +48,9 @@ export default class PersonVidoe extends Component {
     };
 
     togglePage = (item) => {
-        const { currentPage, totalPages } = this.state;
+        const { currentPage, totalPages, ref } = this.state;
+
+        ref.current.scrollIntoView({ behavior: 'smooth' });
 
         if (item === "next" && currentPage < totalPages) {
             const newPage = currentPage + 1;
@@ -56,7 +59,7 @@ export default class PersonVidoe extends Component {
                 currentPage: newPage
             });
 
-        } else if (item === "prev" && currentPage > 1) {
+        } else if(item === "prev" && currentPage > 1) {
             const newPage = currentPage - 1;
 
             this.setState({
@@ -66,15 +69,15 @@ export default class PersonVidoe extends Component {
     };
 
     render() {
-        const { currentItems, totalPages, currentPage } = this.state;
+        const { currentItems, totalPages, currentPage, ref } = this.state;
 
-        if (!currentItems) {
+        if (!currentItems || currentItems.length === 0) {
             return <div>Loading...</div>
         };
 
         return (
-            <div className="personVideo">
-                <div className="personItems-wrapper">
+            <div ref={ref} className="personVideo">
+                <div className="personItems-wrapper" >
                     <Items results={currentItems} />
                 </div>
                 <div className="personVideo-btn">

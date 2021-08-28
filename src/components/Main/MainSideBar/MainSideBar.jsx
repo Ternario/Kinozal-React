@@ -8,7 +8,6 @@ const MainSideBar = ({ dataNews, ratingMovie }) => {
     return (
         <div className="mainSideBar">
             <PostSlider />
-            {/* <Authorization autorization={autorization} /> */}
             <SiteNews dataNews={dataNews} />
             <MovieRating ratingMovie={ratingMovie} />
         </div>

@@ -4,20 +4,22 @@ export default class ItemAddComment extends Component {
 
     state = {
         name: "",
-        comment: ""
-    }
+        comment: "",
+        isName: true,
+        isComment: true
+    };
 
     onChangeName = (e) => {
         this.setState({
             name: e.target.value
         });
-    }
+    };
 
     onChangeComment = (e) => {
         this.setState({
             comment: e.target.value
         });
-    }
+    };
 
     onSubmit = (e) => {
         e.preventDefault();
@@ -26,21 +28,43 @@ export default class ItemAddComment extends Component {
 
         const { name, comment } = this.state;
 
-        if (name === "" || comment === "") {
-            return
-        }
+        if (name === "" && comment === "") {
+            return this.setState({
+                name: "",
+                comment: "",
+                isName: false,
+                isComment: false
+            });
 
-        this.props.onAddComment(name, date, comment);
+        } else if (name === "" && comment !== "") {
+            return this.setState({
+                name: "",
+                isName: false,
+                isComment: true
+            });
 
-        this.setState({
-            name: "",
-            comment: ""
-        });
-    }
+        } else if (comment === "" && name !== "") {
+            return this.setState({
+                comment: "",
+                isComment: false,
+                isName: true
+            });
+
+        } else {
+            this.props.onAddComment(name, date, comment);
+
+            this.setState({
+                name: "",
+                comment: "",
+                isName: true,
+                isComment: true
+            });
+        };
+    };
 
     render() {
 
-        const { name, comment } = this.state;
+        const { name, comment, isName, isComment } = this.state;
 
         return (
             <div className="itemDetails-footer__addComment">
@@ -49,25 +73,28 @@ export default class ItemAddComment extends Component {
                     <form onSubmit={this.onSubmit} >
                         <div className="form-group">
                             <input
-                                className="input-name"
+                                className={isName ? "input-name" : "input-name error"}
                                 type="text"
                                 placeholder="Your name"
                                 onChange={this.onChangeName}
                                 value={name}
                             />
+
+                            {!isName ? <div>Fill the Name</div> : null}
                         </div>
                         <div className="form-group">
                             <textarea
-                                className="text"
+                                className={isComment ? "text" : "text error"}
                                 placeholder="Write your comment here"
                                 onChange={this.onChangeComment}
                                 value={comment}
                             />
+                            {!isComment ? <div>Write text</div> : null}
                         </div>
                         <button type="submit" className="btn">Post</button>
                     </form>
                 </div>
             </div>
         );
-    }
-}
+    };
+};

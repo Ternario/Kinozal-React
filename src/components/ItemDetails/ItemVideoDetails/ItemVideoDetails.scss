@@ -272,6 +272,10 @@
                         border: 1px solid lighten($color: $color-dark, $amount: 40%);
                         border-radius: 6px;
                     }
+
+                    .error {
+                        border: 2px solid $color-red;
+                    }
                 }
 
                 .btn {

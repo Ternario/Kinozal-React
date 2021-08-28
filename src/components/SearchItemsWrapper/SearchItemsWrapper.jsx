@@ -13,18 +13,17 @@ export default class SearchItemsWrapper extends Component {
     };
 
     componentDidUpdate(prevProps) {
-        if (this.props.name !== prevProps.name || this.props.page !== prevProps.page) {
+        if (this.props.title !== prevProps.title || this.props.page !== prevProps.page) {
             this.getMovies();
-            console.log(123)
         };
     };
 
     getMovies() {
-        const { getData, name, page, } = this.props;
+        const { getData, title, page } = this.props;
 
         this.props.isShowSideBar(false)
 
-        getData(name, page)
+        getData(title, page)
             .then((items) => {
                 this.setState({
                     items
@@ -36,7 +35,6 @@ export default class SearchItemsWrapper extends Component {
         this.props.isShowSideBar(true)
     };
 
-
     render() {
 
         const { items: { totalPages, results } } = this.state;
@@ -46,17 +44,16 @@ export default class SearchItemsWrapper extends Component {
             return <div>Loading...</div>
         };
 
-        const { page, filters, name, isShowSideBar, changeCurrentPage } = this.props;
+        const { page, filters, title, isShowSideBar, changeCurrentPage } = this.props;
 
         return (
             <div className="searchSection">
                 <div className="searchSection-label">
-                    <h2 className="label">{name}</h2>
+                    <h2 className="label">{title}</h2>
                 </div>
                 <div className="searchSection-items">
                     <Items
-                        title={name}
-                        type={name}
+                        type={title}
                         page={page}
                         filters={filters}
                         isShowSideBar={isShowSideBar}

@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import Items from '../Items/Items';
-import './ItemsWrapper.scss'
+import './ItemsWrapper.scss';
 
 export default class ItemsWrapper extends Component {
 
     state = {
         items: {}
-    }
+    };
 
     componentDidMount() {
         this.getMovies();
@@ -27,7 +27,7 @@ export default class ItemsWrapper extends Component {
                     this.setState({
                         items
                     })
-                })
+                });
         };
     };
 
@@ -44,7 +44,7 @@ export default class ItemsWrapper extends Component {
         return (
             <div className="sectionWrapper">
                 <div className="sectionWrapper-label">
-                    <h2 className="label">{title}</h2>
+                    <h2 className="label" >{title}</h2>
                 </div>
                 <div className="sectionWrapper-items">
                     <Items
@@ -58,12 +58,12 @@ export default class ItemsWrapper extends Component {
                 <div className="sectionWrapper-pagination">
                     <button className="sectionWrapper-pagination__btn"
                         onClick={() => {
-                            changeCurrentPage("prev")
+                            changeCurrentPage("prev");
                         }} >Prev</button>
                     <div className="currentPage">{page} of {totalPages}</div>
                     <button className="sectionWrapper-pagination__btn"
                         onClick={() => {
-                            changeCurrentPage("next")
+                            changeCurrentPage("next", totalPages);
                         }} >Next</button>
                 </div>
             </div>

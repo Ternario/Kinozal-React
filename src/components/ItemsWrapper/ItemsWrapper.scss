@@ -29,7 +29,6 @@
 
     .sectionWrapper-items {
         @extend %items-layout;
-
     }
 
     .sectionWrapper-pagination {
@@ -37,16 +36,16 @@
         justify-content: center;
         margin-bottom: 50px;
 
-        .currentPage {
-            padding: 8px 15px;
-        }
-
         &__btn {
             @extend %pagination-btn;
         }
 
         &__btn:hover {
             @extend %pagination-btn-hover;
+        }
+
+        .currentPage {
+            padding: 8px 15px;
         }
     }
 }

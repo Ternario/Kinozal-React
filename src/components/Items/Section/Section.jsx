@@ -34,12 +34,18 @@ export default class Section extends Component {
             const itemType = itemsType === undefined ? type : itemsType;
 
             return (
-                <div key={id} className="section"
+                <div
+                    key={id}
+                    className="section"
                     onClick={() => {
                         onItemSelected(itemType, id, title)
                     }} >
                     <div className="section-poster">
-                        <img className="poster" src={`https://image.tmdb.org/t/p/w500${poster}`} alt="section" />
+                        <img
+                            className="poster"
+                            src={`https://image.tmdb.org/t/p/w500${poster}`}
+                            alt="section"
+                        />
                     </div>
                     <div className="section-info">
                         <div className="name">{title}</div>
