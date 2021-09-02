@@ -8,7 +8,6 @@
     .mainSideBar-postSlider {
         display: flex;
         position: relative;
-        height: 370px;
         border-radius: 10px;
         margin-bottom: $gap * 2;
         overflow: hidden;
@@ -86,13 +85,12 @@
         }
 
         &__slides {
-
             .slides-item {
-                height: 390px;
+                height: 100%;
 
                 &__img {
-                    display: block;
                     width: 100%;
+                    height: 100%;
                 }
             }
 

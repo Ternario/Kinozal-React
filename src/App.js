@@ -152,7 +152,7 @@ export default class App extends Component {
 
         const itemIndex = genresList.findIndex((item) => {
             return item.id === id;
-        })
+        });
 
         const isChecked = genresList[itemIndex];
         isChecked.checked = checked
@@ -196,7 +196,7 @@ export default class App extends Component {
 
             return {
                 comments: newComments
-            }
+            };
         });
     };
 
@@ -214,7 +214,7 @@ export default class App extends Component {
 
         const flag = comments.some((item) => {
             return item.id === randomNumber;
-        })
+        });
 
         return flag ? this.getUnicId(this.getNumber) : randomNumber;
     };
@@ -235,7 +235,7 @@ export default class App extends Component {
 
             return {
                 comments: newArr
-            }
+            };
         });
     };
 

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './Header.scss';
 import Logo from './Logo/Logo';
 import Navbar from './Navbar/Navbar';
+import BurgerBtn from './BurgerBtn/BurgerBtn';
 import ShortSearchResults from './ShortSearchResults/ShortSearchResults';
 
 import { withRouter } from 'react-router-dom';
@@ -11,13 +12,22 @@ class Header extends Component {
     state = {
         itemList: [],
         name: "",
-        showShortSearch: true
+        showShortSearch: true,
+        flag: false
     };
 
     componentDidUpdate(prevProps, prevState) {
         if (this.state.name !== prevState.name) {
             this.changeItemName(this.state.name)
         };
+    };
+
+    toggleBtn = () => {
+        const { flag } = this.state;
+
+        this.setState({
+            flag: !flag
+        });
     };
 
     searchItem = (e) => {
@@ -81,7 +91,7 @@ class Header extends Component {
 
     render() {
 
-        const { name, itemList: { results, totalResults }, showShortSearch, ref } = this.state;
+        const { name, itemList: { results, totalResults }, showShortSearch, flag } = this.state;
 
         const { filterReset } = this.props;
 
@@ -89,13 +99,20 @@ class Header extends Component {
             <div className="header" >
                 <Logo />
                 <Navbar
-                    ref={ref}
                     filterReset={filterReset}
                     getItems={this.getItems}
                     searchItem={this.searchItem}
                     changeFocus={this.changeFocus}
+                    toggleBtn={this.toggleBtn}
                     name={name}
                 />
+                {flag ? <BurgerBtn
+                    filterReset={filterReset}
+                    toggleBtn={this.toggleBtn}
+                />
+                    :
+                    null}
+
                 <ShortSearchResults
                     results={results}
                     totalResults={totalResults}

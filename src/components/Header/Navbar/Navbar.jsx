@@ -4,10 +4,10 @@ import SearchPanel from './SearchPanel/SearchPanel';
 import Info from './Info/Info';
 import Btn from './Btn/Btn';
 
-const Navbar = ({ filterReset, name, searchItem, getItems, changeFocus }) => {
+const Navbar = ({ filterReset, name, searchItem, getItems, changeFocus,toggleBtn }) => {
     return (
         <div className="header-navbar">
-            <Btn />
+            <Btn toggleBtn={toggleBtn} />
             <Menu
                 filterReset={filterReset}
             />

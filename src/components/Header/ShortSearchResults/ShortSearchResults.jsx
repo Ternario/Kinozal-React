@@ -7,13 +7,13 @@ export default class ShortSearchResults extends Component {
         results: null,
         totalResults: null
     }
-    
+
     componentDidMount() {
         this.getData();
     };
 
     componentDidUpdate(prevProps) {
-        if(this.props.results !== prevProps.results) {
+        if (this.props.results !== prevProps.results) {
             this.getData();
         };
     };

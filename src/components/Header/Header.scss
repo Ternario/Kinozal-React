@@ -106,8 +106,6 @@
         }
 
         &__menu {
-            display: flex;
-
             @include sm-xs {
                 display: none;
             }
@@ -124,6 +122,11 @@
                 text-decoration: none;
                 transition: 0.5s;
                 cursor: pointer;
+
+                @include md-sm {
+                    margin: $gap / 3;
+                    padding: 7px;
+                }
             }
 
             .itemMenu:hover {
@@ -132,8 +135,7 @@
         }
 
         &__info {
-            display: flex;
-            @include xs {
+            @include sm {
                 display: none;
             }
 
@@ -167,7 +169,7 @@
                 .inputSearch {
                     padding-left: $gap;
                     height: 30px;
-                    width: 300px;
+                    width: 350px;
                     border: none;
                     outline: none;
 
@@ -176,11 +178,11 @@
                     }
 
                     @include md-sm {
-                        width: 200px;
+                        width: 300px;
                     }
 
                     @include sm-xs {
-                        width: 200px;
+                        width: 300px;
                     }
 
                     @include xs {
@@ -209,6 +211,37 @@
                     background-color: $color-accent;
                 }
             }
+        }
+    }
+
+    .header-burgerBtn {
+        z-index: 99999;
+        position: absolute;
+        display: flex;
+        flex-wrap: wrap;
+        overflow: hidden;
+        bottom: -205px;
+        left: 20px;
+        background-color: $color-dark;
+        border-radius: 10px;
+        width: 200px;
+        height: 200px;
+
+        .itemMenu {
+            display: flex;
+            margin: 0 auto;
+            justify-content: center;
+            padding: 8px;
+            width: 200px;
+            color: $color-light;
+            border-bottom: 1px solid $color-accent;
+            text-decoration: none;
+            transition: 0.5s;
+            cursor: pointer;
+        }
+
+        .itemMenu:last-child {
+            border-bottom: none;
         }
     }
 
@@ -265,5 +298,3 @@
         visibility: hidden;
     }
 }
-
-
