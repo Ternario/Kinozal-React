@@ -8,10 +8,23 @@
 }
 
 %itemDetails-title {
-    margin: ($gap) ($gap * 2.5);
+    margin: $gap $gap * 2.5;
     font-size: 1.5rem;
     font-weight: normal;
     color: lighten($color: $color-dark, $amount: 10%);
+
+    @include md {
+        margin: $gap / 2 $gap * 2.5;
+    }
+
+    @include sm {
+        margin: $gap / 2 $gap * 2.5;
+        font-size: 1.3rem;
+    }
+
+    @include xs {
+        font-size: 1rem;
+    }
 }
 
 %itemDetails-title-before {
@@ -19,8 +32,23 @@
     position: absolute;
     left: 0;
     width: 30px;
-    margin: ($gap / 2.2) 0;
+    margin-top: $gap / 2.2;
     border-bottom: 3px solid $color-accent;
+
+    @include lg {
+        margin-top: $gap / 2.5;
+        border-bottom: 2px solid $color-accent;
+    }
+
+    @include sm {
+        margin-top: $gap / 2.5;
+        border-bottom: 2px solid $color-accent;
+    }
+
+    @include xs {
+        margin-top: $gap / 3.1;
+        border-bottom: 1.8px solid $color-accent;
+    }
 }
 
 %itemDetails-title-after {
@@ -30,6 +58,18 @@
     margin-top: $gap * 1.4;
     margin-left: $gap / 1.5;
     border-bottom: 3px solid $color-accent;
+
+    @include sm-xs {
+        margin-top: $gap * 1.3 ;
+        margin-left: $gap / 3;
+        border-bottom: 2px solid $color-accent;
+    }
+
+    @include xs {
+        margin-top: $gap ;
+        margin-left: $gap / 3;
+        border-bottom: 1.8px solid $color-accent;
+    }
 }
 
 %items-label {
@@ -39,14 +79,14 @@
     color: lighten($color: $color-dark, $amount: 10%);
     letter-spacing: 0.1em;
 
-    @include sm-xs {
+    @include sm {
         margin-top: -$gap / 2;
-        font-size: 2rem;
+        font-size: 1.8rem;
     }
 
     @include xs {
         margin-top: -$gap / 2;
-        font-size: 2rem;
+        font-size: 1.5rem;
     }
 }
 
@@ -55,16 +95,19 @@
     position: absolute;
     width: 100%;
     margin-top: $gap * 3;
-    margin-left: $gap;
+    margin-left: $gap / 2.5;
     border-bottom: 3px solid $color-accent;
 
-    @include sm-xs {
-        margin-top: $gap * 2;
+    @include sm {
+        margin-top: $gap * 1.8;
+        margin-left: $gap / 3;
+        border-bottom: 2px solid $color-accent;
     }
 
     @include xs {
-        margin-top: $gap * 2;
-        margin-left: $gap / 2;
+        margin-top: $gap * 1.5;
+        margin-left: $gap / 3;
+        border-bottom: 2px solid $color-accent;
     }
 }
 
@@ -75,7 +118,7 @@
     margin-bottom: $gap * 3;
 
     @include lg {
-        grid-template-columns: repeat(4, 1fr);
+        grid-template-columns: repeat(5, 1fr);
     }
 
     @include md {
@@ -83,11 +126,13 @@
     }
 
     @include sm {
-        grid-template-columns: repeat(4, 1fr);
+        grid-template-columns: repeat(3, 1fr);
+        margin-bottom: $gap;
     }
 
     @include xs {
         grid-template-columns: repeat(3, 1fr);
+        margin-bottom: $gap;
     }
 }
 

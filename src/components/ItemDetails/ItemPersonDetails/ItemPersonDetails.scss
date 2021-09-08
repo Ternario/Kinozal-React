@@ -26,13 +26,21 @@
                 justify-content: center;
                 align-items: center;
                 margin-right: $gap * 3;
-                width: 180px;
+                width: 230px;
                 height: 250px;
                 border: 1px solid $color-dark;
                 border-radius: 7px;
 
-                @include lg {
-                    margin: 0;
+                @include sm {
+                    width: 200px;
+                    height: 190px;
+                }
+
+                @include xs {
+                    margin-right: $gap;
+                    width: 170px;
+                    height: 150px;
+                    margin-bottom: $gap;
                 }
 
                 .poster {
@@ -50,13 +58,25 @@
                     margin-bottom: $gap / 2;
                     font-size: 1rem;
 
+                    @include xs {
+                        font-size: 0.8rem;
+                    }
+
                     .item-title {
                         width: 120px;
                         font-weight: bold;
-                    }
 
-                    .item {
-                        width: 340px;
+                        @include md {
+                            width: 90px;
+                        }
+    
+                        @include sm {
+                            width: 80px;
+                        }
+
+                        @include xs {
+                            width: 70px;
+                        }
                     }
                 }
             }
@@ -77,13 +97,22 @@
 
             .description {
                 font-weight: bold;
+                font-size: 1rem;
                 letter-spacing: 0.05rem;
+
+                @include sm {
+                    font-size: 0.8rem;
+                }
             }
         }
     }
 
     &__personVideo {
-        margin-bottom: 40px;
+        margin-bottom: $gap * 2;
+
+        @include xs {
+            margin-bottom: $gap;
+        }
 
         .toggleButton {
             display: flex;

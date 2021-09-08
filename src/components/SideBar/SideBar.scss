@@ -13,6 +13,10 @@
             border: 1px solid $color-gray;
             overflow: hidden;
 
+            @include md {
+                margin-bottom: $gap;
+            }
+
             .wrapper-label {
                 .label {
                     @extend %sidebar-label;
@@ -29,6 +33,10 @@
                     outline: none;
                     background-color: lighten($color: $color-gray, $amount: 3%);
                     cursor: pointer;
+
+                    @include sm-xs {
+                        font-size: 0.8rem;
+                    }
                 }
             }
 
@@ -41,6 +49,14 @@
                     .selectGenre {
                         color: $color-primary;
                         cursor: pointer;
+
+                        @include sm-xs {
+                            font-size: 0.8rem;
+                        }
+                    }
+
+                    @include sm-xs {
+                        padding: 7px 0;
                     }
                 }
 

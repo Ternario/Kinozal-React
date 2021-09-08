@@ -5,12 +5,21 @@
 
 .header {
     position: relative;
-    margin-bottom: $gap * 4;
+    margin-bottom: $gap * 3;
     background-color: $color-dark;
+
+    @include md {
+        margin-bottom: $gap * 2;
+    }
 
     @include sm {
         margin-bottom: $gap * 2;
     }
+
+    @include xs {
+        margin-bottom: $gap;
+    }
+    
 
     .header-logo {
         text-align: center;
@@ -190,12 +199,6 @@
                     }
                 }
 
-                // .inputSearch:focus {
-                //     position: absolute;
-                //     left: 70px;
-                //     width: calc(100% - 190px);
-                // }
-
                 .searchBtn {
                     vertical-align: middle;
                     width: 50px;
@@ -248,10 +251,15 @@
     .header-ShortSearchResults {
         position: absolute;
         margin-right: 70px;
-        right: 0;
+        right: 10px;
         width: calc(100% - 140px);
         z-index: 999999;
         transition: 0.5s;
+
+        @include xs {
+            left: 10px;
+            width: calc(100% - 20px);
+        }
 
         &__items {
             display: flex;

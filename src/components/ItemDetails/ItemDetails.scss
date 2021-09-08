@@ -7,7 +7,19 @@
     margin: 0 200px;
     overflow: hidden;
 
+    @include lg {
+        margin: 0 150px;
+    }
+
     @include md {
-        margin: 0 auto;
+        margin: 0 100px;
+    }
+
+    @include sm {
+        margin: 0 70px;
+    }
+
+    @include xs {
+        margin: 0 10px;
     }
 }

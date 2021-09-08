@@ -26,11 +26,11 @@ const MovieNews = ({ movieNews }) => {
     })
 
     return (
-        <div className="main-movieNews">
-            <div className="main-movieNews__label">
-                <h2 className="label">Movie news</h2>
+        <div className="movieNews">
+            <div className="movieNews-title">
+                <h2 className="title">Movie news</h2>
             </div>
-            <div className="main-movieNews__wrapper">
+            <div className="movieNews-wrapper">
                 {elements}
             </div>
         </div>

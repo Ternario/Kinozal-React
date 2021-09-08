@@ -10,7 +10,10 @@
     overflow: hidden;
 
     @include md {
-        margin: 0 auto;
+        margin-left: $gap * 1.5;
+    }
+    @include xs {
+        margin: 0;
     }
 
     .sectionWrapper-label {
@@ -34,7 +37,15 @@
     .sectionWrapper-pagination {
         display: flex;
         justify-content: center;
-        margin-bottom: 50px;
+        margin-bottom: $gap * 3;
+
+        @include sm {
+            margin-bottom: $gap;
+        }
+
+        @include xs {
+            margin-bottom: $gap;
+        }
 
         &__btn {
             @extend %pagination-btn;

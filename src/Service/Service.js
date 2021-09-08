@@ -9,7 +9,6 @@ export default class MoviesData {
         const path = `${this._apiBase}${url}${this._apiKey}&page=${page}${releaseYear}&sort_by=${sortBy}${genres}`;
 
         const res = await fetch(path);
-
         if (!res.ok) {
             throw new Error(`Could not Fetch ${path}, status ${res.status}`);
         };

@@ -5,6 +5,10 @@
 .mainSideBar {
     grid-area: s;
 
+    @include xs {
+        display: none;
+    }
+
     .mainSideBar-postSlider {
         display: flex;
         position: relative;
@@ -12,8 +16,8 @@
         margin-bottom: $gap * 2;
         overflow: hidden;
 
-        @include md {
-            display: none;
+        @include sm {
+            margin-bottom: $gap;
         }
 
         &__buttonLeft {
@@ -119,7 +123,7 @@
         overflow: hidden;
 
         @include md {
-            display: none;
+            margin-bottom: $gap;
         }
 
         &__label {
@@ -130,8 +134,16 @@
 
         &__wrapper {
             position: relative;
-            padding: $gap / 1.5 $gap;
+            padding: 10px 15px;
             background-color: lighten($color: $color-gray, $amount: 3%);
+
+            @include lg {
+                padding: 10px 10px;
+            }
+
+            @include md {
+                padding: 5px 5px;
+            }
 
             .wrapperItem {
                 display: flex;
@@ -142,28 +154,73 @@
                         border: 4px solid $color-light;
                         border-radius: 5px;
                         transition: 0.5s;
+
+                        @include md {
+                            width: 45px;
+                        }
                     }
                 }
 
                 .text-wrapper {
-                    margin: 0 0 0 $gap;
+                    margin-left: 15px;
+
+                    @include lg {
+                        margin-left: 5px;
+                    }
 
                     &__newsText {
-                        font-size: 0.9rem;
+                        position: relative;
+                        font-size: 0.8rem;
                         color: $color-primary;
-                        height: 60px;
-                        cursor: pointer;
+                        height: 50px;
                         transition: 0.5s;
+                        cursor: pointer;
                         overflow: hidden;
+
+                        @include md {
+                            height: 45px;
+                            font-size: 0.7rem;
+                        }
+                    }
+
+                    &__newsText::after {
+                        content: "";
+                        text-align: right;
+                        position: absolute;
+                        right: 0;
+                        width: 70%;
+                        height: 5px;
+                        background: linear-gradient(to right, rgba(255, 255, 255, 0), lighten($color: $color-gray, $amount: 3%) 100%);
+                        pointer-events: none;
+
+                        @include md {
+                            bottom: 0;
+                            height: 10px;
+                        }
+
+                        @include sm {
+                            height: 20px;
+                        }
                     }
 
                     &__wrapperDate {
                         display: flex;
                         justify-content: flex-end;
+                        margin-right: 5px;
 
                         .date {
+                            margin-top: $gap / 1.5;
                             font-size: 0.8rem;
                             color: $color-primary;
+
+                            @include lg {
+                                font-size: 0.7rem;
+                            }
+
+                            @include md {
+                                margin-top: $gap / 3;
+                                font-size: 0.6rem;
+                            }
                         }
                     }
                 }
@@ -187,11 +244,24 @@
         &__wrapper::after {
             content: "";
             position: absolute;
-            bottom: 0;
-            right: 8%;
+            left: 90px;
             height: 1px;
-            width: 55%;
+            width: 60%;
             background-color: darken($color: $color-gray, $amount: 20%);
+
+            @include lg {
+                width: 55%;
+            }
+
+            @include md {
+                left: 60px;
+                width: 65%;
+            }
+
+            @include sm {
+                left: 60px;
+                width: 60%;
+            }
         }
 
         &__wrapper:last-child {
@@ -210,10 +280,6 @@
         border: 1px solid $color-gray;
         overflow: hidden;
 
-        @include md {
-            display: none;
-        }
-
         &__label {
             .label {
                 @extend %sidebar-label;
@@ -221,13 +287,17 @@
         }
 
         &__wrapper {
-            padding: $gap / 1.5 0;
+            padding: 10px 0;
             background-color: lighten($color: $color-gray, $amount: 3%);
+
+            @include sm {
+                padding: 5px 0;
+            }
 
             .content {
                 display: flex;
                 justify-content: space-between;
-                padding: $gap / 1.2;
+                padding: 12px;
                 border-bottom: 1px solid darken($color: $color-gray, $amount: 10%);
                 background-color: lighten($color: $color-gray, $amount: 3%);
                 cursor: pointer;
@@ -235,16 +305,30 @@
                 .wrapper-name {
                     &__movieName {
                         color: $color-primary;
+
+                        @include md {
+                            font-size: 0.7rem;
+                        }
                     }
                 }
 
                 .wrapper-rating {
+                    margin-left: 10px;
+
+                    @include md {
+                        margin-left: 5px;
+                    }
+
                     &__rating {
-                        padding: 0 $gap / 2;
+                        padding: 0 7.5px;
                         font-size: 0.9rem;
                         color: $color-light;
                         border-radius: 20px;
                         background-color: darken($color: $color-gray, $amount: 50%);
+
+                        @include md {
+                            font-size: 0.7rem;
+                        }
                     }
                 }
             }

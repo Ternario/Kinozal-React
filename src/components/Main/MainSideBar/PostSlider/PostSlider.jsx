@@ -15,9 +15,9 @@ export default class PostSlider extends Component {
     };
 
     componentDidMount() {
-        // this.setState({
-        //     interval: setInterval(this.toggleSlider, 3000)
-        // });
+        this.setState({
+            interval: setInterval(this.toggleSlider, 3000)
+        });
     };
 
     componentDidUpdate(prevProps, prevState) {

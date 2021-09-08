@@ -1,6 +1,7 @@
 @import "./../../Variables.scss";
 @import "./../../Mixins-media.scss";
 @import "./../../common.scss";
+@import "./../../extends.scss";
 
 .main {
     grid-area: m;
@@ -15,168 +16,38 @@
 
         .sectionWrapper-label {
             .label-new {
-                margin-top: -$gap;
-                font-size: 3rem;
-                font-weight: normal;
-                color: lighten($color: $color-dark, $amount: 10%);
-                letter-spacing: 0.1em;
-
-                @include sm-xs {
-                    margin-top: -$gap / 2;
-                    font-size: 2rem;
-                }
-
-                @include xs {
-                    margin-top: -$gap / 2;
-                    font-size: 2rem;
-                }
+                @extend %items-label;
             }
 
             .label-new::after {
-                content: "";
-                position: absolute;
-                margin-top: $gap * 3.2;
-                margin-left: $gap / 1.5;
-                width: 100%;
-                border-bottom: 3px solid $color-accent;
-
-                @include sm-xs {
-                    margin-top: $gap * 2;
-                    margin-left: $gap / 2;
-                }
-
-                @include xs {
-                    margin-top: $gap * 2;
-                    margin-left: $gap / 2;
-                }
-            }
-
-            .label-top {
-                margin: -$gap 0 $gap ($gap * 2.8);
-                font-size: 3rem;
-                font-weight: normal;
-                color: lighten($color: $color-dark, $amount: 10%);
-                letter-spacing: 0.1em;
-
-                @include sm-xs {
-                    margin-top: -$gap / 2;
-                    font-size: 2rem;
-                }
-
-                @include xs {
-                    margin-top: -$gap / 2;
-                    margin-left: $gap * 2.5;
-                    font-size: 2rem;
-                    letter-spacing: 0;
-                }
-            }
-
-            .label-top::before {
-                content: "";
-                position: absolute;
-                left: 0;
-                width: 30px;
-                margin-top: $gap;
-                border-bottom: 3px solid $color-accent;
-
-                @include sm-xs {
-                    margin-top: $gap / 2;
-                }
-
-                @include xs {
-                    margin-top: $gap / 1.8;
-                }
-            }
-
-            .label-top::after {
-                content: "";
-                position: absolute;
-                margin-top: $gap * 3;
-                margin-left: $gap / 1.5;
-                width: 100%;
-                border-bottom: 3px solid $color-accent;
-
-                @include sm-xs {
-                    margin-top: $gap * 2;
-                }
-
-                @include xs {
-                    margin-top: $gap * 2;
-                    margin-left: $gap / 2;
-                }
+               @extend %Items-label-after;
             }
         }
     }
 
-    .main-movieNews {
+    .movieNews {
         margin-left: $gap * 2;
         position: relative;
 
-        @include sm-xs {
+        @include md {
             margin-left: 0;
         }
 
-        @include xs {
-            margin-left: 0;
-        }
-
-        &__label {
-            .label {
-                margin: -$gap 0 $gap ($gap * 2.5);
-                font-size: 3rem;
-                font-weight: normal;
-                color: lighten($color: $color-dark, $amount: 10%);
-                letter-spacing: 0.1em;
-
-                @include sm-xs {
-                    margin-top: -$gap / 2;
-                    font-size: 2rem;
-                }
-
-                @include xs {
-                    margin-top: -$gap / 2;
-                    margin-left: $gap * 2.5;
-                    font-size: 2rem;
-                }
+        .movieNews-title {
+            .title {
+                @extend %itemDetails-title;
             }
 
-            .label::before {
-                content: "";
-                position: absolute;
-                left: 0;
-                width: 30px;
-                margin-top: $gap;
-                border-bottom: 3px solid $color-accent;
-
-                @include sm-xs {
-                    margin-top: $gap / 2;
-                }
-
-                @include xs {
-                    margin-top: $gap / 1.8;
-                }
+            .title::before {
+                @extend %itemDetails-title-before;
             }
 
-            .label::after {
-                content: "";
-                position: absolute;
-                margin-top: $gap * 3;
-                margin-left: $gap / 1.5;
-                width: 100%;
-                border-bottom: 3px solid $color-accent;
-
-                @include sm-xs {
-                    margin-top: $gap * 2;
-                }
-
-                @include xs {
-                    margin-top: $gap * 2;
-                    margin-left: $gap / 2;
-                }
+            .title::after {
+                @extend %itemDetails-title-after;
             }
         }
 
-        &__wrapper {
+        .movieNews-wrapper {
             .news {
                 margin-bottom: $gap * 3;
 
@@ -208,7 +79,7 @@
 
                     &__poster {
                         text-align: center;
-                        padding: $gap / 3 0;
+                        padding: 5px 0;
                         height: 150px;
                         width: 240px;
                         border: 1px solid $color-gray;
@@ -219,14 +90,14 @@
                         @include sm-xs {
                             height: 300px;
                             width: 100%;
-                            padding: $gap / 4 0;
+                            padding: 5px 0;
                             margin-bottom: $gap / 2;
                         }
 
                         @include xs {
                             height: 220px;
                             width: 100%;
-                            padding: $gap / 4 0;
+                            padding: 5px 0;
                             margin-bottom: $gap / 2;
                         }
 
@@ -258,10 +129,28 @@
 
                             .content-text {
                                 font-size: 1rem;
+                                overflow: hidden;
+                                position: relative;
+                                height: 82px;
+
+                                @include md {
+                                    height: 62px;
+                                }
 
                                 @include sm {
                                     font-size: 0.9rem;
                                 }
+                            }
+
+                            .content-text::after {
+                                content: "";
+                                text-align: right;
+                                position: absolute;
+                                bottom: 0;
+                                right: 0;
+                                width: 70%;
+                                height: 1.4em;
+                                background: linear-gradient(to right, rgba(255, 255, 255, 0), $color-light 100%);
                             }
                         }
 
@@ -271,7 +160,7 @@
                             width: 100%;
 
                             .btn {
-                                padding: $gap / 3 $gap;
+                                padding: 5px 15px;
                                 border: 1px solid $color-accent;
                                 border-radius: 5px;
                                 color: $color-accent;

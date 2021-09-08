@@ -9,7 +9,6 @@
 
     .section-poster {
         padding-top: 5px;
-        
         height: 210px;
         border: 1px solid $color-gray;
         border-radius: 5px;
@@ -18,14 +17,22 @@
         .poster {
             width: 96%;
             height: 98%;
-            
-            @include sm {
-                height: 170px;
-            }
+        }
 
-            @include xs {
-                height: 130px;
-            }
+        @include lg {
+            height: 180px;
+        }
+    
+        @include md {
+            height: 180px;
+        }
+    
+        @include sm {
+            height: 180px;
+        }
+    
+        @include xs {
+            height: 160px;
         }
     }
 
