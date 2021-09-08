@@ -48,7 +48,7 @@ export default class PostSlider extends Component {
         });
     };
 
-    slideHendle = (item) => {
+    slideHandle = (item) => {
         const { currentImage, images } = this.state;
 
         if (item === "next") {
@@ -81,7 +81,7 @@ export default class PostSlider extends Component {
                 <div
                     className="mainSideBar-postSlider__buttonLeft"
                     onClick={() => {
-                        this.slideHendle("prev")
+                        this.slideHandle("prev")
                     }}
                 >
                     <span className="left"></span>
@@ -89,7 +89,7 @@ export default class PostSlider extends Component {
                 </div>
                 <div className="mainSideBar-postSlider__buttonRight"
                     onClick={() => {
-                        this.slideHendle("next")
+                        this.slideHandle("next")
                     }}
                 >
                     <span className="left"></span>

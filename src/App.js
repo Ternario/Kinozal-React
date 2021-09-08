@@ -185,7 +185,7 @@ export default class App extends Component {
         });
     };
 
-    deliteComment = (id) => {
+    deleteComment = (id) => {
         this.setState(({ comments }) => {
 
             const index = comments.findIndex((item) => {
@@ -323,7 +323,7 @@ export default class App extends Component {
                             getVideoData={this.service.getItemMovieById}
 
                             isShowSideBar={this.isShowSideBar}
-                            onDeliteComment={this.deliteComment}
+                            onDeliteComment={this.deleteComment}
                             onAddComment={this.addComment}
 
                             getPerson={this.service.getPersonById}
